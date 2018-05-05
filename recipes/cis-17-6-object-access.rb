@@ -1,4 +1,3 @@
-#
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-17-6-object-access
 #

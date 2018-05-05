@@ -1,4 +1,4 @@
-# Default attributes
+# Default Attributes
 
 # CIS Levels
 default['cb_cis_windows_2016']['cis_level_1'] = true
