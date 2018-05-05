@@ -10,12 +10,12 @@ control '18.1.1.1' do
   impact 1.0
   title 'Ensure Prevent enabling lock screen camera is set to Enabled'
   desc 'Ensure Prevent enabling lock screen camera is set to Enabled'
-  tag 'cis-level-1','cis-18.1.1.1'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url:'https://www.cisecurity.org/cis-benchmarks/'
+  tag 'cis-level-1', 'cis-18.1.1.1'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization') do
     it { should exist }
-    it { should have_property_value( 'NoLockScreenCamera ', :type_dword, '1' )}
+    it { should have_property_value('NoLockScreenCamera ', :type_dword, '1') }
   end
 end
 
@@ -24,12 +24,12 @@ control '18.1.1.2' do
   impact 1.0
   title 'Ensure Prevent enabling lock screen slide show is set to Enabled'
   desc 'Ensure Prevent enabling lock screen slide show is set to Enabled'
-  tag 'cis-level-1','cis-18.1.1.2'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url:'https://www.cisecurity.org/cis-benchmarks/'
+  tag 'cis-level-1', 'cis-18.1.1.2'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization') do
     it { should exist }
-    it { should have_property_value( 'NoLockScreenSlideshow ', :type_dword, '1' )}
+    it { should have_property_value('NoLockScreenSlideshow ', :type_dword, '1') }
   end
 end
 
@@ -38,11 +38,11 @@ control '18.1.2.1' do
   impact 1.0
   title 'Ensure Allow Input Personalization is set to Disabled'
   desc 'Ensure Allow Input Personalization is set to Disabled'
-  tag 'cis-level-1','cis-18.1.2.1'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url:'https://www.cisecurity.org/cis-benchmarks/'
+  tag 'cis-level-1', 'cis-18.1.2.1'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization') do
     it { should exist }
-    it { should have_property_value( 'AllowInputPersonalization ', :type_dword, '1' )}
+    it { should have_property_value('AllowInputPersonalization ', :type_dword, '1') }
   end
 end

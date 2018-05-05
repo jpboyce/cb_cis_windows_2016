@@ -10,11 +10,11 @@ control '19.5.1.1' do
   impact 1.0
   title 'Ensure Turn off toast notifications on the lock screen is set to Enabled'
   desc 'Ensure Turn off toast notifications on the lock screen is set to Enabled'
-  tag 'cis-level-1','cis-19.5.1.1'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url:'https://www.cisecurity.org/cis-benchmarks/'
+  tag 'cis-level-1', 'cis-19.5.1.1'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe registry_key('HKEY_USERS\[USER SID]\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications') do
     it { should exist }
-    it { should have_property_value( 'NoToastApplicationNotificationOnLockScreen ', :type_dword, '1' )}
+    it { should have_property_value('NoToastApplicationNotificationOnLockScreen ', :type_dword, '1') }
   end
 end

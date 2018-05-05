@@ -10,12 +10,12 @@ control '18.6.1' do
   impact 1.0
   title 'Ensure Apply UAC restrictions to local accounts on network logons is set to Enabled (MS only)'
   desc 'Ensure Apply UAC restrictions to local accounts on network logons is set to Enabled (MS only)'
-  tag 'cis-level-1','cis-18.6.1'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url:'https://www.cisecurity.org/cis-benchmarks/'
+  tag 'cis-level-1', 'cis-18.6.1'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value( 'LocalAccountTokenFilterPolicy ', :type_dword, '1' )}
+    it { should have_property_value('LocalAccountTokenFilterPolicy ', :type_dword, '1') }
   end
 end
 
@@ -24,11 +24,11 @@ control '18.6.2' do
   impact 1.0
   title 'Ensure WDigest Authentication is set to Disabled'
   desc 'Ensure WDigest Authentication is set to Disabled'
-  tag 'cis-level-1','cis-18.6.2'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url:'https://www.cisecurity.org/cis-benchmarks/'
+  tag 'cis-level-1', 'cis-18.6.2'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest') do
     it { should exist }
-    it { should have_property_value( 'UseLogonCredential ', :type_dword, '1' )}
+    it { should have_property_value('UseLogonCredential ', :type_dword, '1') }
   end
 end

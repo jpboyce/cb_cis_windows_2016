@@ -4,7 +4,7 @@ require 'csv'
 cisList = CSV.read('../../../files/cis-windows-2016-registry.csv')
 
 cisList.each do |i|
-  if i[0] == '2.3.1'
+  next unless i[0] == '2.3.1'
   control 'cis-windows-2016-' + i[1] do
     impact 0.7
     title i[2]
@@ -14,11 +14,10 @@ cisList.each do |i|
       its(i[4]) { should eq i[5] }
     end
   end
-  end
 end
 
-    #puts i[1]
-    #puts i[2]
-    #puts i[3]
-    #puts i[4]
-   # puts i[5]
+# puts i[1]
+# puts i[2]
+# puts i[3]
+# puts i[4]
+# puts i[5]
