@@ -8,19 +8,19 @@
 registry_key '' do
   values [{ name: '', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 17.7.2 (L1) Ensure 'Audit Authentication Policy Change' is set to 'Success'
 registry_key '' do
   values [{ name: '', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 17.7.3 (L1) Ensure 'Audit Authorization Policy Change' is set to 'Success'
 registry_key '' do
   values [{ name: '', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end

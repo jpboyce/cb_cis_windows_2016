@@ -8,12 +8,12 @@
 registry_key '' do
   values [{ name: '', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 17.3.2 (L1) Ensure 'Audit Process Creation' is set to 'Success'
 registry_key '' do
   values [{ name: '', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end

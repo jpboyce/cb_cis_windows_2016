@@ -8,68 +8,68 @@
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' do
   values [{ name: 'EnableFirewall ', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 9.3.2 (L1) Ensure 'Windows Firewall: Public: Inbound connections' is set to 'Block (default)'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' do
   values [{ name: 'DefaultInboundAction ', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 9.3.3 (L1) Ensure 'Windows Firewall: Public: Outbound connections' is set to 'Allow (default)'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' do
   values [{ name: 'DefaultOutboundAction ', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 9.3.4 (L1) Ensure 'Windows Firewall: Public: Settings: Display a notification' is set to 'Yes'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' do
   values [{ name: 'DisableNotifications ', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 9.3.5 (L1) Ensure 'Windows Firewall: Public: Settings: Apply local firewall rules' is set to 'No'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' do
   values [{ name: 'AllowLocalPolicyMerge ', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 9.3.6 (L1) Ensure 'Windows Firewall: Public: Settings: Apply local connection security rules' is set to 'No'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' do
   values [{ name: 'AllowLocalIPsecPolicyMerge ', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 9.3.7 (L1) Ensure 'Windows Firewall: Public: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\publicfw.log'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging' do
   values [{ name: 'LogFilePath ', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 9.3.8 (L1)  Ensure 'Windows Firewall: Public: Logging: Size limit (KB)' is set to '16,384 KB or greater'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging' do
   values [{ name: 'LogFileSize ', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 9.3.9 (L1) Ensure 'Windows Firewall: Public: Logging: Log dropped packets' is set to 'Yes'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging' do
   values [{ name: 'LogDroppedPackets ', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 9.3.10 (L1) Ensure 'Windows Firewall: Public: Logging: Log successful connections' is set to 'Yes'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging' do
   values [{ name: 'LogSuccessfulConnections ', type: :dword, data: 1 }]
   action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
