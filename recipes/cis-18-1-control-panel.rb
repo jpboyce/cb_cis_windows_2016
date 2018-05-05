@@ -19,7 +19,7 @@ end
 
 # 18.1.2.1 (L1) Ensure 'Allow Input Personalization' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization' do
-  values [{ name: 'AllowInputPersonalization', type: :dword, data: 1 }]
+  values [{ name: 'AllowInputPersonalization', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
