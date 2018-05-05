@@ -1,4 +1,5 @@
-# # encoding: utf-8
+#
+# encoding: utf-8
 
 # Inspec test for recipe cb_cis_windows_2016::cis-19-5-admin-templates-start-menu-and-taskbar
 

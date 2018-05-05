@@ -1,4 +1,5 @@
-# # encoding: utf-8
+#
+# encoding: utf-8
 
 # Inspec test for recipe cb_cis_windows_2016::cis-1-2-account-lockout-policy
 
