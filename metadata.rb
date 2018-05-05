@@ -1,5 +1,5 @@
 name 'cb_cis_windows_2016'
-maintainer 'Jesse Bitce'
+maintainer 'Jesse Boyce'
 maintainer_email 'jesse@jpboyce.org'
 license 'MIT'
 description 'Installs/Configures cb_cis_windows_2016'
@@ -18,3 +18,6 @@ issues_url 'https://github.com/jpboyce/cb_cis_windows_2016/issues'
 # a Supermarket.
 #
 source_url 'https://github.com/jpboyce/cb_cis_windows_2016'
+
+supports 'windows'
+depends 'windows'
