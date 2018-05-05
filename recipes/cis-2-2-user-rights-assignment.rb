@@ -3,6 +3,13 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
+security_policy 'Windows 10 CIS 2.2 - User Rights Assignment' do
+  log_location "#{node['cb_cis_windows_2016']['secedit_template']['location']}\\User_Rights_Assignment.log"
+  policy_template "#{node['cb_cis_windows_2016']['secedit_template']['location']}\\User_Rights_Assignment.inf"
+  database "#{node['cb_cis_windows_2016']['secedit_database']['location']}\\#{node['cb_cis_windows_2016']['secedit_database']['name']}"
+  action :configure
+end
+
 # 2.2.1 (L1) Ensure 'Access Credential Manager as a trusted caller' is set to 'No One'
 registry_key '' do
   values [{ name: '', type: :dword, data: 1 }]

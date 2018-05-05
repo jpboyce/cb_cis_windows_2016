@@ -4,43 +4,43 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 # 17.5.1 (L1) Ensure 'Audit Account Lockout' is set to 'Success and Failure'
-registry_key '' do
-  values [{ name: '', type: :dword, data: 1 }]
-  action :create
+execute 'Account Lockout' do
+  command 'auditpol /set /subcategory:"Account Lockout" /success:enable /failure:enable'
+  action :run
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 17.5.2 (L1) Ensure 'Audit Group Membership' is set to 'Success'
-registry_key '' do
-  values [{ name: '', type: :dword, data: 1 }]
-  action :create
+execute 'Group Membership' do
+  command 'auditpol /set /subcategory:"Group Membership" /success:enable /failure:disable'
+  action :run
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 17.5.3 (L1) Ensure 'Audit Logoff' is set to 'Success'
-registry_key '' do
-  values [{ name: '', type: :dword, data: 1 }]
-  action :create
+execute 'Logoff' do
+  command 'auditpol /set /subcategory:"Logoff" /success:enable /failure:disable'
+  action :run
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 17.5.4 (L1) Ensure 'Audit Logon' is set to 'Success and Failure'
-registry_key '' do
-  values [{ name: '', type: :dword, data: 1 }]
-  action :create
+execute 'Logon' do
+  command 'auditpol /set /subcategory:"Logon" /success:enable /failure:enable'
+  action :run
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 17.5.5 (L1) Ensure 'Audit Other Logon/Logoff Events' is set to 'Success and Failure'
-registry_key '' do
-  values [{ name: '', type: :dword, data: 1 }]
-  action :create
+execute 'Other Logon/Logoff Events' do
+  command 'auditpol /set /subcategory:"Other Logon/Logoff Events" /success:enable /failure:enable'
+  action :run
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 17.5.6 (L1) Ensure 'Audit Special Logon' is set to 'Success'
-registry_key '' do
-  values [{ name: '', type: :dword, data: 1 }]
-  action :create
+execute 'Special Logon' do
+  command 'auditpol /set /subcategory:"Special Logon" /success:enable /failure:disable'
+  action :run
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end

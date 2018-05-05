@@ -4,6 +4,10 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 # 17.3.1 (L1) Ensure 'Audit PNP Activity' is set to 'Success'
+#execute 'Process Creation' do
+#  command 'auditpol /set /subcategory:"Process Creation" /success:enable /failure:disable'
+#  action :run
+#end
 registry_key '' do
   values [{ name: '', type: :dword, data: 1 }]
   action :create
@@ -11,8 +15,8 @@ registry_key '' do
 end
 
 # 17.3.2 (L1) Ensure 'Audit Process Creation' is set to 'Success'
-registry_key '' do
-  values [{ name: '', type: :dword, data: 1 }]
-  action :create
+execute 'Process Creation' do
+  command 'auditpol /set /subcategory:"Process Creation" /success:enable /failure:disable'
+  action :run
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
