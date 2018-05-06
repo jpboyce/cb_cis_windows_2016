@@ -4,14 +4,9 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 # 17.3.1 (L1) Ensure 'Audit PNP Activity' is set to 'Success'
-#execute 'Process Creation' do
-#  command 'auditpol /set /subcategory:"Process Creation" /success:enable /failure:disable'
-#  action :run
-#end
-registry_key '' do
-  values [{ name: '', type: :dword, data: 1 }]
-  action :create
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+execute 'Plug and Play Events' do
+  command 'auditpol /set /subcategory:"Plug and Play Events" /success:enable /failure:disable'
+  action :run
 end
 
 # 17.3.2 (L1) Ensure 'Audit Process Creation' is set to 'Success'

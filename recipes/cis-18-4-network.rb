@@ -17,7 +17,6 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\DNSClien
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
-
 # 18.4.8.1 (L1) Ensure 'Enable insecure guest logons' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation' do
   values [{ name: 'AllowInsecureGuestAuth', type: :dword, data: 1 }]
@@ -69,11 +68,7 @@ end
 
 # 18.4.20.2.1 (L2) Ensure Configuration of wireless settings using Windows Connect Now is set to Disabled
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars' do
-  values [{ name: 'EnableRegistrars', type: :dword, data: 0 },
-  { name: 'DisableWPDRegistrar', type: :dword, data: 0 },
-  { name: 'DisableUPnPRegistrar', type: :dword, data: 0 },
-  { name: 'DisableInBand802DOT11Registrar', type: :dword, data: 0 },
-  { name: 'DisableFlashConfigRegistrar', type: :dword, data: 0 }]
+  values [{ name: 'EnableRegistrars', type: :dword, data: 0 }, { name: 'DisableWPDRegistrar', type: :dword, data: 0 }, { name: 'DisableUPnPRegistrar', type: :dword, data: 0 }, { name: 'DisableInBand802DOT11Registrar', type: :dword, data: 0 }, { name: 'DisableFlashConfigRegistrar', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
 end

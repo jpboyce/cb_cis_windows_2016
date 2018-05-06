@@ -30,7 +30,7 @@ default['security_policy']['rights']['SeTrustedCredManAccessPrivilege'] = ''
 
 # 2.2.2 (L1) Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users'
 # for DCs - Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS
-#default['security_policy']['rights']['SeNetworkLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
+# default['security_policy']['rights']['SeNetworkLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
 
 # 2.2.3 (L1) Ensure 'Act as part of the operating system' is set to 'No One'
 default['security_policy']['rights']['SeTcbPrivilege'] = ''
@@ -42,11 +42,11 @@ default['security_policy']['rights']['SeTcbPrivilege'] = ''
 default['security_policy']['rights']['SeIncreaseQuotaPrivilege'] = '*S-1-5-32-544,*S-1-5-19,*S-1-5-20'
 
 # 2.2.6 (L1) Ensure 'Allow log on locally' is set to 'Administrators'
-#default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-545'
+# default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-545'
 # for DCs Administrators, ENTERPRISE DOMAIN CONTROLLERS
 
 # 2.2.7 (L1) Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators, Remote Desktop Users'
-#default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
+# default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
 # for DCs, just administrators
 
 # 2.2.8 (L1) Ensure 'Back up files and directories' is set to 'Administrators'
@@ -71,7 +71,7 @@ default['security_policy']['rights']['SeCreateGlobalPrivilege'] = '*S-1-5-32-544
 default['security_policy']['rights']['SeCreatePermanentPrivilege'] = ''
 
 # 2.2.15 (L1) Configure 'Create symbolic links'
-#default['security_policy']['rights']['SeCreateSymbolicLinkPrivilege'] = '*S-1-5-32-544'
+# default['security_policy']['rights']['SeCreateSymbolicLinkPrivilege'] = '*S-1-5-32-544'
 # For DCs, Administrators
 
 # 2.2.16 (L1) Ensure 'Debug programs' is set to 'Administrators'
@@ -80,7 +80,7 @@ default['security_policy']['rights']['SeDebugPrivilege'] = '*S-1-5-32-544'
 # 2.2.17 (L1) Ensure 'Deny access to this computer from the network' to include 'Guests, Local account'
 # default['security_policy']['rights']['SeDenyNetworkLogonRight'] = '*S-1-5-32-546,*S-1-5-113'
 # Editing this from the default value to allow chef to work by removing local accounts
-#default['security_policy']['rights']['SeDenyNetworkLogonRight'] = '*S-1-5-32-546'
+# default['security_policy']['rights']['SeDenyNetworkLogonRight'] = '*S-1-5-32-546'
 # For member servers, Guests, Local account and member of Administrators group
 # For DCs, Guests, Local account
 
@@ -97,7 +97,7 @@ default['security_policy']['rights']['SeDenyInteractiveLogonRight'] = '*S-1-5-32
 default['security_policy']['rights']['SeDenyRemoteInteractiveLogonRight'] = '*S-1-5-32-546,*S-1-5-113'
 
 # 2.2.22 (L1) Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'No One'
-#default['security_policy']['rights']['SeEnableDelegationPrivilege'] = ''
+# default['security_policy']['rights']['SeEnableDelegationPrivilege'] = ''
 # For DCs, Administrators
 
 # 2.2.23 (L1) Ensure 'Force shutdown from a remote system' is set to 'Administrators'
@@ -121,11 +121,11 @@ default['security_policy']['rights']['SeLoadDriverPrivilege'] = '*S-1-5-32-544'
 default['security_policy']['rights']['SeLockMemoryPrivilege'] = ''
 
 # 2.2.29 (L2) Ensure 'Log on as a batch job' is set to 'Administrators'
-#default['security_policy']['rights']['SeBatchLogonRight'] = '*S-1-5-32-544'
+# default['security_policy']['rights']['SeBatchLogonRight'] = '*S-1-5-32-544'
 # DC only
 
 # 2.2.30 (L2) Ensure 'Log on as a service' is set to 'No One'
-#default['security_policy']['rights']['SeServiceLogonRight'] = ''
+# default['security_policy']['rights']['SeServiceLogonRight'] = ''
 # Not listed?
 
 # 2.2.30 (L1) Ensure 'Manage auditing and security log' is set to 'Administrators'
