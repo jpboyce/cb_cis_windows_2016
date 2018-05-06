@@ -14,9 +14,8 @@ control '1.2.1' do
   tag 'cis-level-1', 'cis-1.2.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  describe security_policy do
+    its('LockoutDuration') { should be >= 15 }
   end
 end
 
@@ -28,9 +27,9 @@ control '1.2.2' do
   tag 'cis-level-1', 'cis-1.2.2'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  describe security_policy do
+    its('LockoutBadCount') { should be <= 10 }
+    its('LockoutBadCount') { should_not eq 0 }
   end
 end
 
@@ -42,8 +41,7 @@ control '1.2.3' do
   tag 'cis-level-1', 'cis-1.2.3'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  describe security_policy do
+    its('ResetLockoutCount') { should be >= 15 }
   end
 end
