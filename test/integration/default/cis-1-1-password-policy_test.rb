@@ -14,9 +14,8 @@ control '1.1.1' do
   tag 'cis-level-1', 'cis-1.1.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  describe security_policy do
+    its('PasswordHistorySize') { should be >= 24 }
   end
 end
 
@@ -28,9 +27,9 @@ control '1.1.2' do
   tag 'cis-level-1', 'cis-1.1.2'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  describe security_policy do
+    its('MaximumPasswordAge') { should be <= 60 }
+    its('MaximumPasswordAge') { should_not eq 0 }
   end
 end
 
@@ -42,9 +41,8 @@ control '1.1.3' do
   tag 'cis-level-1', 'cis-1.1.3'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  describe security_policy do
+    its('MinimumPasswordAge') { should be >= 1 }
   end
 end
 
@@ -56,9 +54,8 @@ control '1.1.4' do
   tag 'cis-level-1', 'cis-1.1.4'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  describe security_policy do
+    its('MinimumPasswordLength') { should be >= 14 }
   end
 end
 
@@ -70,9 +67,8 @@ control '1.1.5' do
   tag 'cis-level-1', 'cis-1.1.5'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  describe security_policy do
+    its('PasswordComplexity') { should eq '1' }
   end
 end
 
@@ -84,8 +80,7 @@ control '1.1.6' do
   tag 'cis-level-1', 'cis-1.1.6'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  describe security_policy do
+    its('ClearTextPassword') { should eq 0 }
   end
 end
