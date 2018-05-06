@@ -16,7 +16,7 @@ control '18.9.6.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('MSAOptional ', :type_dword, '1') }
+    it { should have_property_value('MSAOptional', :type_dword, '1') }
   end
 end
 
@@ -30,7 +30,7 @@ control '18.9.8.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer') do
     it { should exist }
-    it { should have_property_value('NoAutoplayfornonVolume ', :type_dword, '1') }
+    it { should have_property_value('NoAutoplayfornonVolume', :type_dword, '1') }
   end
 end
 
@@ -44,7 +44,7 @@ control '18.9.8.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer') do
     it { should exist }
-    it { should have_property_value('NoAutorun ', :type_dword, '1') }
+    it { should have_property_value('NoAutorun', :type_dword, '1') }
   end
 end
 
@@ -58,7 +58,7 @@ control '18.9.8.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer') do
     it { should exist }
-    it { should have_property_value('NoDriveTypeAutoRun ', :type_dword, '1') }
+    it { should have_property_value('NoDriveTypeAutoRun', :type_dword, '255') }
   end
 end
 
@@ -72,7 +72,7 @@ control '18.9.10.1.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Biometrics\FacialFeatures') do
     it { should exist }
-    it { should have_property_value('EnhancedAntiSpoofing ', :type_dword, '1') }
+    it { should have_property_value('EnhancedAntiSpoofing', :type_dword, '1') }
   end
 end
 
@@ -86,7 +86,7 @@ control '18.9.13.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent') do
     it { should exist }
-    it { should have_property_value('DisableWindowsConsumerFeatures ', :type_dword, '1') }
+    it { should have_property_value('DisableWindowsConsumerFeatures', :type_dword, '1') }
   end
 end
 
@@ -100,7 +100,7 @@ control '18.9.14.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Connect') do
     it { should exist }
-    it { should have_property_value('RequirePinForPairing ', :type_dword, '1') }
+    it { should have_property_value('RequirePinForPairing', :type_dword, '1') }
   end
 end
 
@@ -114,7 +114,7 @@ control '18.9.15.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CredUI') do
     it { should exist }
-    it { should have_property_value('DisablePasswordReveal ', :type_dword, '1') }
+    it { should have_property_value('DisablePasswordReveal', :type_dword, '1') }
   end
 end
 
@@ -128,7 +128,7 @@ control '18.9.15.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\CredUI') do
     it { should exist }
-    it { should have_property_value('EnumerateAdministrators ', :type_dword, '1') }
+    it { should have_property_value('EnumerateAdministrators', :type_dword, '0') }
   end
 end
 
@@ -142,7 +142,7 @@ control '18.9.16.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection') do
     it { should exist }
-    it { should have_property_value('AllowTelemetry ', :type_dword, '1') }
+    it { should have_property_value('AllowTelemetry', :type_dword, '0') }
   end
 end
 
@@ -156,7 +156,7 @@ control '18.9.16.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds') do
     it { should exist }
-    it { should have_property_value('EnableConfigFlighting ', :type_dword, '1') }
+    it { should have_property_value('EnableConfigFlighting', :type_dword, '0') }
   end
 end
 
@@ -170,7 +170,7 @@ control '18.9.16.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection') do
     it { should exist }
-    it { should have_property_value('DoNotShowFeedbackNotifications ', :type_dword, '1') }
+    it { should have_property_value('DoNotShowFeedbackNotifications', :type_dword, '1') }
   end
 end
 
@@ -184,7 +184,7 @@ control '18.9.16.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds') do
     it { should exist }
-    it { should have_property_value('AllowBuildPreview ', :type_dword, '1') }
+    it { should have_property_value('AllowBuildPreview', :type_dword, '0') }
   end
 end
 
@@ -198,7 +198,7 @@ control '18.9.26.1.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application') do
     it { should exist }
-    it { should have_property_value('Retention ', :type_dword, '1') }
+    it { should have_property_value('Retention', :type_dword, '1') }
   end
 end
 
@@ -212,7 +212,7 @@ control '18.9.26.1.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application') do
     it { should exist }
-    it { should have_property_value('MaxSize ', :type_dword, '1') }
+    it { should have_property_value('MaxSize', :type_dword, '1') }
   end
 end
 
@@ -226,7 +226,7 @@ control '18.9.26.2.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security') do
     it { should exist }
-    it { should have_property_value('Retention ', :type_dword, '1') }
+    it { should have_property_value('Retention', :type_dword, '1') }
   end
 end
 
@@ -240,7 +240,7 @@ control '18.9.26.2.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security') do
     it { should exist }
-    it { should have_property_value('MaxSize ', :type_dword, '1') }
+    it { should have_property_value('MaxSize', :type_dword, '1') }
   end
 end
 
@@ -254,7 +254,7 @@ control '18.9.26.3.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup') do
     it { should exist }
-    it { should have_property_value('Retention ', :type_dword, '1') }
+    it { should have_property_value('Retention', :type_dword, '1') }
   end
 end
 
@@ -268,7 +268,7 @@ control '18.9.26.3.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup') do
     it { should exist }
-    it { should have_property_value('MaxSize ', :type_dword, '1') }
+    it { should have_property_value('MaxSize', :type_dword, '1') }
   end
 end
 
@@ -282,7 +282,7 @@ control '18.9.26.4.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System') do
     it { should exist }
-    it { should have_property_value('Retention ', :type_dword, '1') }
+    it { should have_property_value('Retention', :type_dword, '1') }
   end
 end
 
@@ -296,7 +296,7 @@ control '18.9.26.4.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System') do
     it { should exist }
-    it { should have_property_value('MaxSize ', :type_dword, '1') }
+    it { should have_property_value('MaxSize', :type_dword, '1') }
   end
 end
 
@@ -310,7 +310,7 @@ control '18.9.30.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System') do
     it { should exist }
-    it { should have_property_value('EnableSmartScreen ', :type_dword, '1') }
+    it { should have_property_value('EnableSmartScreen', :type_dword, '1') }
   end
 end
 
@@ -324,7 +324,7 @@ control '18.9.30.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer') do
     it { should exist }
-    it { should have_property_value('NoDataExecutionPrevention ', :type_dword, '1') }
+    it { should have_property_value('NoDataExecutionPrevention', :type_dword, '1') }
   end
 end
 
@@ -338,7 +338,7 @@ control '18.9.30.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer') do
     it { should exist }
-    it { should have_property_value('NoHeapTerminationOnCorruption ', :type_dword, '1') }
+    it { should have_property_value('NoHeapTerminationOnCorruption', :type_dword, '1') }
   end
 end
 
@@ -352,7 +352,7 @@ control '18.9.30.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer') do
     it { should exist }
-    it { should have_property_value('PreXPSP2ShellProtocolBehavior ', :type_dword, '1') }
+    it { should have_property_value('PreXPSP2ShellProtocolBehavior', :type_dword, '1') }
   end
 end
 
@@ -366,7 +366,7 @@ control '18.9.41.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main') do
     it { should exist }
-    it { should have_property_value('Cookies ', :type_dword, '1') }
+    it { should have_property_value('Cookies', :type_dword, '1') }
   end
 end
 
@@ -380,7 +380,7 @@ control '18.9.41.6' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\SearchScopes') do
     it { should exist }
-    it { should have_property_value('ShowSearchSuggestionsGlobal ', :type_dword, '1') }
+    it { should have_property_value('ShowSearchSuggestionsGlobal', :type_dword, '1') }
   end
 end
 
@@ -394,7 +394,7 @@ control '18.9.41.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main') do
     it { should exist }
-    it { should have_property_value('FormSuggest Passwords ', :type_dword, '1') }
+    it { should have_property_value('FormSuggest Passwords', :type_dword, '1') }
   end
 end
 
@@ -408,7 +408,7 @@ control '18.9.41.7' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter') do
     it { should exist }
-    it { should have_property_value('EnabledV9 ', :type_dword, '1') }
+    it { should have_property_value('EnabledV9', :type_dword, '1') }
   end
 end
 
@@ -422,7 +422,7 @@ control '18.9.47.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive') do
     it { should exist }
-    it { should have_property_value('DisableFileSyncNGSC ', :type_dword, '1') }
+    it { should have_property_value('DisableFileSyncNGSC', :type_dword, '1') }
   end
 end
 
@@ -436,7 +436,7 @@ control '18.9.52.2.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('DisablePasswordSaving ', :type_dword, '1') }
+    it { should have_property_value('DisablePasswordSaving', :type_dword, '1') }
   end
 end
 
@@ -450,7 +450,7 @@ control '18.9.52.3.3.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('fDisableCdm ', :type_dword, '1') }
+    it { should have_property_value('fDisableCdm', :type_dword, '1') }
   end
 end
 
@@ -464,7 +464,7 @@ control '18.9.52.3.9.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('fPromptForPassword ', :type_dword, '1') }
+    it { should have_property_value('fPromptForPassword', :type_dword, '1') }
   end
 end
 
@@ -478,7 +478,7 @@ control '18.9.52.3.9.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('fEncryptRPCTraffic ', :type_dword, '1') }
+    it { should have_property_value('fEncryptRPCTraffic', :type_dword, '1') }
   end
 end
 
@@ -492,7 +492,7 @@ control '18.9.52.3.9.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('MinEncryptionLevel ', :type_dword, '1') }
+    it { should have_property_value('MinEncryptionLevel', :type_dword, '1') }
   end
 end
 
@@ -506,7 +506,7 @@ control '18.9.52.3.11.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('DeleteTempDirsOnExit ', :type_dword, '1') }
+    it { should have_property_value('DeleteTempDirsOnExit', :type_dword, '1') }
   end
 end
 
@@ -520,7 +520,7 @@ control '18.9.52.3.11.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('PerSessionTempDir ', :type_dword, '1') }
+    it { should have_property_value('PerSessionTempDir', :type_dword, '1') }
   end
 end
 
@@ -534,7 +534,7 @@ control '18.9.53.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds') do
     it { should exist }
-    it { should have_property_value('DisableEnclosureDownload ', :type_dword, '1') }
+    it { should have_property_value('DisableEnclosureDownload', :type_dword, '1') }
   end
 end
 
@@ -548,7 +548,7 @@ control '18.9.54.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search') do
     it { should exist }
-    it { should have_property_value('AllowCortana ', :type_dword, '1') }
+    it { should have_property_value('AllowCortana', :type_dword, '1') }
   end
 end
 
@@ -562,7 +562,7 @@ control '18.9.54.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search') do
     it { should exist }
-    it { should have_property_value('AllowIndexingEncryptedStoresOrItems ', :type_dword, '1') }
+    it { should have_property_value('AllowIndexingEncryptedStoresOrItems', :type_dword, '1') }
   end
 end
 
@@ -576,7 +576,7 @@ control '18.9.54.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search') do
     it { should exist }
-    it { should have_property_value('AllowSearchToUseLocation ', :type_dword, '1') }
+    it { should have_property_value('AllowSearchToUseLocation', :type_dword, '1') }
   end
 end
 
@@ -590,7 +590,7 @@ control '18.9.54.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search') do
     it { should exist }
-    it { should have_property_value('AllowCortanaAboveLock ', :type_dword, '1') }
+    it { should have_property_value('AllowCortanaAboveLock', :type_dword, '1') }
   end
 end
 
@@ -604,7 +604,7 @@ control '18.9.61.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore') do
     it { should exist }
-    it { should have_property_value('AutoDownload ', :type_dword, '1') }
+    it { should have_property_value('AutoDownload', :type_dword, '1') }
   end
 end
 
@@ -618,7 +618,7 @@ control '18.9.61.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore') do
     it { should exist }
-    it { should have_property_value('DisableOSUpgrade ', :type_dword, '1') }
+    it { should have_property_value('DisableOSUpgrade', :type_dword, '1') }
   end
 end
 
@@ -632,7 +632,7 @@ control '18.9.73.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace') do
     it { should exist }
-    it { should have_property_value('AllowWindowsInkWorkspace ', :type_dword, '1') }
+    it { should have_property_value('AllowWindowsInkWorkspace', :type_dword, '1') }
   end
 end
 
@@ -646,7 +646,7 @@ control '18.9.74.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer') do
     it { should exist }
-    it { should have_property_value('EnableUserControl ', :type_dword, '1') }
+    it { should have_property_value('EnableUserControl', :type_dword, '1') }
   end
 end
 
@@ -660,7 +660,7 @@ control '18.9.74.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer') do
     it { should exist }
-    it { should have_property_value('AlwaysInstallElevated ', :type_dword, '1') }
+    it { should have_property_value('AlwaysInstallElevated', :type_dword, '1') }
   end
 end
 
@@ -674,7 +674,7 @@ control '18.9.75.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('DisableAutomaticRestartSignOn ', :type_dword, '1') }
+    it { should have_property_value('DisableAutomaticRestartSignOn', :type_dword, '1') }
   end
 end
 
@@ -688,7 +688,7 @@ control '18.9.84.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging') do
     it { should exist }
-    it { should have_property_value('EnableScriptBlockLogging ', :type_dword, '1') }
+    it { should have_property_value('EnableScriptBlockLogging', :type_dword, '1') }
   end
 end
 
@@ -702,7 +702,7 @@ control '18.9.84.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription') do
     it { should exist }
-    it { should have_property_value('EnableTranscripting ', :type_dword, '1') }
+    it { should have_property_value('EnableTranscripting', :type_dword, '1') }
   end
 end
 
@@ -716,7 +716,7 @@ control '18.9.86.1.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client') do
     it { should exist }
-    it { should have_property_value('AllowBasic ', :type_dword, '1') }
+    it { should have_property_value('AllowBasic', :type_dword, '1') }
   end
 end
 
@@ -730,7 +730,7 @@ control '18.9.86.1.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client') do
     it { should exist }
-    it { should have_property_value('AllowUnencryptedTraffic ', :type_dword, '1') }
+    it { should have_property_value('AllowUnencryptedTraffic', :type_dword, '1') }
   end
 end
 
@@ -744,7 +744,7 @@ control '18.9.86.1.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client') do
     it { should exist }
-    it { should have_property_value('AllowDigest ', :type_dword, '1') }
+    it { should have_property_value('AllowDigest', :type_dword, '1') }
   end
 end
 
@@ -758,7 +758,7 @@ control '18.9.86.2.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service') do
     it { should exist }
-    it { should have_property_value('AllowBasic ', :type_dword, '1') }
+    it { should have_property_value('AllowBasic', :type_dword, '1') }
   end
 end
 
@@ -772,7 +772,7 @@ control '18.9.86.2.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service') do
     it { should exist }
-    it { should have_property_value('AllowUnencryptedTraffic ', :type_dword, '1') }
+    it { should have_property_value('AllowUnencryptedTraffic', :type_dword, '1') }
   end
 end
 
@@ -786,7 +786,7 @@ control '18.9.86.2.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service') do
     it { should exist }
-    it { should have_property_value('DisableRunAs ', :type_dword, '1') }
+    it { should have_property_value('DisableRunAs', :type_dword, '1') }
   end
 end
 
@@ -800,7 +800,7 @@ control '18.9.90.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU') do
     it { should exist }
-    it { should have_property_value('NoAutoUpdate ', :type_dword, '1') }
+    it { should have_property_value('NoAutoUpdate', :type_dword, '1') }
   end
 end
 
@@ -814,7 +814,7 @@ control '18.9.90.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU') do
     it { should exist }
-    it { should have_property_value('ScheduledInstallDay ', :type_dword, '1') }
+    it { should have_property_value('ScheduledInstallDay', :type_dword, '1') }
   end
 end
 
@@ -828,7 +828,7 @@ control '18.9.90.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU') do
     it { should exist }
-    it { should have_property_value('NoAutoRebootWithLoggedOnUsers ', :type_dword, '1') }
+    it { should have_property_value('NoAutoRebootWithLoggedOnUsers', :type_dword, '1') }
   end
 end
 
@@ -842,7 +842,7 @@ control '18.9.90.1.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate') do
     it { should exist }
-    it { should have_property_value('DeferQualityUpdates HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate:DeferQualityUpdatesPeriodInDays ', :type_dword, '1') }
+    it { should have_property_value('DeferQualityUpdates HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate:DeferQualityUpdatesPeriodInDays', :type_dword, '1') }
   end
 end
 
@@ -856,6 +856,6 @@ control '18.9.90.1.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate') do
     it { should exist }
-    it { should have_property_value('DeferFeatureUpdates HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate:DeferFeatureUpdatesPeriodInDays HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate:BranchReadinessLevel ', :type_dword, '1') }
+    it { should have_property_value('DeferFeatureUpdates HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate:DeferFeatureUpdatesPeriodInDays HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate:BranchReadinessLevel', :type_dword, '1') }
   end
 end

@@ -26,7 +26,7 @@ end
 
 # 18.9.8.3 (L1) Ensure 'Turn off Autoplay' is set to 'Enabled: All drives'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer' do
-  values [{ name: 'NoDriveTypeAutoRun', type: :dword, data: 1 }]
+  values [{ name: 'NoDriveTypeAutoRun', type: :dword, data: 255 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -61,21 +61,21 @@ end
 
 # 18.9.15.2 (L1) Ensure 'Enumerate administrator accounts on elevation' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\CredUI' do
-  values [{ name: 'EnumerateAdministrators', type: :dword, data: 1 }]
+  values [{ name: 'EnumerateAdministrators', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.16.1 (L1) Ensure 'Allow Telemetry' is set to 'Enabled: 0 - Security [Enterprise Only]'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection' do
-  values [{ name: 'AllowTelemetry', type: :dword, data: 1 }]
+  values [{ name: 'AllowTelemetry', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.16.2 (L1) Ensure 'Disable pre-release features or settings' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds' do
-  values [{ name: 'EnableConfigFlighting', type: :dword, data: 1 }]
+  values [{ name: 'EnableConfigFlighting', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -89,7 +89,7 @@ end
 
 # 18.9.16.4 (L1) Ensure 'Toggle user control over Insider builds' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds' do
-  values [{ name: 'AllowBuildPreview', type: :dword, data: 1 }]
+  values [{ name: 'AllowBuildPreview', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end

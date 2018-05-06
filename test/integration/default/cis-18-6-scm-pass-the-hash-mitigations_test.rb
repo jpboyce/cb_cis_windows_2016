@@ -16,7 +16,7 @@ control '18.6.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('LocalAccountTokenFilterPolicy ', :type_dword, '1') }
+    it { should have_property_value('LocalAccountTokenFilterPolicy ', :type_dword, '0') }
   end
 end
 
@@ -30,6 +30,6 @@ control '18.6.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest') do
     it { should exist }
-    it { should have_property_value('UseLogonCredential ', :type_dword, '1') }
+    it { should have_property_value('UseLogonCredential ', :type_dword, '0') }
   end
 end

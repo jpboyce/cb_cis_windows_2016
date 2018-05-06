@@ -6,6 +6,20 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
 
+# 18.4.4.1 (L1) Set 'NetBIOS node type' to 'P-node' (Ensure NetBT Parameter 'NodeType' is set to '0x2 (2)') (MS Only)
+control '18.4.4.1' do
+  impact 1.0
+  title 'Set NetBIOS node type to P-node (Ensure NetBT Parameter NodeType is set to 0x2 (2)) (MS Only)'
+  desc 'Set NetBIOS node type to P-node (Ensure NetBT Parameter NodeType is set to 0x2 (2)) (MS Only)'
+  tag 'cis-level-1', 'cis-18.4.4.1'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe registry_key('HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetBT\Parameters') do
+    it { should exist }
+    it { should have_property_value('NodeType', :type_dword, '2') }
+  end
+end
+
 # 18.4.4.2 (L1) Ensure 'Turn off multicast name resolution' is set to 'Enabled' (MS Only)
 control '18.4.4.2' do
   impact 1.0
@@ -16,21 +30,7 @@ control '18.4.4.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient') do
     it { should exist }
-    it { should have_property_value('EnableMulticast ', :type_dword, '1') }
-  end
-end
-
-# 18.4.4.1 (L1) Set 'NetBIOS node type' to 'P-node' (Ensure NetBT Parameter 'NodeType' is set to '0x2 (2)') (MS Only)
-control '18.4.4.1' do
-  impact 1.0
-  title 'Set NetBIOS node type to P-node (Ensure NetBT Parameter NodeType is set to 0x2 (2)) (MS Only)'
-  desc 'Set NetBIOS node type to P-node (Ensure NetBT Parameter NodeType is set to 0x2 (2)) (MS Only)'
-  tag 'cis-level-1', 'cis-18.4.4.1'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
-
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('EnableMulticast', :type_dword, '1') }
   end
 end
 
@@ -44,7 +44,7 @@ control '18.4.8.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation') do
     it { should exist }
-    it { should have_property_value('AllowInsecureGuestAuth ', :type_dword, '1') }
+    it { should have_property_value('AllowInsecureGuestAuth', :type_dword, '1') }
   end
 end
 
@@ -58,7 +58,7 @@ control '18.4.11.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections') do
     it { should exist }
-    it { should have_property_value('NC_AllowNetBridge_NLA ', :type_dword, '1') }
+    it { should have_property_value('NC_AllowNetBridge_NLA', :type_dword, '1') }
   end
 end
 
@@ -72,7 +72,7 @@ control '18.4.11.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections') do
     it { should exist }
-    it { should have_property_value('NC_StdDomainUserSetLocation ', :type_dword, '1') }
+    it { should have_property_value('NC_StdDomainUserSetLocation', :type_dword, '1') }
   end
 end
 
@@ -86,7 +86,7 @@ control '18.4.11.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections') do
     it { should exist }
-    it { should have_property_value('NC_ShowSharedAccessUI ', :type_dword, '1') }
+    it { should have_property_value('NC_ShowSharedAccessUI', :type_dword, '1') }
   end
 end
 
@@ -100,7 +100,53 @@ control '18.4.14.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths') do
     it { should exist }
-    it { should have_property_value('\\*\NETLOGON HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths:\\*\SYSVOL ', :type_dword, '1') }
+    it { should have_property_value('\\*\NETLOGON HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths:\\*\SYSVOL', :type_dword, '1') }
+  end
+end
+
+# 18.4.19.2.1 (L2) Disable IPv6 (Ensure TCPIP6 Parameter 'DisabledComponents' is set to '0xff (255)'
+control '18.4.19.2.1' do
+  impact 1.0
+  title 'Disable IPv6 (Ensure TCPIP6 Parameter DisabledComponents is set to 0xff (255)'
+  desc 'Disable IPv6 (Ensure TCPIP6 Parameter DisabledComponents is set to 0xff (255)'
+  tag 'cis-level-2', 'cis-18.4.19.2.1'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIP6\Parameters') do
+    it { should exist }
+    it { should have_property_value('DisabledComponents', :type_dword, '255') }
+  end
+end
+
+# 18.4.20.1 (L2) Ensure Configuration of wireless settings using Windows Connect Now is set to Disabled
+control '18.4.20.1' do
+  impact 1.0
+  title 'Ensure Configuration of wireless settings using Windows Connect Now is set to Disabled'
+  desc 'Ensure Configuration of wireless settings using Windows Connect Now is set to Disabled'
+  tag 'cis-level-2', 'cis-18.4.20.2.1'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars') do
+    it { should exist }
+    it { should have_property_value('EnableRegistrars', :type_dword, '0') }
+    it { should have_property_value('DisableWPDRegistrar', :type_dword, '0') }
+    it { should have_property_value('DisableUPnPRegistrar', :type_dword, '0') }
+    it { should have_property_value('DisableInBand802DOT11Registrar', :type_dword, '0') }
+    it { should have_property_value('DisableFlashConfigRegistrar', :type_dword, '0') }
+  end
+end
+
+# 18.4.20.2 (L2) Ensure Prohibit access of the Windows Connect Now wizards is set to Enabled
+control '18.4.20.2' do
+  impact 1.0
+  title 'Ensure Prohibit access of the Windows Connect Now wizards is set to Enabled'
+  desc 'Ensure Prohibit access of the Windows Connect Now wizards is set to Enabled'
+  tag 'cis-level-2', 'cis-18.4.20.2.2'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\UI') do
+    it { should exist }
+    it { should have_property_value('DisableWcnUi', :type_dword, '1') }
   end
 end
 
@@ -114,6 +160,20 @@ control '18.4.21.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WcmSvc\GroupPolicy') do
     it { should exist }
-    it { should have_property_value('fMinimizeConnections ', :type_dword, '1') }
+    it { should have_property_value('fMinimizeConnections', :type_dword, '1') }
+  end
+end
+
+# 18.4.21.2 (L2) Ensure Prohibit connection to non-domain networks when connected to domain authenticated network is set to Enabled
+control '18.4.21.2' do
+  impact 1.0
+  title '(L2) Ensure Prohibit connection to non-domain networks when connected to domain authenticated network is set to Enabled'
+  desc '(L2) Ensure Prohibit connection to non-domain networks when connected to domain authenticated network is set to Enabled'
+  tag 'cis-level-1', 'cis-18.4.21.2'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WcmSvc\GroupPolicy') do
+    it { should exist }
+    it { should have_property_value('fBlockNonDomain', :type_dword, '1') }
   end
 end
