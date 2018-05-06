@@ -11,9 +11,9 @@ control '2.2.1' do
   impact 1.0
   title 'Ensure Access Credential Manager as a trusted caller is set to No One'
   desc 'Ensure Access Credential Manager as a trusted caller is set to No One'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.1'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -26,9 +26,9 @@ control '2.2.2' do
   impact 1.0
   title 'Configure Access this computer from the network'
   desc 'Configure Access this computer from the network'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.2'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.2'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -41,9 +41,9 @@ control '2.2.3' do
   impact 1.0
   title 'Ensure Act as part of the operating system is set to No One'
   desc 'Ensure Act as part of the operating system is set to No One'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.3'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.3'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -56,9 +56,9 @@ control '2.2.5' do
   impact 1.0
   title ' Ensure Adjust memory quotas for a process is set to Administrators, LOCAL SERVICE, NETWORK SERVICE'
   desc ' Ensure Adjust memory quotas for a process is set to Administrators, LOCAL SERVICE, NETWORK SERVICE'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.5'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.5'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -71,9 +71,9 @@ control '2.2.6' do
   impact 1.0
   title 'Configure Allow log on locally'
   desc 'Configure Allow log on locally'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.6'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.6'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -86,9 +86,9 @@ control '2.2.7' do
   impact 1.0
   title 'Configure Allow log on through Remote Desktop Services'
   desc 'Configure Allow log on through Remote Desktop Services'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.7'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.7'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -101,9 +101,9 @@ control '2.2.8' do
   impact 1.0
   title 'Ensure Back up files and directories is set to Administrators'
   desc 'Ensure Back up files and directories is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.8'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.8'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -116,9 +116,9 @@ control '2.2.9' do
   impact 1.0
   title ' Ensure Change the system time is set to Administrators, LOCAL SERVICE'
   desc ' Ensure Change the system time is set to Administrators, LOCAL SERVICE'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.9'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.9'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -131,9 +131,9 @@ control '2.2.10' do
   impact 1.0
   title ' Ensure Change the time zone is set to Administrators, LOCAL SERVICE'
   desc ' Ensure Change the time zone is set to Administrators, LOCAL SERVICE'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.10'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.10'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -146,9 +146,9 @@ control '2.2.11' do
   impact 1.0
   title 'Ensure Create a pagefile is set to Administrators'
   desc 'Ensure Create a pagefile is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.11'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.11'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -161,9 +161,9 @@ control '2.2.12' do
   impact 1.0
   title 'Ensure Create a token object is set to No One'
   desc 'Ensure Create a token object is set to No One'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.12'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.12'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -176,9 +176,9 @@ control '2.2.13' do
   impact 1.0
   title ' Ensure Create global objects is set to Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
   desc ' Ensure Create global objects is set to Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.13'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.13'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -191,9 +191,9 @@ control '2.2.14' do
   impact 1.0
   title 'Ensure Create permanent shared objects is set to No One'
   desc 'Ensure Create permanent shared objects is set to No One'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.14'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.14'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -206,9 +206,9 @@ control '2.2.15' do
   impact 1.0
   title 'Configure Create symbolic links'
   desc 'Configure Create symbolic links'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.15'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.15'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -221,9 +221,9 @@ control '2.2.16' do
   impact 1.0
   title 'Ensure Debug programs is set to Administrators'
   desc 'Ensure Debug programs is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.16'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.16'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -236,9 +236,9 @@ control '2.2.17' do
   impact 1.0
   title 'Configure Deny access to this computer from the network'
   desc 'Configure Deny access to this computer from the network'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.17'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.17'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -251,9 +251,9 @@ control '2.2.18' do
   impact 1.0
   title 'Ensure Deny log on as a batch job to include Guests'
   desc 'Ensure Deny log on as a batch job to include Guests'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.18'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.18'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -266,9 +266,9 @@ control '2.2.19' do
   impact 1.0
   title 'Ensure Deny log on as a service to include Guests'
   desc 'Ensure Deny log on as a service to include Guests'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.19'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.19'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -281,9 +281,9 @@ control '2.2.20' do
   impact 1.0
   title 'Ensure Deny log on locally to include Guests'
   desc 'Ensure Deny log on locally to include Guests'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.20'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.20'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -296,9 +296,9 @@ control '2.2.21' do
   impact 1.0
   title ' Ensure Deny log on through Remote Desktop Services to include Guests, Local account'
   desc ' Ensure Deny log on through Remote Desktop Services to include Guests, Local account'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.21'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.21'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -311,9 +311,9 @@ control '2.2.22' do
   impact 1.0
   title 'Configure Enable computer and user accounts to be trusted for delegation'
   desc 'Configure Enable computer and user accounts to be trusted for delegation'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.22'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.22'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -326,9 +326,9 @@ control '2.2.23' do
   impact 1.0
   title 'Ensure Force shutdown from a remote system is set to Administrators'
   desc 'Ensure Force shutdown from a remote system is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.23'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.23'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -341,9 +341,9 @@ control '2.2.24' do
   impact 1.0
   title ' Ensure Generate security audits is set to LOCAL SERVICE, NETWORK SERVICE'
   desc ' Ensure Generate security audits is set to LOCAL SERVICE, NETWORK SERVICE'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.24'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.24'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -356,9 +356,9 @@ control '2.2.25' do
   impact 1.0
   title 'Configure Impersonate a client after authentication'
   desc 'Configure Impersonate a client after authentication'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.25'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.25'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -371,9 +371,9 @@ control '2.2.26' do
   impact 1.0
   title 'Ensure Increase scheduling priority is set to Administrators'
   desc 'Ensure Increase scheduling priority is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.26'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.26'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -386,9 +386,9 @@ control '2.2.27' do
   impact 1.0
   title 'Ensure Load and unload device drivers is set to Administrators'
   desc 'Ensure Load and unload device drivers is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.27'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.27'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -401,9 +401,9 @@ control '2.2.28' do
   impact 1.0
   title 'Ensure Lock pages in memory is set to No One'
   desc 'Ensure Lock pages in memory is set to No One'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.28'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.28'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -416,9 +416,9 @@ control '2.2.30' do
   impact 1.0
   title 'Configure Manage auditing and security log'
   desc 'Configure Manage auditing and security log'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.30'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.30'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -431,9 +431,9 @@ control '2.2.31' do
   impact 1.0
   title 'Ensure Modify an object label is set to No One'
   desc 'Ensure Modify an object label is set to No One'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.31'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.31'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -446,9 +446,9 @@ control '2.2.32' do
   impact 1.0
   title 'Ensure Modify firmware environment values is set to Administrators'
   desc 'Ensure Modify firmware environment values is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.32'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.32'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -461,9 +461,9 @@ control '2.2.33' do
   impact 1.0
   title 'Ensure Perform volume maintenance tasks is set to Administrators'
   desc 'Ensure Perform volume maintenance tasks is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.33'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.33'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -476,9 +476,9 @@ control '2.2.34' do
   impact 1.0
   title 'Ensure Profile single process is set to Administrators'
   desc 'Ensure Profile single process is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.34'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.34'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -491,9 +491,9 @@ control '2.2.35' do
   impact 1.0
   title ' Ensure Profile system performance is set to Administrators, NT SERVICE\WdiServiceHost'
   desc ' Ensure Profile system performance is set to Administrators, NT SERVICE\WdiServiceHost'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.35'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.35'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -506,9 +506,9 @@ control '2.2.36' do
   impact 1.0
   title ' Ensure Replace a process level token is set to LOCAL SERVICE, NETWORK SERVICE'
   desc ' Ensure Replace a process level token is set to LOCAL SERVICE, NETWORK SERVICE'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.36'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.36'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -521,9 +521,9 @@ control '2.2.37' do
   impact 1.0
   title 'Ensure Restore files and directories is set to Administrators'
   desc 'Ensure Restore files and directories is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.37'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.37'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -536,9 +536,9 @@ control '2.2.38' do
   impact 1.0
   title 'Ensure Shut down the system is set to Administrators'
   desc 'Ensure Shut down the system is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.38'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.38'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
@@ -551,9 +551,9 @@ control '2.2.40' do
   impact 1.0
   title 'Ensure Take ownership of files or other objects is set to Administrators'
   desc 'Ensure Take ownership of files or other objects is set to Administrators'
-  tag cis-section: '2-2'
-  tag cis-level:: '1'
-  tag cis-item: 'cis-2.2.40'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.40'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
