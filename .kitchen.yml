@@ -13,8 +13,11 @@ verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-16.04
-  - name: centos-7
+  - name: windows-2016
+    os_type: windows
+    transport:
+      name: winrm
+      elevated: true
 
 suites:
   - name: default
@@ -22,5 +25,5 @@ suites:
       - recipe[cb_cis_windows_2016::default]
     verifier:
       inspec_tests:
-        - test/smoke/default
+        - test/integration/default
     attributes:
