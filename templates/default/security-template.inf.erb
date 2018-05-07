@@ -1,0 +1,29 @@
+<% # This is a template file used to generate an inf file used to apply certain security settings %>
+; Start of file
+[Unicode]
+Unicode=yes
+
+[Version]
+signature="$CHICAGO$"
+Revision=1
+
+[System Access]
+<% node['cb_cis_windows_2016']['password_policy'].each do |setting, value| %>
+  <% unless value.nil? -%>
+<%= setting %> = <%= value %>
+  <% end %>
+<% end %>
+<% node['cb_cis_windows_2016']['account_lockout_policy'].each do |setting, value| %>
+  <% unless value.nil? -%>
+<%= setting %> = <%= value %>
+  <% end %>
+<% end %>
+
+[Privilege Rights]
+<% node['cb_cis_windows_2016']['user_rights'].each do |setting, value| %>
+    <% unless value.nil? -%>
+<%= setting %> = <%= value %>
+    <% end %>
+<% end %>
+
+; End of file
