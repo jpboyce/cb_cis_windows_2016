@@ -22,3 +22,4 @@ source_url 'https://github.com/jpboyce/cb_cis_windows_2016'
 
 supports 'windows'
 depends 'windows'
+depends 'windows-security-policy'
