@@ -1,13 +1,17 @@
 # Default Attributes
 
 # CIS Levels
-default['cb_cis_windows_2016']['cis_level_1'] = true
-default['cb_cis_windows_2016']['cis_level_2'] = true
+default['cb_cis_windows_2016']['cis_level_1'] = 'false'
+default['cb_cis_windows_2016']['cis_level_2'] = 'true'
 
 # Server Roles
-default['cb_cis_windows_2016']['is_member_server'] = true
-default['cb_cis_windows_2016']['is_domain_controller'] = false
+default['cb_cis_windows_2016']['is_member_server'] = 'true'
+default['cb_cis_windows_2016']['is_domain_controller'] = 'false'
 
+# SecEdit values
+default['cb_cis_windows_2016']['secedit_template']['location'] = 'C:\Windows\security\templates'
+default['cb_cis_windows_2016']['secedit_database']['location'] = 'C:\Windows\security\database'
+default['cb_cis_windows_2016']['secedit_database']['name'] = 'cis.sdb'
 
 # Password Policy settings
 # 1.1.1 (L1) Ensure 'Enforce password history' is set to '24 or more password(s)'
