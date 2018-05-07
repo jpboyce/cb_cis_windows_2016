@@ -16,7 +16,7 @@ control '2.3.4.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
     it { should exist }
-    it { should have_property_value('AllocateDASD ', :type_dword, '1') }
+    it { should have_property_value('AllocateDASD', :type_dword, '0') }
   end
 end
 
@@ -30,6 +30,6 @@ control '2.3.4.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers') do
     it { should exist }
-    it { should have_property_value('AddPrinterDrivers ', :type_dword, '1') }
+    it { should have_property_value('AddPrinterDrivers', :type_dword, '1') }
   end
 end
