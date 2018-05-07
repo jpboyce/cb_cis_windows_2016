@@ -40,7 +40,7 @@ end
 
 # 2.3.6.6 (L1) Ensure 'Domain member: Require strong (Windows 2000 or later) session key' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters' do
-  values [{ name: 'RequireStrongKey ', type: :dword, data: 1 }]
+  values [{ name: 'RequireStrongKey', type: :dword, data: 1 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
