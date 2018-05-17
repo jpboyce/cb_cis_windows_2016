@@ -19,21 +19,21 @@ end
 
 # 18.4.8.1 (L1) Ensure 'Enable insecure guest logons' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation' do
-  values [{ name: 'AllowInsecureGuestAuth', type: :dword, data: 1 }]
+  values [{ name: 'AllowInsecureGuestAuth', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.4.11.2 (L1) Ensure 'Prohibit installation and configuration of Network Bridge on your DNS domain network' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections' do
-  values [{ name: 'NC_AllowNetBridge_NLA', type: :dword, data: 1 }]
+  values [{ name: 'NC_AllowNetBridge_NLA', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.4.11.3 (L1) Ensure 'Prohibit use of Internet Connection Sharing on your DNS domain network' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections' do
-  values [{ name: 'NC_ShowSharedAccessUI', type: :dword, data: 1 }]
+  values [{ name: 'NC_ShowSharedAccessUI', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -47,7 +47,8 @@ end
 
 # 18.4.14.1 (L1)  Ensure 'Hardened UNC Paths' is set to 'Enabled, with "Require Mutual Authentication" and "Require Integrity" set for all NETLOGON and SYSVOL shares'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths' do
-  values [{ name: '\\*\NETLOGON HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths:\\*\SYSVOL', type: :dword, data: 1 }]
+  values [{ name: "\\*\NETLOGON", type: :string, data 'Require Mutual Authentication=1,Require Integrity=1'},
+  { name: "\\*\SYSVOL", type: :string, data 'Require Mutual Authentication=1,Require Integrity=1'}]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -68,7 +69,11 @@ end
 
 # 18.4.20.2.1 (L2) Ensure Configuration of wireless settings using Windows Connect Now is set to Disabled
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars' do
-  values [{ name: 'EnableRegistrars', type: :dword, data: 0 }, { name: 'DisableWPDRegistrar', type: :dword, data: 0 }, { name: 'DisableUPnPRegistrar', type: :dword, data: 0 }, { name: 'DisableInBand802DOT11Registrar', type: :dword, data: 0 }, { name: 'DisableFlashConfigRegistrar', type: :dword, data: 0 }]
+  values [{ name: 'EnableRegistrars', type: :dword, data: 0 },
+          { name: 'DisableWPDRegistrar', type: :dword, data: 0 },
+          { name: 'DisableUPnPRegistrar', type: :dword, data: 0 },
+          { name: 'DisableInBand802DOT11Registrar', type: :dword, data: 0 },
+          { name: 'DisableFlashConfigRegistrar', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
 end

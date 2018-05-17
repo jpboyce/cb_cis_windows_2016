@@ -96,56 +96,56 @@ end
 
 # 18.9.26.1.1 (L1) Ensure 'Application: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application' do
-  values [{ name: 'Retention', type: :dword, data: 1 }]
+  values [{ name: 'Retention', type: :string, data: '0' }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.26.1.2 (L1)  Ensure 'Application: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application' do
-  values [{ name: 'MaxSize', type: :dword, data: 1 }]
+  values [{ name: 'MaxSize', type: :dword, data: 33000 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.26.2.1 (L1) Ensure 'Security: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security' do
-  values [{ name: 'Retention', type: :dword, data: 1 }]
+  values [{ name: 'Retention', type: :string, data: '0' }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.26.2.2 (L1)  Ensure 'Security: Specify the maximum log file size (KB)' is set to 'Enabled: 196,608 or greater'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security' do
-  values [{ name: 'MaxSize', type: :dword, data: 1 }]
+  values [{ name: 'MaxSize', type: :dword, data: 33000 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.26.3.1 (L1) Ensure 'Setup: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup' do
-  values [{ name: 'Retention', type: :dword, data: 1 }]
+  values [{ name: 'Retention', type: :string, data: '0' }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.26.3.2 (L1)  Ensure 'Setup: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup' do
-  values [{ name: 'MaxSize', type: :dword, data: 1 }]
+  values [{ name: 'MaxSize', type: :dword, data: 33000 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.26.4.1 (L1) Ensure 'System: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System' do
-  values [{ name: 'Retention', type: :dword, data: 1 }]
+  values [{ name: 'Retention', type: :string, data: '0' }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.26.4.2 (L1)  Ensure 'System: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System' do
-  values [{ name: 'MaxSize', type: :dword, data: 1 }]
+  values [{ name: 'MaxSize', type: :dword, data: 33000 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -159,25 +159,27 @@ end
 
 # 18.9.30.3 (L1) Ensure 'Turn off Data Execution Prevention for Explorer' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer' do
-  values [{ name: 'NoDataExecutionPrevention', type: :dword, data: 1 }]
+  values [{ name: 'NoDataExecutionPrevention', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.30.4 (L1) Ensure 'Turn off heap termination on corruption' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer' do
-  values [{ name: 'NoHeapTerminationOnCorruption', type: :dword, data: 1 }]
+  values [{ name: 'NoHeapTerminationOnCorruption', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.30.5 (L1) Ensure 'Turn off shell protocol protected mode' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer' do
-  values [{ name: 'PreXPSP2ShellProtocolBehavior', type: :dword, data: 1 }]
+  values [{ name: 'PreXPSP2ShellProtocolBehavior', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
+# Windows 2016 doesn't have Microsoft Edge apparently? (LTSB editions)
+=begin
 # 18.9.41.3 (L1) Ensure 'Configure cookies' is set to 'Enabled: Block only 3rd-party cookies' or higher
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main' do
   values [{ name: 'Cookies', type: :dword, data: 1 }]
@@ -187,7 +189,7 @@ end
 
 # 18.9.41.6 (L1) Ensure 'Configure search suggestions in Address bar' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\SearchScopes' do
-  values [{ name: 'ShowSearchSuggestionsGlobal', type: :dword, data: 1 }]
+  values [{ name: 'ShowSearchSuggestionsGlobal', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -205,6 +207,7 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Phish
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
+=end
 
 # 18.9.47.1 (L1) Ensure 'Prevent the usage of OneDrive for file storage' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive' do
@@ -243,7 +246,7 @@ end
 
 # 18.9.52.3.9.3 (L1) Ensure 'Set client connection encryption level' is set to 'Enabled: High Level'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' do
-  values [{ name: 'MinEncryptionLevel', type: :dword, data: 1 }]
+  values [{ name: 'MinEncryptionLevel', type: :dword, data: 3 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -271,35 +274,35 @@ end
 
 # 18.9.54.2 (L1) Ensure 'Allow Cortana' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search' do
-  values [{ name: 'AllowCortana', type: :dword, data: 1 }]
-  action :create
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
-end
-
-# 18.9.54.4 (L1) Ensure 'Allow indexing of encrypted files' is set to 'Disabled'
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search' do
-  values [{ name: 'AllowIndexingEncryptedStoresOrItems', type: :dword, data: 1 }]
-  action :create
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
-end
-
-# 18.9.54.5 (L1) Ensure 'Allow search and Cortana to use location' is set to 'Disabled'
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search' do
-  values [{ name: 'AllowSearchToUseLocation', type: :dword, data: 1 }]
+  values [{ name: 'AllowCortana', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.54.3 (L1) Ensure 'Allow Cortana above lock screen' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search' do
-  values [{ name: 'AllowCortanaAboveLock', type: :dword, data: 1 }]
+  values [{ name: 'AllowCortanaAboveLock', type: :dword, data: 0 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+end
+
+# 18.9.54.4 (L1) Ensure 'Allow indexing of encrypted files' is set to 'Disabled'
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search' do
+  values [{ name: 'AllowIndexingEncryptedStoresOrItems', type: :dword, data: 0 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+end
+
+# 18.9.54.5 (L1) Ensure 'Allow search and Cortana to use location' is set to 'Disabled'
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search' do
+  values [{ name: 'AllowSearchToUseLocation', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.61.2 (L1) Ensure 'Turn off Automatic Download and Install of updates' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore' do
-  values [{ name: 'AutoDownload', type: :dword, data: 1 }]
+  values [{ name: 'AutoDownload', type: :dword, data: 4 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -313,21 +316,21 @@ end
 
 # 18.9.73.2 (L1)  Ensure 'Allow Windows Ink Workspace' is set to 'Enabled: On, but disallow access above lock' OR 'Disabled' but not 'Enabled: On'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace' do
-  values [{ name: 'AllowWindowsInkWorkspace', type: :dword, data: 1 }]
+  values [{ name: 'AllowWindowsInkWorkspace', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.74.1 (L1) Ensure 'Allow user control over installs' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer' do
-  values [{ name: 'EnableUserControl', type: :dword, data: 1 }]
+  values [{ name: 'EnableUserControl', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.74.2 (L1) Ensure 'Always install with elevated privileges' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer' do
-  values [{ name: 'AlwaysInstallElevated', type: :dword, data: 1 }]
+  values [{ name: 'AlwaysInstallElevated', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -341,49 +344,49 @@ end
 
 # 18.9.84.1 (L1) Ensure 'Turn on PowerShell Script Block Logging' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging' do
-  values [{ name: 'EnableScriptBlockLogging', type: :dword, data: 1 }]
+  values [{ name: 'EnableScriptBlockLogging', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.84.2 (L1) Ensure 'Turn on PowerShell Transcription' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription' do
-  values [{ name: 'EnableTranscripting', type: :dword, data: 1 }]
+  values [{ name: 'EnableTranscripting', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.86.1.1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client' do
-  values [{ name: 'AllowBasic', type: :dword, data: 1 }]
+  values [{ name: 'AllowBasic', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.86.1.2 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client' do
-  values [{ name: 'AllowUnencryptedTraffic', type: :dword, data: 1 }]
+  values [{ name: 'AllowUnencryptedTraffic', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.86.1.3 (L1) Ensure 'Disallow Digest authentication' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client' do
-  values [{ name: 'AllowDigest', type: :dword, data: 1 }]
+  values [{ name: 'AllowDigest', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.86.2.1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service' do
-  values [{ name: 'AllowBasic', type: :dword, data: 1 }]
+  values [{ name: 'AllowBasic', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.86.2.3 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service' do
-  values [{ name: 'AllowUnencryptedTraffic', type: :dword, data: 1 }]
+  values [{ name: 'AllowUnencryptedTraffic', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -397,35 +400,38 @@ end
 
 # 18.9.90.2 (L1) Ensure 'Configure Automatic Updates' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' do
-  values [{ name: 'NoAutoUpdate', type: :dword, data: 1 }]
+  values [{ name: 'NoAutoUpdate', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.90.3 (L1) Ensure 'Configure Automatic Updates: Scheduled install day' is set to '0 - Every day'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' do
-  values [{ name: 'ScheduledInstallDay', type: :dword, data: 1 }]
+  values [{ name: 'ScheduledInstallDay', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.90.4 (L1) Ensure 'No auto-restart with logged on users for scheduled automatic updates installations' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' do
-  values [{ name: 'NoAutoRebootWithLoggedOnUsers', type: :dword, data: 1 }]
-  action :create
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
-end
-
-# 18.9.90.1.2 (L1) Ensure 'Select when Quality Updates are received' is set to 'Enabled: 0 days'
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' do
-  values [{ name: 'DeferQualityUpdates HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate:DeferQualityUpdatesPeriodInDays', type: :dword, data: 1 }]
+  values [{ name: 'NoAutoRebootWithLoggedOnUsers', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.9.90.1.1 (L1)  Ensure 'Select when Feature Updates are received' is set to 'Enabled: Current Branch for Business, 180 days'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' do
-  values [{ name: 'DeferFeatureUpdates HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate:DeferFeatureUpdatesPeriodInDays HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate:BranchReadinessLevel', type: :dword, data: 1 }]
+  values [{ name: 'DeferFeatureUpdates', type: :dword, data 1},
+          { name: 'DeferFeatureUpdatesPeriodInDays', type: :dword, data 180},
+          { name: 'BranchReadinessLevel', type: :dword, data 32}]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+end
+
+# 18.9.90.1.2 (L1) Ensure 'Select when Quality Updates are received' is set to 'Enabled: 0 days'
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' do
+  values [{ name: 'DeferQualityUpdates', type: :dword, data 1},
+          { name: 'DeferQualityUpdatesPeriodInDays', type: :dword, data 0},
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end

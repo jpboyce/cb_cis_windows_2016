@@ -5,28 +5,28 @@
 
 # 18.8.3.1 (L1) Ensure 'Include command line in process creation events' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit' do
-  values [{ name: 'ProcessCreationIncludeCmdLine_Enabled', type: :dword, data: 1 }]
+  values [{ name: 'ProcessCreationIncludeCmdLine_Enabled', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.8.12.1 (L1)  Ensure 'Boot-Start Driver Initialization Policy' is set to 'Enabled: Good, unknown and bad but critical'
 registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Policies\EarlyLaunch' do
-  values [{ name: 'DriverLoadPolicy', type: :dword, data: 1 }]
+  values [{ name: 'DriverLoadPolicy', type: :dword, data: 3 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.8.19.2 (L1) Ensure 'Configure registry policy processing: Do not apply during periodic background processing' is set to 'Enabled: FALSE'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}\NoBackgroundPolicy ' do
-  values [{ name: '', type: :dword, data: 1 }]
+  values [{ name: 'NoBackgroundPolicy', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.8.19.3 (L1) Ensure 'Configure registry policy processing: Process even if the Group Policy objects have not changed' is set to 'Enabled: TRUE'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}\NoGPOListChanges ' do
-  values [{ name: '', type: :dword, data: 1 }]
+  values [{ name: 'NoGPOListChanges', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -40,7 +40,7 @@ end
 
 # 18.8.19.5 (L1) Ensure 'Turn off background refresh of Group Policy' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' do
-  values [{ name: 'DisableBkGndGroupPolicy', type: :dword, data: 1 }]
+  values [{ name: 'DisableBkGndGroupPolicy', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -53,7 +53,7 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer' d
 end
 
 # 18.8.20.1.2 (L2) Ensure 'Turn off downloading of print drivers over HTTP' is set to 'Enabled'
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printer' do
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers' do
   values [{ name: 'DisableWebPnPDownload', type: :dword, data: 1 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
@@ -166,14 +166,14 @@ end
 
 # 18.8.31.1 (L1) Ensure 'Configure Offer Remote Assistance' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' do
-  values [{ name: 'fAllowUnsolicited', type: :dword, data: 1 }]
+  values [{ name: 'fAllowUnsolicited', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
 # 18.8.31.2 (L1) Ensure 'Configure Solicited Remote Assistance' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' do
-  values [{ name: 'fAllowToGetHelp', type: :dword, data: 1 }]
+  values [{ name: 'fAllowToGetHelp', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
