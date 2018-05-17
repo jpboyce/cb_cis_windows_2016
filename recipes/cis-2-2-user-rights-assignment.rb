@@ -10,6 +10,7 @@ security_policy 'Windows 10 CIS 2.2 - User Rights Assignment' do
   action :configure
 end
 
+
 # 2.2.1 (L1) Ensure 'Access Credential Manager as a trusted caller' is set to 'No One'
 registry_key '' do
   values [{ name: '', type: :dword, data: 1 }]

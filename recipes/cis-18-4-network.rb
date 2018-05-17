@@ -47,8 +47,8 @@ end
 
 # 18.4.14.1 (L1)  Ensure 'Hardened UNC Paths' is set to 'Enabled, with "Require Mutual Authentication" and "Require Integrity" set for all NETLOGON and SYSVOL shares'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths' do
-  values [{ name: "\\*\NETLOGON", type: :string, data 'Require Mutual Authentication=1,Require Integrity=1'},
-  { name: "\\*\SYSVOL", type: :string, data 'Require Mutual Authentication=1,Require Integrity=1'}]
+  values [{ name: "\\*\NETLOGON", type: :string, data: 'Require Mutual Authentication=1,Require Integrity=1' },
+          { name: "\\*\SYSVOL", type: :string, data: 'Require Mutual Authentication=1,Require Integrity=1' }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -63,6 +63,7 @@ end
 # 18.4.19.2 (L2) Ensure Prohibit access of the Windows Connect Now wizards is set to Enabled
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\UI' do
   values [{ name: 'DisableWcnUi', type: :dword, data: 1 }]
+  recursive true
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
 end

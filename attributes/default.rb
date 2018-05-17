@@ -164,3 +164,6 @@ default['security_policy']['rights']['SeShutdownPrivilege'] = '*S-1-5-32-544,*S-
 
 # 2.2.40 (L1) Ensure 'Take ownership of files or other objects' is set to 'Administrators'
 default['security_policy']['rights']['SeTakeOwnershipPrivilege'] = '*S-1-5-32-544'
+
+# 2.3.10.1 (L1) Ensure 'Network access: Allow anonymous SID/Name translation' is set to 'Disabled'
+default['security_policy']['access']['LSAAnonymousNameLookup'] = 0

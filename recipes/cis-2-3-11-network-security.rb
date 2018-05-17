@@ -27,6 +27,7 @@ end
 # 2.3.11.4 (L1)  Ensure 'Network security: Configure encryption types allowed for Kerberos' is set to 'RC4_HMAC_MD5, AES128_HMAC_SHA1, AES256_HMAC_SHA1, Future encryption types'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters' do
   values [{ name: 'SupportedEncryptionTypes', type: :dword, data: 1 }]
+  recursive true
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end

@@ -6,6 +6,7 @@
 # 9.1.1 (L1) Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' do
   values [{ name: 'EnableFirewall', type: :dword, data: 1 }]
+  recursive true
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -48,6 +49,7 @@ end
 # 9.1.7 (L1) Ensure 'Windows Firewall: Domain: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\domainfw.log'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging' do
   values [{ name: 'LogFilePath', type: :string, data: '%SYSTEMROOT%\System32\logfiles\firewall\domainfw.log' }]
+  recursive true
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end

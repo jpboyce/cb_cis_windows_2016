@@ -6,6 +6,7 @@
 # 9.2.1 (L1) Ensure 'Windows Firewall: Private: Firewall state' is set to 'On (recommended)'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile' do
   values [{ name: 'EnableFirewall', type: :dword, data: 1 }]
+  recursive true
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
@@ -48,6 +49,7 @@ end
 # 9.2.7 (L1) Ensure 'Windows Firewall: Private: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\privatefw.log'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging' do
   values [{ name: 'LogFilePath', type: :string, data: '%SYSTEMROOT%\System32\logfiles\firewall\privatefw.log' }]
+  recursive true
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
