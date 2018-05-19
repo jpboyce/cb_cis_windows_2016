@@ -68,7 +68,7 @@ control '1.1.5' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('PasswordComplexity') { should eq '1' }
+    its('PasswordComplexity') { should eq 1 }
   end
 end
 
