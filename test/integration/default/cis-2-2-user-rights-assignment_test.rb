@@ -22,6 +22,8 @@ control '2.2.1' do
 end
 
 # 2.2.2 (L1) Configure 'Access this computer from the network'
+# Member Server = Administrators, Authenticated Users
+# Domain Controller = Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS
 control '2.2.2' do
   impact 1.0
   title 'Configure Access this computer from the network'
@@ -51,7 +53,12 @@ control '2.2.3' do
   end
 end
 
+# 2.2.4 (L1) Ensure 'Add workstations to domain' is set to 'Administrators' (DC only)
+# Administrators
+
 # 2.2.5 (L1)  Ensure 'Adjust memory quotas for a process' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE'
+# If IIS is installed, IIS App pools should be added
+# If SQL Server is installed, then extra rights are required
 control '2.2.5' do
   impact 1.0
   title ' Ensure Adjust memory quotas for a process is set to Administrators, LOCAL SERVICE, NETWORK SERVICE'
@@ -67,6 +74,8 @@ control '2.2.5' do
 end
 
 # 2.2.6 (L1) Configure 'Allow log on locally'
+# Member Servers = Administrators
+# Domain Controllers = Administrators, ENTERPRISE DOMAIN CONTROLLERS
 control '2.2.6' do
   impact 1.0
   title 'Configure Allow log on locally'
@@ -77,11 +86,14 @@ control '2.2.6' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeInteractiveLogonRight') { should eq (["S-1-5-32-544","S-1-5-32-545"]) }
+    its('SeInteractiveLogonRight') { should eq (["S-1-5-32-544"]) }
   end
 end
 
 # 2.2.7 (L1) Configure 'Allow log on through Remote Desktop Services'
+# Member Server = Administrators, Remote Desktop Users
+# Domain Controller = Administrators
+# If Remote Desktop Connection Broker role is installed, then Authenticated Users too
 control '2.2.7' do
   impact 1.0
   title 'Configure Allow log on through Remote Desktop Services'
@@ -137,7 +149,7 @@ control '2.2.10' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeTimeZonePrivilege') { should eq (["S-1-5-32-544","S-1-5-19","S-1-5-32-545"]) }
+    its('SeTimeZonePrivilege') { should eq (["S-1-5-32-544","S-1-5-19"]) }
   end
 end
 
@@ -172,6 +184,7 @@ control '2.2.12' do
 end
 
 # 2.2.13 (L1)  Ensure 'Create global objects' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
+# If running SQL Server AND Integration Services, need an exception
 control '2.2.13' do
   impact 1.0
   title ' Ensure Create global objects is set to Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
@@ -182,7 +195,7 @@ control '2.2.13' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeCreateGlobalPrivilege') { should eq (["S-1-5-32-544","S-1-5-19","S-1-5-20","S-1-5-32-544","S-1-5-6"]) }
+    its('SeCreateGlobalPrivilege') { should eq (["S-1-5-32-544","S-1-5-19","S-1-5-20","S-1-5-6"]) }
   end
 end
 
@@ -202,6 +215,9 @@ control '2.2.14' do
 end
 
 # 2.2.15 (L1) Configure 'Create symbolic links'
+# Member Servers = Administrators
+# Domain Controllers = Administrators
+# If Hyper-V role is installed, add NT VIRTUAL MACHINE\Virtual Machines
 control '2.2.15' do
   impact 1.0
   title 'Configure Create symbolic links'
@@ -232,6 +248,9 @@ control '2.2.16' do
 end
 
 # 2.2.17 (L1) Configure 'Deny access to this computer from the network'
+# Member Server = Guests, Local account and member of Administrators group
+# Domain Controller = Guests, Local account
+# This item breaks Test Kitchen?
 control '2.2.17' do
   impact 1.0
   title 'Configure Deny access to this computer from the network'
@@ -302,11 +321,12 @@ control '2.2.21' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeDenyRemoteInteractiveLogonRight') { should eq (["S-1-5-32-546"]) }
+    its('SeDenyRemoteInteractiveLogonRight') { should eq (["S-1-5-32-546","S-1-5-113"]) }
   end
 end
 
 # 2.2.22 (L1) Configure 'Enable computer and user accounts to be trusted for delegation'
+# Domain Controllers = Administrators
 control '2.2.22' do
   impact 1.0
   title 'Configure Enable computer and user accounts to be trusted for delegation'
@@ -337,6 +357,8 @@ control '2.2.23' do
 end
 
 # 2.2.24 (L1)  Ensure 'Generate security audits' is set to 'LOCAL SERVICE, NETWORK SERVICE'
+# If running IIS, need exception for App Pools
+# If running ADFS, need exception for NT SERVICE\ADFSsrv and DRS services, and service account
 control '2.2.24' do
   impact 1.0
   title ' Ensure Generate security audits is set to LOCAL SERVICE, NETWORK SERVICE'
@@ -352,6 +374,10 @@ control '2.2.24' do
 end
 
 # 2.2.25 (L1) Configure 'Impersonate a client after authentication'
+# Member server = Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE
+# Domain Controller = Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE
+# If running IIS, IIS_IUSRS too
+# If running SQL Server AND Integration Services, need exception
 control '2.2.25' do
   impact 1.0
   title 'Configure Impersonate a client after authentication'
@@ -411,7 +437,25 @@ control '2.2.28' do
   end
 end
 
+# 2.2.29 (L2) Ensure 'Log on as a batch job' is set to 'Administrators' (DC Only)
+# Domain Controller = Administrators
+control '2.2.29' do
+  impact 1.0
+  title 'Ensure Log on as a batch job is set to Administrators'
+  desc 'Ensure Log on as a batch job is set to Administrators'
+  tag cissection: '2-2'
+  tag cislevel: '2'
+  tag cisitem: 'cis-2.2.29'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe security_policy do
+    its('SeBatchLogonRight') { should eq ([]) }
+  end
+end
+
 # 2.2.30 (L1) Configure 'Manage auditing and security log'
+# Member Servers = Administrators
+# Domain Controllers = Administrators (and Exchange Servers if Exchange is in the environment)
 control '2.2.30' do
   impact 1.0
   title 'Configure Manage auditing and security log'
@@ -497,11 +541,13 @@ control '2.2.35' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    #its('SeSystemProfilePrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeSystemProfilePrivilege') { should eq (["S-1-5-32-544","S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420"]) }
   end
 end
 
 # 2.2.36 (L1)  Ensure 'Replace a process level token' is set to 'LOCAL SERVICE, NETWORK SERVICE'
+# If IIS is installed, need IIS app pols too
+# If running SQL, need exception too
 control '2.2.36' do
   impact 1.0
   title ' Ensure Replace a process level token is set to LOCAL SERVICE, NETWORK SERVICE'
@@ -542,7 +588,22 @@ control '2.2.38' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeShutdownPrivilege') { should eq (["S-1-5-32-544","S-1-5-32-545"]) }
+    its('SeShutdownPrivilege') { should eq (["S-1-5-32-544"]) }
+  end
+end
+
+# 2.2.39 (L1) Ensure Synchronize directory service data is set to No One (DC only)
+control '2.2.39' do
+  impact 1.0
+  title 'Ensure Synchronize directory service data is set to No One (DC only)'
+  desc 'Ensure Synchronize directory service data is set to No One (DC only)'
+  tag cissection: '2-2'
+  tag cislevel: '1'
+  tag cisitem: 'cis-2.2.39'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe security_policy do
+    its('SeSyncAgentPrivilege') { should eq ([]) }
   end
 end
 
