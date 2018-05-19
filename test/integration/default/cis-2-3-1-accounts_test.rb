@@ -14,9 +14,16 @@ control '2.3.1.1' do
   tag 'cis-level-1', 'cis-2.3.1.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/powershell/
+  script = <<-EOH
+    # This script will query WMI for using matching the Administrator SID and return the Disabled status as a true or false
+    $user = Get-WmiObject Win32_UserAccount | Where-Object { $_.SID -match "S-1-5-21-[0-9]{10}-[0-9]{10}-[0-9]{10}-500" } | Select-Object Disabled
+    write-host $user.Disabled
+  EOH
+
+  describe powershell(script) do
+    its('stdout') { should eq "True\r\n" }
+    its('stderr') { should eq '' }
   end
 end
 
@@ -30,7 +37,7 @@ control '2.3.1.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('NoConnectedUser ', :type_dword, '1') }
+    it { should have_property_value('NoConnectedUser', :type_dword, '3') }
   end
 end
 
@@ -42,9 +49,16 @@ control '2.3.1.3' do
   tag 'cis-level-1', 'cis-2.3.1.3'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/powershell/
+  script = <<-EOH
+    # This script will query WMI for using matching the Guest SID and return the Disabled status as a true or false
+    $user = Get-WmiObject Win32_UserAccount | Where-Object { $_.SID -match "S-1-5-21-[0-9]{10}-[0-9]{10}-[0-9]{10}-501" } | Select-Object Disabled
+    write-host $user.Disabled
+  EOH
+
+  describe powershell(script) do
+    its('stdout') { should eq "True\r\n" }
+    its('stderr') { should eq '' }
   end
 end
 
@@ -58,7 +72,7 @@ control '2.3.1.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa') do
     it { should exist }
-    it { should have_property_value('LimitBlankPasswordUse ', :type_dword, '1') }
+    it { should have_property_value('LimitBlankPasswordUse', :type_dword, '1') }
   end
 end
 
@@ -70,9 +84,16 @@ control '2.3.1.5' do
   tag 'cis-level-1', 'cis-2.3.1.5'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/powershell/
+  script = <<-EOH
+    # This script will query WMI for using matching the Administrator SID and return the Name
+    $user = Get-WmiObject Win32_UserAccount | Where-Object { $_.SID -match "S-1-5-21-[0-9]{10}-[0-9]{10}-[0-9]{10}-500" } | Select-Object Name
+    write-host $user.Name
+  EOH
+
+  describe powershell(script) do
+    its('stdout') { should_not eq "Administrator\r\n" }
+    its('stderr') { should eq '' }
   end
 end
 
@@ -84,8 +105,15 @@ control '2.3.1.6' do
   tag 'cis-level-1', 'cis-2.3.1.6'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/powershell/
+  script = <<-EOH
+    # This script will query WMI for using matching the Administrator SID and return the Name
+    $user = Get-WmiObject Win32_UserAccount | Where-Object { $_.SID -match "S-1-5-21-[0-9]{10}-[0-9]{10}-[0-9]{10}-501" } | Select-Object Name
+    write-host $user.Name
+  EOH
+
+  describe powershell(script) do
+    its('stdout') { should_not eq "Guest\r\n" }
+    its('stderr') { should eq '' }
   end
 end
