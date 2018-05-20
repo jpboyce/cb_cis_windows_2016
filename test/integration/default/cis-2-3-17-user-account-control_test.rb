@@ -16,7 +16,7 @@ control '2.3.17.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('FilterAdministratorToken ', :type_dword, '1') }
+    it { should have_property_value('FilterAdministratorToken', :type_dword, 1) }
   end
 end
 
@@ -30,7 +30,7 @@ control '2.3.17.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('EnableUIADesktopToggle ', :type_dword, '1') }
+    it { should have_property_value('EnableUIADesktopToggle', :type_dword, 0) }
   end
 end
 
@@ -44,7 +44,7 @@ control '2.3.17.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('ConsentPromptBehaviorAdmin ', :type_dword, '1') }
+    it { should have_property_value('ConsentPromptBehaviorAdmin', :type_dword, 2) }
   end
 end
 
@@ -58,7 +58,7 @@ control '2.3.17.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('ConsentPromptBehaviorUser ', :type_dword, '1') }
+    it { should have_property_value('ConsentPromptBehaviorUser', :type_dword, 0) }
   end
 end
 
@@ -72,7 +72,7 @@ control '2.3.17.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('EnableInstallerDetection ', :type_dword, '1') }
+    it { should have_property_value('EnableInstallerDetection', :type_dword, 1) }
   end
 end
 
@@ -86,7 +86,7 @@ control '2.3.17.6' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('EnableSecureUIAPaths ', :type_dword, '1') }
+    it { should have_property_value('EnableSecureUIAPaths', :type_dword, 1) }
   end
 end
 
@@ -100,7 +100,7 @@ control '2.3.17.7' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('EnableLUA ', :type_dword, '1') }
+    it { should have_property_value('EnableLUA', :type_dword, 1) }
   end
 end
 
@@ -114,7 +114,7 @@ control '2.3.17.8' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('PromptOnSecureDesktop ', :type_dword, '1') }
+    it { should have_property_value('PromptOnSecureDesktop', :type_dword, 1) }
   end
 end
 
@@ -128,6 +128,6 @@ control '2.3.17.9' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('EnableVirtualization ', :type_dword, '1') }
+    it { should have_property_value('EnableVirtualization', :type_dword, 1) }
   end
 end

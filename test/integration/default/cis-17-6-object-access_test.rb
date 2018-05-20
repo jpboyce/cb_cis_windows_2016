@@ -14,8 +14,10 @@ control '17.6.1' do
   tag 'cis-level-1', 'cis-17.6.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"Removable Storage"') do
+    its('stdout') { should match /.*Removable Storage.*Success and Failure\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end

@@ -16,7 +16,7 @@ control '2.3.6.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters') do
     it { should exist }
-    it { should have_property_value('RequireSignOrSeal ', :type_dword, '1') }
+    it { should have_property_value('RequireSignOrSeal', :type_dword, '1') }
   end
 end
 
@@ -30,7 +30,7 @@ control '2.3.6.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters') do
     it { should exist }
-    it { should have_property_value('SealSecureChannel ', :type_dword, '1') }
+    it { should have_property_value('SealSecureChannel', :type_dword, '1') }
   end
 end
 
@@ -44,7 +44,7 @@ control '2.3.6.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters') do
     it { should exist }
-    it { should have_property_value('SignSecureChannel ', :type_dword, '1') }
+    it { should have_property_value('SignSecureChannel', :type_dword, '1') }
   end
 end
 
@@ -58,7 +58,7 @@ control '2.3.6.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters') do
     it { should exist }
-    it { should have_property_value('DisablePasswordChange ', :type_dword, '1') }
+    it { should have_property_value('DisablePasswordChange', :type_dword, '1') }
   end
 end
 
@@ -70,10 +70,10 @@ control '2.3.6.5' do
   tag 'cis-level-1', 'cis-2.3.6.5'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
-  end
+#  describe registry_key('') do
+#    it { should exist }
+#    it { should have_property_value('', :type_dword, '1') }
+#  end
 end
 
 # 2.3.6.6 (L1) Ensure 'Domain member: Require strong (Windows 2000 or later) session key' is set to 'Enabled'
@@ -86,6 +86,6 @@ control '2.3.6.6' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters') do
     it { should exist }
-    it { should have_property_value('RequireStrongKey ', :type_dword, '1') }
+    it { should have_property_value('RequireStrongKey', :type_dword, '1') }
   end
 end

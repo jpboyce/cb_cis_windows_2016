@@ -16,7 +16,7 @@ control '2.3.8.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters') do
     it { should exist }
-    it { should have_property_value('RequireSecuritySignature ', :type_dword, '1') }
+    it { should have_property_value('RequireSecuritySignature', :type_dword, 1) }
   end
 end
 
@@ -30,7 +30,7 @@ control '2.3.8.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters') do
     it { should exist }
-    it { should have_property_value('EnableSecuritySignature ', :type_dword, '1') }
+    it { should have_property_value('EnableSecuritySignature', :type_dword, 1) }
   end
 end
 
@@ -44,6 +44,6 @@ control '2.3.8.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters') do
     it { should exist }
-    it { should have_property_value('EnablePlainTextPassword ', :type_dword, '1') }
+    it { should have_property_value('EnablePlainTextPassword', :type_dword, 0) }
   end
 end

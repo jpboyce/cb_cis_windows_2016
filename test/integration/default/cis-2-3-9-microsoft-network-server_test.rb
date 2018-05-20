@@ -16,7 +16,7 @@ control '2.3.9.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters') do
     it { should exist }
-    it { should have_property_value('AutoDisconnect ', :type_dword, '1') }
+    it { should have_property_value('AutoDisconnect', :type_dword, 15) }
   end
 end
 
@@ -30,7 +30,7 @@ control '2.3.9.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters') do
     it { should exist }
-    it { should have_property_value('RequireSecuritySignature ', :type_dword, '1') }
+    it { should have_property_value('RequireSecuritySignature', :type_dword, 1) }
   end
 end
 
@@ -44,7 +44,7 @@ control '2.3.9.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters') do
     it { should exist }
-    it { should have_property_value('EnableSecuritySignature ', :type_dword, '1') }
+    it { should have_property_value('EnableSecuritySignature', :type_dword, 1) }
   end
 end
 
@@ -58,7 +58,7 @@ control '2.3.9.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters') do
     it { should exist }
-    it { should have_property_value('EnableForcedLogoff ', :type_dword, '1') }
+    it { should have_property_value('EnableForcedLogoff', :type_dword, 1) }
   end
 end
 
@@ -72,6 +72,6 @@ control '2.3.9.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters') do
     it { should exist }
-    it { should have_property_value('SMBServerNameHardeningLevel ', :type_dword, '1') }
+    it { should have_property_value('SMBServerNameHardeningLevel', :type_dword, 1) }
   end
 end

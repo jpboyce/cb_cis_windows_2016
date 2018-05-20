@@ -14,9 +14,11 @@ control '17.3.1' do
   tag 'cis-level-1', 'cis-17.3.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"Plug and Play Events"') do
+    its('stdout') { should match /.*Plug and Play Events.*Success\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end
 
@@ -28,8 +30,10 @@ control '17.3.2' do
   tag 'cis-level-1', 'cis-17.3.2'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"Process Creation"') do
+    its('stdout') { should match /.*Process Creation.*Success\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end

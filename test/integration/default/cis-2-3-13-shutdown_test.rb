@@ -16,6 +16,6 @@ control '2.3.13.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('ShutdownWithoutLogon ', :type_dword, '1') }
+    it { should have_property_value('ShutdownWithoutLogon', :type_dword, 0) }
   end
 end

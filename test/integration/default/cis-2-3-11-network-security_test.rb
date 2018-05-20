@@ -16,7 +16,7 @@ control '2.3.11.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa') do
     it { should exist }
-    it { should have_property_value('UseMachineId ', :type_dword, '1') }
+    it { should have_property_value('UseMachineId', :type_dword, 1) }
   end
 end
 
@@ -30,7 +30,7 @@ control '2.3.11.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0') do
     it { should exist }
-    it { should have_property_value('AllowNullSessionFallback ', :type_dword, '1') }
+    it { should have_property_value('AllowNullSessionFallback', :type_dword, 0) }
   end
 end
 
@@ -44,7 +44,7 @@ control '2.3.11.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\pku2u') do
     it { should exist }
-    it { should have_property_value('AllowOnlineID ', :type_dword, '1') }
+    it { should have_property_value('AllowOnlineID', :type_dword, 0) }
   end
 end
 
@@ -58,7 +58,7 @@ control '2.3.11.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters') do
     it { should exist }
-    it { should have_property_value('SupportedEncryptionTypes ', :type_dword, '1') }
+    it { should have_property_value('SupportedEncryptionTypes', :type_dword, 2147483644) }
   end
 end
 
@@ -72,7 +72,7 @@ control '2.3.11.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa') do
     it { should exist }
-    it { should have_property_value('NoLMHash ', :type_dword, '1') }
+    it { should have_property_value('NoLMHash', :type_dword, 1) }
   end
 end
 
@@ -86,7 +86,7 @@ control '2.3.11.6' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters') do
     it { should exist }
-    it { should have_property_value('EnableForcedLogOff ', :type_dword, '1') }
+    it { should have_property_value('EnableForcedLogOff', :type_dword, 1) }
   end
 end
 
@@ -100,7 +100,7 @@ control '2.3.11.7' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa') do
     it { should exist }
-    it { should have_property_value('LmCompatibilityLevel ', :type_dword, '1') }
+    it { should have_property_value('LmCompatibilityLevel', :type_dword, 5) }
   end
 end
 
@@ -114,7 +114,7 @@ control '2.3.11.8' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LDAP') do
     it { should exist }
-    it { should have_property_value('LDAPClientIntegrity ', :type_dword, '1') }
+    it { should have_property_value('LDAPClientIntegrity', :type_dword, 1) }
   end
 end
 
@@ -128,7 +128,7 @@ control '2.3.11.9' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0') do
     it { should exist }
-    it { should have_property_value('NTLMMinClientSec ', :type_dword, '1') }
+    it { should have_property_value('NTLMMinClientSec', :type_dword, 537_395_200) }
   end
 end
 
@@ -142,6 +142,6 @@ control '2.3.11.10' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0') do
     it { should exist }
-    it { should have_property_value('NTLMMinServerSec ', :type_dword, '1') }
+    it { should have_property_value('NTLMMinServerSec', :type_dword, 537_395_200) }
   end
 end

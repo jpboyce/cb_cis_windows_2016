@@ -16,7 +16,7 @@ control '2.3.7.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('DontDisplayLastUserName ', :type_dword, '1') }
+    it { should have_property_value('DontDisplayLastUserName', :type_dword, '1') }
   end
 end
 
@@ -30,7 +30,7 @@ control '2.3.7.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('DisableCAD ', :type_dword, '1') }
+    it { should have_property_value('DisableCAD', :type_dword, '0') }
   end
 end
 
@@ -44,7 +44,7 @@ control '2.3.7.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('InactivityTimeoutSecs ', :type_dword, '1') }
+    it { should have_property_value('InactivityTimeoutSecs', :type_dword, 900) }
   end
 end
 
@@ -58,7 +58,7 @@ control '2.3.7.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('LegalNoticeText ', :type_dword, '1') }
+    it { should have_property_value('LegalNoticeText', :type_string, 'Legal Notice Text') }
   end
 end
 
@@ -72,7 +72,21 @@ control '2.3.7.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('LegalNoticeCaption ', :type_dword, '1') }
+    it { should have_property_value('LegalNoticeCaption', :type_string, 'Legal Notice Caption') }
+  end
+end
+
+# 2.3.7.6 (L2) Ensure Interactive logon: Number of previous logons to cache (in case domain controller is not available) is set to 4 or fewer logon(s) (MS only)
+control '2.3.7.6' do
+  impact 1.0
+  title 'Ensure Interactive logon: Number of previous logons to cache (in case domain controller is not available) is set to 4 or fewer logon(s)'
+  desc 'Ensure Interactive logon: Number of previous logons to cache (in case domain controller is not available) is set to 4 or fewer logon(s)'
+  tag 'cis-level-2', 'cis-2.3.7.6'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
+    it { should exist }
+    it { should have_property_value('CachedLogonsCount', :type_string, '4') }
   end
 end
 
@@ -86,7 +100,7 @@ control '2.3.7.7' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
     it { should exist }
-    it { should have_property_value('PasswordExpiryWarning ', :type_dword, '1') }
+    it { should have_property_value('PasswordExpiryWarning', :type_dword, 14) }
   end
 end
 
@@ -100,7 +114,7 @@ control '2.3.7.8' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
     it { should exist }
-    it { should have_property_value('ForceUnlockLogon ', :type_dword, '1') }
+    it { should have_property_value('ForceUnlockLogon', :type_dword, 0) }
   end
 end
 
@@ -114,6 +128,6 @@ control '2.3.7.9' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
     it { should exist }
-    it { should have_property_value('ScRemoveOption ', :type_dword, '1') }
+    it { should have_property_value('ScRemoveOption', :type_string, '1') }
   end
 end

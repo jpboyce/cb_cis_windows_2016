@@ -14,9 +14,11 @@ control '17.9.1' do
   tag 'cis-level-1', 'cis-17.9.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"IPsec Driver"') do
+    its('stdout') { should match /.*IPsec Driver.*Success and Failure\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end
 
@@ -28,9 +30,11 @@ control '17.9.2' do
   tag 'cis-level-1', 'cis-17.9.2'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"Other System Events"') do
+    its('stdout') { should match /.*Other System Events.*Success and Failure\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end
 
@@ -42,9 +46,11 @@ control '17.9.3' do
   tag 'cis-level-1', 'cis-17.9.3'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"Security State Change"') do
+    its('stdout') { should match /.*Security State Change.*Success\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end
 
@@ -56,9 +62,11 @@ control '17.9.4' do
   tag 'cis-level-1', 'cis-17.9.4'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"Security System Extension"') do
+    its('stdout') { should match /.*Security System Extension.*Success and Failure\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end
 
@@ -70,8 +78,10 @@ control '17.9.5' do
   tag 'cis-level-1', 'cis-17.9.5'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"System Integrity"') do
+    its('stdout') { should match /.*System Integrity.*Success and Failure\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end

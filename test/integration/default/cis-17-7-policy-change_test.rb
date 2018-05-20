@@ -14,9 +14,11 @@ control '17.7.1' do
   tag 'cis-level-1', 'cis-17.7.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"Audit Policy Change"') do
+    its('stdout') { should match /.*Audit Policy Change.*Success and Failure\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end
 
@@ -28,9 +30,11 @@ control '17.7.2' do
   tag 'cis-level-1', 'cis-17.7.2'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"Authentication Policy Change"') do
+    its('stdout') { should match /.*Authentication Policy Change.*Success\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end
 
@@ -42,8 +46,10 @@ control '17.7.3' do
   tag 'cis-level-1', 'cis-17.7.3'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('') do
-    it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+  # http://inspec.io/docs/reference/resources/command/
+  describe command('auditpol /get /subcategory:"Authorization Policy Change"') do
+    its('stdout') { should match /.*Authorization Policy Change.*Success\r\n/m }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
   end
 end

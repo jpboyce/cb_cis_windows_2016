@@ -16,7 +16,7 @@ control '2.3.15.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel') do
     it { should exist }
-    it { should have_property_value('ObCaseInsensitive ', :type_dword, '1') }
+    it { should have_property_value('ObCaseInsensitive', :type_dword, 1) }
   end
 end
 
@@ -30,6 +30,6 @@ control '2.3.15.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager') do
     it { should exist }
-    it { should have_property_value('ProtectionMode ', :type_dword, '1') }
+    it { should have_property_value('ProtectionMode', :type_dword, 1) }
   end
 end
