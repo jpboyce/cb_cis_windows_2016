@@ -16,7 +16,7 @@ control '18.3.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
     it { should exist }
-    it { should have_property_value('AutoAdminLogon ', :type_dword, '1') }
+    it { should have_property_value('AutoAdminLogon', :type_string, '0') }
   end
 end
 
@@ -30,7 +30,7 @@ control '18.3.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters') do
     it { should exist }
-    it { should have_property_value('DisableIPSourceRouting ', :type_dword, '1') }
+    it { should have_property_value('DisableIPSourceRouting', :type_dword, 2) }
   end
 end
 
@@ -44,7 +44,7 @@ control '18.3.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters') do
     it { should exist }
-    it { should have_property_value('DisableIPSourceRouting ', :type_dword, '1') }
+    it { should have_property_value('DisableIPSourceRouting', :type_dword, 2) }
   end
 end
 
@@ -58,7 +58,7 @@ control '18.3.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters') do
     it { should exist }
-    it { should have_property_value('EnableICMPRedirect ', :type_dword, '1') }
+    it { should have_property_value('EnableICMPRedirect', :type_dword, 0) }
   end
 end
 
@@ -72,7 +72,21 @@ control '18.3.6' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters') do
     it { should exist }
-    it { should have_property_value('NoNameReleaseOnDemand ', :type_dword, '1') }
+    it { should have_property_value('NoNameReleaseOnDemand', :type_dword, 1) }
+  end
+end
+
+# 18.3.7 (L2) Ensure MSS: (PerformRouterDiscovery) Allow IRDP to detect and configure Default Gateway addresses (could lead to DoS) is set to Disabled
+control '18.3.7' do
+  impact 1.0
+  title 'Ensure MSS: (PerformRouterDiscovery) Allow IRDP to detect and configure Default Gateway addresses (could lead to DoS) is set to Disabled'
+  desc 'Ensure MSS: (PerformRouterDiscovery) Allow IRDP to detect and configure Default Gateway addresses (could lead to DoS) is set to Disabled'
+  tag 'cis-level-2', 'cis-18.3.7'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters') do
+    it { should exist }
+    it { should have_property_value('PerformRouterDiscovery', :type_dword, 0) }
   end
 end
 
@@ -86,7 +100,7 @@ control '18.3.8' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager') do
     it { should exist }
-    it { should have_property_value('SafeDllSearchMode ', :type_dword, '1') }
+    it { should have_property_value('SafeDllSearchMode', :type_dword, 1) }
   end
 end
 
@@ -100,7 +114,35 @@ control '18.3.9' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
     it { should exist }
-    it { should have_property_value('ScreenSaverGracePeriod ', :type_dword, '1') }
+    it { should have_property_value('ScreenSaverGracePeriod', :type_string, '5') }
+  end
+end
+
+# 18.3.10 (L2) Ensure MSS: (TcpMaxDataRetransmissions IPv6) How many times unacknowledged data is retransmitted is set to Enabled: 3
+control '18.3.10' do
+  impact 1.0
+  title 'Ensure MSS: (TcpMaxDataRetransmissions IPv6) How many times unacknowledged data is retransmitted is set to Enabled: 3'
+  desc 'Ensure MSS: (TcpMaxDataRetransmissions IPv6) How many times unacknowledged data is retransmitted is set to Enabled: 3'
+  tag 'cis-level-2', 'cis-18.3.10'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIP6\Parameters') do
+    it { should exist }
+    it { should have_property_value('TcpMaxDataRetransmissions', :type_dword, 3) }
+  end
+end
+
+# 18.3.11 (L2) Ensure MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted is set to Enabled: 3
+control '18.3.11' do
+  impact 1.0
+  title 'Ensure MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted is set to Enabled: 3'
+  desc 'Ensure MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted is set to Enabled: 3'
+  tag 'cis-level-2', 'cis-18.3.11'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters') do
+    it { should exist }
+    it { should have_property_value('TcpMaxDataRetransmissions', :type_dword, 3) }
   end
 end
 
@@ -114,6 +156,6 @@ control '18.3.12' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Security') do
     it { should exist }
-    it { should have_property_value('WarningLevel ', :type_dword, '1') }
+    it { should have_property_value('WarningLevel', :type_dword, 90) }
   end
 end

@@ -16,7 +16,7 @@ control '18.1.1.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization') do
     it { should exist }
-    it { should have_property_value('NoLockScreenCamera ', :type_dword, '1') }
+    it { should have_property_value('NoLockScreenCamera', :type_dword, 1) }
   end
 end
 
@@ -30,7 +30,7 @@ control '18.1.1.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization') do
     it { should exist }
-    it { should have_property_value('NoLockScreenSlideshow ', :type_dword, '1') }
+    it { should have_property_value('NoLockScreenSlideshow', :type_dword, 1) }
   end
 end
 
@@ -44,6 +44,6 @@ control '18.1.2.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization') do
     it { should exist }
-    it { should have_property_value('AllowInputPersonalization ', :type_dword, '1') }
+    it { should have_property_value('AllowInputPersonalization', :type_dword, 0) }
   end
 end
