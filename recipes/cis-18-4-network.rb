@@ -12,9 +12,16 @@ end
 
 # 18.4.4.2 (L1) Ensure 'Turn off multicast name resolution' is set to 'Enabled' (MS Only)
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient' do
-  values [{ name: 'EnableMulticast', type: :dword, data: 1 }]
+  values [{ name: 'EnableMulticast', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+end
+
+# 18.4.5.1 (L2) Ensure Enable Font Providers is set to Disabled (Scored)
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System' do
+  values [{ name: 'EnableFontProviders', type: :dword, data: 0 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
 end
 
 # 18.4.8.1 (L1) Ensure 'Enable insecure guest logons' is set to 'Disabled'
@@ -22,6 +29,33 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanWorks
   values [{ name: 'AllowInsecureGuestAuth', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+end
+
+# 18.4.9.1 (L2) Ensure Turn on Mapper I/O (LLTDIO) driver is set to Disabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD' do
+  values [{ name: 'AllowLLTDIOOnDomain', type: :dword, data: 0 }]
+  values [{ name: 'AllowLLTDIOOnPublicNet', type: :dword, data: 0 }]
+  values [{ name: 'EnableLLTDIO', type: :dword, data: 0 }]
+  values [{ name: 'ProhibitLLTDIOOnPrivateNet', type: :dword, data: 0 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.4.9.2 (L2) Ensure Turn on Responder (RSPNDR) driver is set to Disabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD' do
+  values [{ name: 'AllowRspndrOnDomain', type: :dword, data: 0 }]
+  values [{ name: 'AllowRspndrOnPublicNet', type: :dword, data: 0 }]
+  values [{ name: 'EnableRspndr', type: :dword, data: 0 }]
+  values [{ name: 'ProhibitRspndrOnPrivateNet', type: :dword, data: 0 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.4.10.2 (L2) Ensure Turn off Microsoft Peer-to-Peer Networking Services is set to Enabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Peernet' do
+  values [{ name: 'Disabled', type: :dword, data: 1 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
 end
 
 # 18.4.11.2 (L1) Ensure 'Prohibit installation and configuration of Network Bridge on your DNS domain network' is set to 'Enabled'
@@ -47,8 +81,8 @@ end
 
 # 18.4.14.1 (L1)  Ensure 'Hardened UNC Paths' is set to 'Enabled, with "Require Mutual Authentication" and "Require Integrity" set for all NETLOGON and SYSVOL shares'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths' do
-  values [{ name: "\\*\NETLOGON", type: :string, data: 'Require Mutual Authentication=1,Require Integrity=1' },
-          { name: "\\*\SYSVOL", type: :string, data: 'Require Mutual Authentication=1,Require Integrity=1' }]
+  values [{ name: "\\\\*\\NETLOGON", type: :string, data: 'RequireMutualAuthentication=1, RequireIntegrity=1' },
+          { name: "\\\\*\\SYSVOL", type: :string, data: 'RequireMutualAuthentication=1, RequireIntegrity=1' }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
