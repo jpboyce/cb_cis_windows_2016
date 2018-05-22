@@ -18,7 +18,7 @@ registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Policies\EarlyLaunch' 
 end
 
 # 18.8.19.2 (L1) Ensure 'Configure registry policy processing: Do not apply during periodic background processing' is set to 'Enabled: FALSE'
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}\NoBackgroundPolicy' do
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}' do
   values [{ name: 'NoBackgroundPolicy', type: :dword, data: 0 }]
   recursive true
   action :create
@@ -26,7 +26,7 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Polic
 end
 
 # 18.8.19.3 (L1) Ensure 'Configure registry policy processing: Process even if the Group Policy objects have not changed' is set to 'Enabled: TRUE'
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}\NoGPOListChanges' do
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}' do
   values [{ name: 'NoGPOListChanges', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
@@ -104,7 +104,7 @@ end
 
 # 18.8.20.1.9 (L2) Ensure Turn off Search Companion content file updates is set to Enabled
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SearchCompanion' do
-  values [{ name: 'DisableContent FileUpdates', type: :dword, data: 1 }]
+  values [{ name: 'DisableContentFileUpdates', type: :dword, data: 1 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
 end
@@ -112,6 +112,53 @@ end
 # 18.8.20.1.10 (L2) Ensure Turn off the "Order Prints" picture task is set to Enabled
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer' do
   values [{ name: 'NoOnlinePrintsWizard', type: :dword, data: 1 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.20.1.11 (L2) Ensure Turn off the "Publish to Web" task for files and folders is set to Enabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer' do
+  values [{ name: 'NoPublishingWizard', type: :dword, data: 1 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.20.1.12 (L2) Ensure Turn off the Windows Messenger Customer Experience Improvement Program is set to Enabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Messenger\Client' do
+  values [{ name: 'CEIP', type: :dword, data: 2 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.20.1.13 (L2) Ensure Turn off Windows Customer Experience Improvement Program is set to Enabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows' do
+  values [{ name: 'CEIPEnable', type: :dword, data: 0 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.20.1.14 (L2) Ensure Turn off Windows Error Reporting is set to Enabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting' do
+  values [{ name: 'Disabled', type: :dword, data: 1 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.23.1 (L2) Ensure Support device authentication using certificate is set to Enabled: Automatic
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\kerberos\parameters' do
+  values [{ name: 'DevicePKInitBehavior', type: :dword, data: 0 },
+          { name: 'DevicePKInitEnabled', type: :dword, data: 1 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.24.1 (L2) Ensure Disallow copying of user input methods to the system account for sign-in is set to Enabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Control Panel\International' do
+  values [{ name: 'BlockUserInputMethodsForSignIn', type: :dword, data: 1 }]
+  recursive true
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
 end
@@ -165,6 +212,38 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Mitigati
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
+# 18.8.29.5.1 (L2) Ensure Allow network connectivity during connectedstandby (on battery) is set to Disabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e898b7-4186-b944-eafa664402d9' do
+  values [{ name: 'DCSettingIndex', type: :dword, data: 0 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.29.5.2 (L2) Ensure Allow network connectivity during connectedstandby (plugged in) is set to Disabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e898b7-4186-b944-eafa664402d9' do
+  values [{ name: 'ACSettingIndex', type: :dword, data: 0 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.29.5.3 (L2) Ensure Require a password when a computer wakes (on battery) is set to Enabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb100d-47d6-a2d5-f7d2daa51f51' do
+  values [{ name: 'DCSettingIndex', type: :dword, data: 1 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.29.5.4 (L2) Ensure Require a password when a computer wakes (plugged in) is set to Enabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb100d-47d6-a2d5-f7d2daa51f51' do
+  values [{ name: 'ACSettingIndex', type: :dword, data: 1 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
 # 18.8.31.1 (L1) Ensure 'Configure Offer Remote Assistance' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' do
   values [{ name: 'fAllowUnsolicited', type: :dword, data: 0 }]
@@ -184,4 +263,50 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Rpc' do
   values [{ name: 'EnableAuthEpResolution', type: :dword, data: 1 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+end
+
+# 18.8.32.2 (L2) Ensure Restrict Unauthenticated RPC clients is set to Enabled: Authenticated (MS only)
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Rpc' do
+  values [{ name: 'RestrictRemoteClients', type: :dword, data: 1 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.39.5.1 (L2) Ensure Microsoft Support Diagnostic Tool: Turn on MSDT interactive communication with support provider is set to Disabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy' do
+  values [{ name: 'DisableQueryRemoteServer', type: :dword, data: 0 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.39.11.1 (L2) Ensure Enable/Disable PerfTrack is set to Disabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{9c5a40da-b9654fc3-8781-88dd50a6299d}' do
+  values [{ name: 'ScenarioExecutionEnabled', type: :dword, data: 0 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.41.1 (L2) Ensure Turn off the advertising ID is set to Enabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\policies\Microsoft\Windows\AdvertisingInfo' do
+  values [{ name: 'DisabledByGroupPolicy', type: :dword, data: 1 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.44.1.1 (L2) Ensure Enable Windows NTP Client is set to Enabled
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\W32Time\TimeProviders\NtpClient' do
+  values [{ name: 'Enabled', type: :dword, data: 1 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+# 18.8.44.1.2 (L2) Ensure Enable Windows NTP Server is set to Disabled (MS only)
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\W32Time\TimeProviders\NtpServer' do
+  values [{ name: 'Enabled', type: :dword, data: 0 }]
+  recursive true
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
 end
