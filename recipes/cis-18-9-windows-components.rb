@@ -593,11 +593,11 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Servi
 end
 
 # 18.9.86.2.2 (L2) Ensure Allow remote server management through WinRM is set to Disabled
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service' do
-  values [{ name: 'AllowAutoConfig', type: :dword, data: 0 }]
-  action :create
-  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
-end
+# registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service' do
+#  values [{ name: 'AllowAutoConfig', type: :dword, data: 0 }]
+#  action :create
+#  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+# end
 
 # 18.9.86.2.3 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service' do
@@ -616,11 +616,11 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Servi
 end
 
 # 18.9.87.1 (L2) Ensure Allow Remote Shell Access is set to Disabled
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS' do
-  values [{ name: 'AllowRemoteShellAccess', type: :dword, data: 0 }]
-  action :create
-  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
-end
+# registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS' do
+#  values [{ name: 'AllowRemoteShellAccess', type: :dword, data: 0 }]
+#  action :create
+#  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+# end
 
 # 18.9.90.2 (L1) Ensure 'Configure Automatic Updates' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' do
