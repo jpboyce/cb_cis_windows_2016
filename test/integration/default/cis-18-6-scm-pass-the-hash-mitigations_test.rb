@@ -30,6 +30,6 @@ control '18.6.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest') do
     it { should exist }
-    it { should have_property_value('UseLogonCredential ', :type_dword, 0) }
+    it { should have_property_value('UseLogonCredential', :type_dword, 0) }
   end
 end
