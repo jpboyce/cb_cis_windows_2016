@@ -14,9 +14,9 @@ control '19.1.3.1' do
   tag 'cis-level-1', 'cis-19.1.3.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_USERS\[USER SID]\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop') do
+  describe registry_key('HKEY_USERS\.DEFAULT\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop') do
     it { should exist }
-    it { should have_property_value('ScreenSaveActive ', :type_dword, '1') }
+    it { should have_property_value('ScreenSaveActive', :type_string, '1') }
   end
 end
 
@@ -28,9 +28,9 @@ control '19.1.3.2' do
   tag 'cis-level-1', 'cis-19.1.3.2'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_USERS\[USER SID]\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop') do
+  describe registry_key('HKEY_USERS\.DEFAULT\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop') do
     it { should exist }
-    it { should have_property_value('SCRNSAVE.EXE ', :type_dword, '1') }
+    it { should have_property_value('SCRNSAVE.EXE', :type_string, 'scrnsave.scr') }
   end
 end
 
@@ -42,9 +42,9 @@ control '19.1.3.3' do
   tag 'cis-level-1', 'cis-19.1.3.3'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_USERS\[USER SID]\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop') do
+  describe registry_key('HKEY_USERS\.DEFAULT\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop') do
     it { should exist }
-    it { should have_property_value('ScreenSaverIsSecure ', :type_dword, '1') }
+    it { should have_property_value('ScreenSaverIsSecure', :type_string, '1') }
   end
 end
 
@@ -56,8 +56,8 @@ control '19.1.3.4' do
   tag 'cis-level-1', 'cis-19.1.3.4'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_USERS\[USER SID]\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop') do
+  describe registry_key('HKEY_USERS\.DEFAULT\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop') do
     it { should exist }
-    it { should have_property_value('ScreenSaveTimeOut ', :type_dword, '1') }
+    it { should have_property_value('ScreenSaveTimeOut', :type_string, '900') }
   end
 end

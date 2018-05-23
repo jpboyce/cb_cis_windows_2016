@@ -14,8 +14,8 @@ control '19.5.1.1' do
   tag 'cis-level-1', 'cis-19.5.1.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_USERS\[USER SID]\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications') do
+  describe registry_key('HKEY_USERS\.DEFAULT\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications') do
     it { should exist }
-    it { should have_property_value('NoToastApplicationNotificationOnLockScreen ', :type_dword, '1') }
+    it { should have_property_value('NoToastApplicationNotificationOnLockScreen', :type_dword, 1) }
   end
 end
