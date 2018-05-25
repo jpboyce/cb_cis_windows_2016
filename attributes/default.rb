@@ -1,5 +1,9 @@
 # Default Attributes
 
+# New names for Administrator and Guest
+default['cb_cis_windows_2016']['new_name_administrator'] = 'TotallyNotAdmin'
+default['cb_cis_windows_2016']['new_name_guest'] = 'TotallyNotGuest'
+
 # CIS Levels
 default['cb_cis_windows_2016']['cis_level_1'] = 'false'
 default['cb_cis_windows_2016']['cis_level_2'] = 'true'
