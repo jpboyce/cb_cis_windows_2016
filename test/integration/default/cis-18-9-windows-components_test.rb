@@ -72,7 +72,7 @@ control '18.9.6.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('BlockHostedAppAccessWinRT', :type_dword, 1 )}
+    it { should have_property_value('BlockHostedAppAccessWinRT', :type_dword, 1) }
   end
 end
 
@@ -142,7 +142,7 @@ control '18.9.12.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Camera') do
     it { should exist }
-    it { should have_property_value('AllowCamera', :type_dword, 0 )}
+    it { should have_property_value('AllowCamera', :type_dword, 0) }
   end
 end
 
@@ -282,7 +282,7 @@ control '18.9.26.1.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application') do
     it { should exist }
-    it { should have_property_value('MaxSize', :type_dword, 33000) }
+    it { should have_property_value('MaxSize', :type_dword, 33_000) }
   end
 end
 
@@ -310,7 +310,7 @@ control '18.9.26.2.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security') do
     it { should exist }
-    it { should have_property_value('MaxSize', :type_dword, 33000) }
+    it { should have_property_value('MaxSize', :type_dword, 33_000) }
   end
 end
 
@@ -338,7 +338,7 @@ control '18.9.26.3.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup') do
     it { should exist }
-    it { should have_property_value('MaxSize', :type_dword, 33000) }
+    it { should have_property_value('MaxSize', :type_dword, 33_000) }
   end
 end
 
@@ -366,7 +366,7 @@ control '18.9.26.4.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System') do
     it { should exist }
-    it { should have_property_value('MaxSize', :type_dword, 33000) }
+    it { should have_property_value('MaxSize', :type_dword, 33_000) }
   end
 end
 
@@ -436,7 +436,7 @@ control '18.9.37.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors') do
     it { should exist }
-    it { should have_property_value('DisableLocation', :type_dword, 1 )}
+    it { should have_property_value('DisableLocation', :type_dword, 1) }
   end
 end
 
@@ -450,7 +450,7 @@ control '18.9.41.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Extensions') do
     it { should exist }
-    it { should have_property_value('ExtensionsEnabled', :type_dword, 0 )}
+    it { should have_property_value('ExtensionsEnabled', :type_dword, 0) }
   end
 end
 
@@ -464,7 +464,7 @@ control '18.9.41.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main') do
     it { should exist }
-    it { should have_property_value('AllowInPrivate', :type_dword, 0 )}
+    it { should have_property_value('AllowInPrivate', :type_dword, 0) }
   end
 end
 
@@ -506,7 +506,7 @@ control '18.9.41.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main') do
     it { should exist }
-    it { should have_property_value('AllowPopups', :type_dword, 1 )}
+    it { should have_property_value('AllowPopups', :type_dword, 1) }
   end
 end
 
@@ -548,7 +548,7 @@ control '18.9.41.8' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main') do
     it { should exist }
-    it { should have_property_value('PreventAccessToAboutFlagsInMicrosoftEdge', :type_dword, 1 )}
+    it { should have_property_value('PreventAccessToAboutFlagsInMicrosoftEdge', :type_dword, 1) }
   end
 end
 
@@ -562,7 +562,7 @@ control '18.9.41.9' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter') do
     it { should exist }
-    it { should have_property_value('PreventOverrideAppRepUnknown', :type_dword, 1 )}
+    it { should have_property_value('PreventOverrideAppRepUnknown', :type_dword, 1) }
   end
 end
 
@@ -576,7 +576,7 @@ control '18.9.41.10' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter') do
     it { should exist }
-    it { should have_property_value('PreventOverride', :type_dword, 1 )}
+    it { should have_property_value('PreventOverride', :type_dword, 1) }
   end
 end
 
@@ -590,7 +590,7 @@ control '18.9.41.11' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main') do
     it { should exist }
-    it { should have_property_value('HideLocalHostIP', :type_dword, 1 )}
+    it { should have_property_value('HideLocalHostIP', :type_dword, 1) }
   end
 end
 
@@ -632,7 +632,7 @@ control '18.9.52.3.2.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('fSingleSessionPerUser', :type_dword, 1 )}
+    it { should have_property_value('fSingleSessionPerUser', :type_dword, 1) }
   end
 end
 
@@ -646,7 +646,7 @@ control '18.9.52.3.3.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('fDisableCcm', :type_dword, 1 )}
+    it { should have_property_value('fDisableCcm', :type_dword, 1) }
   end
 end
 
@@ -674,7 +674,7 @@ control '18.9.52.3.3.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('fDisableLPT', :type_dword, 1 )}
+    it { should have_property_value('fDisableLPT', :type_dword, 1) }
   end
 end
 
@@ -688,7 +688,7 @@ control '18.9.52.3.3.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('fDisablePNPRedir', :type_dword, 1 )}
+    it { should have_property_value('fDisablePNPRedir', :type_dword, 1) }
   end
 end
 
@@ -744,7 +744,7 @@ control '18.9.52.3.10.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('MaxIdleTime', :type_dword, 900000 )}
+    it { should have_property_value('MaxIdleTime', :type_dword, 900000) }
   end
 end
 
@@ -758,7 +758,7 @@ control '18.9.52.3.10.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services') do
     it { should exist }
-    it { should have_property_value('MaxDisconnectionTime', :type_dword, 60000 )}
+    it { should have_property_value('MaxDisconnectionTime', :type_dword, 60000) }
   end
 end
 
@@ -870,7 +870,7 @@ control '18.9.59.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform') do
     it { should exist }
-    it { should have_property_value('NoGenTicket', :type_dword, 1 )}
+    it { should have_property_value('NoGenTicket', :type_dword, 1) }
   end
 end
 
@@ -884,7 +884,7 @@ control '18.9.61.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore') do
     it { should exist }
-    it { should have_property_value('DisableStoreApps', :type_dword, 0 )}
+    it { should have_property_value('DisableStoreApps', :type_dword, 0) }
   end
 end
 
@@ -926,7 +926,7 @@ control '18.9.61.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore') do
     it { should exist }
-    it { should have_property_value('RemoveWindowsStore', :type_dword, 1 )}
+    it { should have_property_value('RemoveWindowsStore', :type_dword, 1) }
   end
 end
 
@@ -940,7 +940,7 @@ control '18.9.69.3.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet') do
     it { should exist }
-    it { should have_property_value('SpynetReporting', :type_dword, 0 )}
+    it { should have_property_value('SpynetReporting', :type_dword, 0) }
   end
 end
 
@@ -954,7 +954,7 @@ control '18.9.69.8.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting') do
     it { should exist }
-    it { should have_property_value('DisableGenericRePorts', :type_dword, 1 )}
+    it { should have_property_value('DisableGenericRePorts', :type_dword, 1) }
   end
 end
 
@@ -968,7 +968,7 @@ control '18.9.73.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace') do
     it { should exist }
-    it { should have_property_value('AllowSuggestedAppsInWindowsInkWorkspace', :type_dword, 0 )}
+    it { should have_property_value('AllowSuggestedAppsInWindowsInkWorkspace', :type_dword, 0) }
   end
 end
 
@@ -1024,7 +1024,7 @@ control '18.9.74.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer') do
     it { should exist }
-    it { should have_property_value('SafeForScripting', :type_dword, 0 )}
+    it { should have_property_value('SafeForScripting', :type_dword, 0) }
   end
 end
 
@@ -1136,7 +1136,7 @@ control '18.9.86.2.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service') do
     it { should exist }
-    it { should have_property_value('AllowAutoConfig', :type_dword, 0 )}
+    it { should have_property_value('AllowAutoConfig', :type_dword, 0) }
   end
 end
 
@@ -1178,7 +1178,7 @@ control '18.9.87.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS') do
     it { should exist }
-    it { should have_property_value('AllowRemoteShellAccess', :type_dword, 0 )}
+    it { should have_property_value('AllowRemoteShellAccess', :type_dword, 0) }
   end
 end
 

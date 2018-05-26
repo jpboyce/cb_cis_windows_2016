@@ -14,9 +14,9 @@ control '9.1.1' do
   tag 'cis-level-1', 'cis-9.1.1'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\EnableFirewall ') do
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile') do
     it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('EnableFirewall', :type_dword, 1) }
   end
 end
 
@@ -28,9 +28,9 @@ control '9.1.2' do
   tag 'cis-level-1', 'cis-9.1.2'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\DefaultInboundAction ') do
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile') do
     it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('DefaultInboundAction', :type_dword, 1) }
   end
 end
 
@@ -42,9 +42,9 @@ control '9.1.3' do
   tag 'cis-level-1', 'cis-9.1.3'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\DefaultOutboundAction ') do
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile') do
     it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('DefaultOutboundAction', :type_dword, 0) }
   end
 end
 
@@ -56,9 +56,9 @@ control '9.1.4' do
   tag 'cis-level-1', 'cis-9.1.4'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\DisableNotifications ') do
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile') do
     it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('DisableNotifications', :type_dword, 1) }
   end
 end
 
@@ -70,9 +70,9 @@ control '9.1.5' do
   tag 'cis-level-1', 'cis-9.1.5'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\AllowLocalPolicyMerge ') do
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile') do
     it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('AllowLocalPolicyMerge', :type_dword, 1) }
   end
 end
 
@@ -84,9 +84,9 @@ control '9.1.6' do
   tag 'cis-level-1', 'cis-9.1.6'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\AllowLocalIPsecPolicyMerge ') do
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile') do
     it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('AllowLocalIPsecPolicyMerge', :type_dword, 1) }
   end
 end
 
@@ -98,9 +98,9 @@ control '9.1.7' do
   tag 'cis-level-1', 'cis-9.1.7'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging\LogFilePath ') do
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging') do
     it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('LogFilePath', :type_string, '%SYSTEMROOT%\System32\logfiles\firewall\domainfw.log') }
   end
 end
 
@@ -112,9 +112,9 @@ control '9.1.8' do
   tag 'cis-level-1', 'cis-9.1.8'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging\LogFileSize ') do
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging') do
     it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('LogFileSize', :type_dword, 32767) }
   end
 end
 
@@ -126,9 +126,9 @@ control '9.1.9' do
   tag 'cis-level-1', 'cis-9.1.9'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging\LogDroppedPackets ') do
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging') do
     it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('LogDroppedPackets', :type_dword, 1) }
   end
 end
 
@@ -140,8 +140,8 @@ control '9.1.10' do
   tag 'cis-level-1', 'cis-9.1.10'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging\LogSuccessfulConnections ') do
+  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging') do
     it { should exist }
-    it { should have_property_value('', :type_dword, '1') }
+    it { should have_property_value('LogSuccessfulConnections', :type_dword, 1) }
   end
 end

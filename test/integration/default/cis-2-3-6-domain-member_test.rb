@@ -69,11 +69,6 @@ control '2.3.6.5' do
   desc ' Ensure Domain member: Maximum machine account password age is set to 30 or fewer days, but not 0'
   tag 'cis-level-1', 'cis-2.3.6.5'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
-
-#  describe registry_key('') do
-#    it { should exist }
-#    it { should have_property_value('', :type_dword, '1') }
-#  end
 end
 
 # 2.3.6.6 (L1) Ensure 'Domain member: Require strong (Windows 2000 or later) session key' is set to 'Enabled'

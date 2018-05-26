@@ -10,7 +10,7 @@
 #  database "#{node['cb_cis_windows_2016']['secedit_database']['location']}\\#{node['cb_cis_windows_2016']['secedit_database']['name']}"
 #  action :configure
 #  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
-#end
+# end
 
 # 1.2.2 (L1)  Ensure 'Account lockout threshold' is set to '10 or fewer invalid logon attempt(s), but not 0'
 # security_policy 'Account lockout threshold' do

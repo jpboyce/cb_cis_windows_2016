@@ -17,7 +17,7 @@ control '2.2.1' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeTrustedCredManAccessPrivilege') { should eq ([]) }
+    its('SeTrustedCredManAccessPrivilege') { should eq [] }
   end
 end
 
@@ -34,7 +34,7 @@ control '2.2.2' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeNetworkLogonRight') { should eq (["S-1-5-32-544","S-1-5-32-555"]) }
+    its('SeNetworkLogonRight') { is_expected.to match_array ['S-1-5-32-544', 'S-1-5-32-555'] }
   end
 end
 
@@ -49,7 +49,7 @@ control '2.2.3' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeTcbPrivilege') { should eq ([]) }
+    its('SeTcbPrivilege') { should eq [] }
   end
 end
 
@@ -69,7 +69,7 @@ control '2.2.5' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeIncreaseQuotaPrivilege') { should eq (["S-1-5-32-544","S-1-5-19","S-1-5-20"]) }
+    its('SeIncreaseQuotaPrivilege') { is_expected.to match_array ['S-1-5-32-544', 'S-1-5-19', 'S-1-5-20'] }
   end
 end
 
@@ -86,7 +86,7 @@ control '2.2.6' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeInteractiveLogonRight') { should eq (["S-1-5-32-544"]) }
+    its('SeInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -104,7 +104,7 @@ control '2.2.7' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeRemoteInteractiveLogonRight') { should eq (["S-1-5-32-544","S-1-5-32-555"]) }
+    its('SeRemoteInteractiveLogonRight') { is_expected.to match_array ['S-1-5-32-544', 'S-1-5-32-555'] }
   end
 end
 
@@ -119,7 +119,7 @@ control '2.2.8' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeBackupPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeBackupPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -134,7 +134,7 @@ control '2.2.9' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeSystemtimePrivilege') { should eq (["S-1-5-32-544","S-1-5-19"]) }
+    its('SeSystemtimePrivilege') { is_expected.to match_array ['S-1-5-32-544', 'S-1-5-19'] }
   end
 end
 
@@ -149,7 +149,7 @@ control '2.2.10' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeTimeZonePrivilege') { should eq (["S-1-5-32-544","S-1-5-19"]) }
+    its('SeTimeZonePrivilege') { is_expected.to match_array ['S-1-5-32-544', 'S-1-5-19'] }
   end
 end
 
@@ -164,7 +164,7 @@ control '2.2.11' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeCreatePagefilePrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeCreatePagefilePrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -179,7 +179,7 @@ control '2.2.12' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeCreateTokenPrivilege') { should eq ([]) }
+    its('SeCreateTokenPrivilege') { should eq [] }
   end
 end
 
@@ -195,7 +195,7 @@ control '2.2.13' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeCreateGlobalPrivilege') { should eq (["S-1-5-32-544","S-1-5-19","S-1-5-20","S-1-5-6"]) }
+    its('SeCreateGlobalPrivilege') { is_expected.to match_array ['S-1-5-32-544', 'S-1-5-19', 'S-1-5-20', 'S-1-5-6'] }
   end
 end
 
@@ -210,7 +210,7 @@ control '2.2.14' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeCreatePermanentPrivilege') { should eq ([]) }
+    its('SeCreatePermanentPrivilege') { should eq [] }
   end
 end
 
@@ -228,7 +228,7 @@ control '2.2.15' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeCreateSymbolicLinkPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeCreateSymbolicLinkPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -243,7 +243,7 @@ control '2.2.16' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeDebugPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeDebugPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -261,7 +261,7 @@ control '2.2.17' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeDenyNetworkLogonRight') { should eq (["S-1-5-32-546"]) }
+    its('SeDenyNetworkLogonRight') { should eq ['S-1-5-32-546'] }
   end
 end
 
@@ -276,7 +276,7 @@ control '2.2.18' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeDenyBatchLogonRight') { should eq (["S-1-5-32-546"]) }
+    its('SeDenyBatchLogonRight') { should eq ['S-1-5-32-546'] }
   end
 end
 
@@ -291,7 +291,7 @@ control '2.2.19' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeDenyServiceLogonRight') { should eq (["S-1-5-32-546"]) }
+    its('SeDenyServiceLogonRight') { should eq ['S-1-5-32-546'] }
   end
 end
 
@@ -306,7 +306,7 @@ control '2.2.20' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeDenyInteractiveLogonRight') { should eq (["S-1-5-32-546"]) }
+    its('SeDenyInteractiveLogonRight') { should eq ['S-1-5-32-546'] }
   end
 end
 
@@ -321,7 +321,7 @@ control '2.2.21' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeDenyRemoteInteractiveLogonRight') { should eq (["S-1-5-32-546","S-1-5-113"]) }
+    its('SeDenyRemoteInteractiveLogonRight') { should eq ['S-1-5-32-546', 'S-1-5-113'] }
   end
 end
 
@@ -337,7 +337,7 @@ control '2.2.22' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeEnableDelegationPrivilege') { should eq ([]) }
+    its('SeEnableDelegationPrivilege') { should eq [] }
   end
 end
 
@@ -352,7 +352,7 @@ control '2.2.23' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeRemoteShutdownPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeRemoteShutdownPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -369,7 +369,7 @@ control '2.2.24' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeAuditPrivilege') { should eq (["S-1-5-19","S-1-5-20"]) }
+    its('SeAuditPrivilege') { is_expected.to match_array ['S-1-5-19', 'S-1-5-20'] }
   end
 end
 
@@ -388,7 +388,7 @@ control '2.2.25' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeImpersonatePrivilege') { should eq (["S-1-5-32-544","S-1-5-19","S-1-5-20","S-1-5-6"]) }
+    its('SeImpersonatePrivilege') { is_expected.to match_array ['S-1-5-32-544', 'S-1-5-19', 'S-1-5-20', 'S-1-5-6'] }
   end
 end
 
@@ -403,7 +403,7 @@ control '2.2.26' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeIncreaseBasePriorityPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeIncreaseBasePriorityPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -418,7 +418,7 @@ control '2.2.27' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeLoadDriverPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeLoadDriverPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -433,7 +433,7 @@ control '2.2.28' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeLockMemoryPrivilege') { should eq ([]) }
+    its('SeLockMemoryPrivilege') { should eq [] }
   end
 end
 
@@ -449,7 +449,7 @@ control '2.2.29' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeBatchLogonRight') { should eq ([]) }
+    its('SeBatchLogonRight') { should eq [] }
   end
 end
 
@@ -466,7 +466,7 @@ control '2.2.30' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeSecurityPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeSecurityPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -481,7 +481,7 @@ control '2.2.31' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeRelabelPrivilege') { should eq ([]) }
+    its('SeRelabelPrivilege') { should eq [] }
   end
 end
 
@@ -496,7 +496,7 @@ control '2.2.32' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeSystemEnvironmentPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeSystemEnvironmentPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -511,7 +511,7 @@ control '2.2.33' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeManageVolumePrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeManageVolumePrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -526,7 +526,7 @@ control '2.2.34' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeProfileSingleProcessPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeProfileSingleProcessPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -541,7 +541,7 @@ control '2.2.35' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeSystemProfilePrivilege') { should eq (["S-1-5-32-544","S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420"]) }
+    its('SeSystemProfilePrivilege') { is_expected.to match_array ['S-1-5-32-544', 'S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420'] }
   end
 end
 
@@ -558,7 +558,7 @@ control '2.2.36' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeAssignPrimaryTokenPrivilege') { should eq (["S-1-5-19","S-1-5-20"]) }
+    its('SeAssignPrimaryTokenPrivilege') { is_expected.to match_array ['S-1-5-19', 'S-1-5-20'] }
   end
 end
 
@@ -573,7 +573,7 @@ control '2.2.37' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeRestorePrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeRestorePrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -588,7 +588,7 @@ control '2.2.38' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeShutdownPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeShutdownPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 
@@ -603,7 +603,7 @@ control '2.2.39' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeSyncAgentPrivilege') { should eq ([]) }
+    its('SeSyncAgentPrivilege') { should eq [] }
   end
 end
 
@@ -618,6 +618,7 @@ control '2.2.40' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeTakeOwnershipPrivilege') { should eq (["S-1-5-32-544"]) }
+    its('SeTakeOwnershipPrivilege') { should eq ['S-1-5-32-544'] }
+    its('SeTakeOwnershipPrivilege') { is_expected.to match_array ['S-1-5-32-544'] }
   end
 end

@@ -71,7 +71,6 @@ control '2.3.1.4' do
 end
 
 # 2.3.1.5 (L1) Configure 'Accounts: Rename administrator account'
-blah = attribute('newname', description: 'New name')
 control '2.3.1.5' do
   impact 1.0
   title 'Configure Accounts: Rename administrator account'
