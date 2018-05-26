@@ -17,6 +17,13 @@ execute 'Computer Account Management' do
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
+# 17.2.3 (L1) Ensure 'Audit Distribution Group Management' is set to 'Success and Failure' (DC only)
+execute 'Distribution Group Management' do
+  command 'auditpol /set /subcategory:"Distribution Group Management" /success:enable /failure:enable'
+  action :run
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+end
+
 # 17.2.4 (L1) Ensure 'Audit Other Account Management Events' is set to 'Success and Failure'
 execute 'Security Group Management' do
   command 'auditpol /set /subcategory:"Security Group Management" /success:enable /failure:enable'
