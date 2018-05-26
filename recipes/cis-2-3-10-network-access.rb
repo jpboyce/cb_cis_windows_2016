@@ -24,6 +24,14 @@ registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa' do
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
 
+# 2.3.10.4 (L2) Ensure 'Network access: Do not allow storage of passwords and credentials for network authentication' is set to 'Enabled'
+registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa' do
+  values [{ name: 'RestrictAnonymous', type: :dword, data: 1 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
+end
+
+
 # 2.3.10.5 (L1) Ensure 'Network access: Let Everyone permissions apply to anonymous users' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa' do
   values [{ name: 'EveryoneIncludesAnonymous', type: :dword, data: 0 }]
