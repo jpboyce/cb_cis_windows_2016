@@ -33,7 +33,7 @@ end
 
 # 18.3.5 (L2) Ensure 'MSS: (KeepAliveTime) How often keep-alive packets are sent in milliseconds' is set to 'Enabled: 300,000 or 5 minutes (recommended)'
 registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters' do
-  values [{ name: 'EnableICMPRedirect', type: :dword, data: 0 }]
+  values [{ name: 'KeepAliveTime', type: :dword, data: 300000 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
 end

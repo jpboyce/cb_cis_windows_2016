@@ -62,6 +62,20 @@ control '18.3.4' do
   end
 end
 
+# 18.3.5 (L2) Ensure MSS: (KeepAliveTime) How often keep-alive packets are sent in milliseconds is set to Enabled: 300,000 or 5 minutes (recommended)
+control '18.3.5' do
+  impact 1.0
+  title '(L2) Ensure MSS: (KeepAliveTime) How often keep-alive packets are sent in milliseconds is set to Enabled: 300,000 or 5 minutes (recommended)'
+  desc '(L2) Ensure MSS: (KeepAliveTime) How often keep-alive packets are sent in milliseconds is set to Enabled: 300,000 or 5 minutes (recommended)'
+  tag 'cis-level-2', 'cis-18.3.5'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters') do
+    it { should exist }
+    it { should have_property_value('KeepAliveTime', :type_dword, 300_000) }
+  end
+end
+
 # 18.3.6 (L1) Ensure 'MSS: (NoNameReleaseOnDemand) Allow the computer to ignore NetBIOS name release requests except from WINS servers' is set to 'Enabled'
 control '18.3.6' do
   impact 1.0
