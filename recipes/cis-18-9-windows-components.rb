@@ -622,6 +622,23 @@ end
 #  only_if { node.default['cb_cis_windows_2016']['cis_level_2'] = true }
 # end
 
+# 18.9.90.1.1 (L1)  Ensure 'Select when Feature Updates are received' is set to 'Enabled: Current Branch for Business, 180 days'
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' do
+  values [{ name: 'DeferFeatureUpdates', type: :dword, data: 1 },
+          { name: 'DeferFeatureUpdatesPeriodInDays', type: :dword, data: 180 },
+          { name: 'BranchReadinessLevel', type: :dword, data: 32 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+end
+
+# 18.9.90.1.2 (L1) Ensure 'Select when Quality Updates are received' is set to 'Enabled: 0 days'
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' do
+  values [{ name: 'DeferQualityUpdates', type: :dword, data: 1 },
+          { name: 'DeferQualityUpdatesPeriodInDays', type: :dword, data: 0 }]
+  action :create
+  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+end
+
 # 18.9.90.2 (L1) Ensure 'Configure Automatic Updates' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' do
   values [{ name: 'NoAutoUpdate', type: :dword, data: 0 }]
@@ -639,23 +656,6 @@ end
 # 18.9.90.4 (L1) Ensure 'No auto-restart with logged on users for scheduled automatic updates installations' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' do
   values [{ name: 'NoAutoRebootWithLoggedOnUsers', type: :dword, data: 0 }]
-  action :create
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
-end
-
-# 18.9.90.1.1 (L1)  Ensure 'Select when Feature Updates are received' is set to 'Enabled: Current Branch for Business, 180 days'
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' do
-  values [{ name: 'DeferFeatureUpdates', type: :dword, data: 1 },
-          { name: 'DeferFeatureUpdatesPeriodInDays', type: :dword, data: 180 },
-          { name: 'BranchReadinessLevel', type: :dword, data: 32 }]
-  action :create
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
-end
-
-# 18.9.90.1.2 (L1) Ensure 'Select when Quality Updates are received' is set to 'Enabled: 0 days'
-registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' do
-  values [{ name: 'DeferQualityUpdates', type: :dword, data: 1 },
-          { name: 'DeferQualityUpdatesPeriodInDays', type: :dword, data: 0 }]
   action :create
   only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
 end
