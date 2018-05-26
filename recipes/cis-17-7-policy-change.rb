@@ -7,19 +7,19 @@
 execute 'Audit Policy Change' do
   command 'auditpol /set /subcategory:"Audit Policy Change" /success:enable /failure:enable'
   action :run
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
 
 # 17.7.2 (L1) Ensure 'Audit Authentication Policy Change' is set to 'Success'
 execute 'Authentication Policy Change' do
   command 'auditpol /set /subcategory:"Authentication Policy Change" /success:enable /failure:disable'
   action :run
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
 
 # 17.7.3 (L1) Ensure 'Audit Authorization Policy Change' is set to 'Success'
 execute 'Authorization Policy Change' do
   command 'auditpol /set /subcategory:"Authorization Policy Change" /success:enable /failure:disable'
   action :run
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end

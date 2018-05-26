@@ -7,12 +7,12 @@
 execute 'Directory Service Access' do
   command 'auditpol /set /subcategory:"Directory Service Access" /success:enable /failure:enable'
   action :run
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
 
 # 17.4.2 (L1) Ensure 'Audit Directory Service Changes' is set to 'Success and Failure' (DC only)
 execute 'Directory Service Changes' do
   command 'auditpol /set /subcategory:"Directory Service Changes" /success:enable /failure:enable'
   action :run
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end

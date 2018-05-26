@@ -13,5 +13,5 @@ end
 execute 'Process Creation' do
   command 'auditpol /set /subcategory:"Process Creation" /success:enable /failure:disable'
   action :run
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end

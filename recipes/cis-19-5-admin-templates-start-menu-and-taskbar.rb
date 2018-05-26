@@ -8,5 +8,5 @@ registry_key 'HKEY_USERS\.DEFAULT\SOFTWARE\Policies\Microsoft\Windows\CurrentVer
   values [{ name: 'NoToastApplicationNotificationOnLockScreen', type: :dword, data: 1 }]
   recursive true
   action :create
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end

@@ -7,5 +7,5 @@
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' do
   values [{ name: 'ShutdownWithoutLogon ', type: :dword, data: 0 }]
   action :create
-  only_if { node.default['cb_cis_windows_2016']['cis_level_1'] = true }
+  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
