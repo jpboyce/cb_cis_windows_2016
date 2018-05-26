@@ -1,35 +1,47 @@
 # Default Attributes
 
+############################
+# BEHAVIOUR CONTROL SETTINGS
+############################
+#
+# These items will control how certain settings are applied in the cookbook
+
+# CIS Level Controls
+# Specify whether to execute level 1 or level 2 controls
+default['cb_cis_windows_2016']['cis_level_1'] = true
+default['cb_cis_windows_2016']['cis_level_2'] = false
+
+# Server Roles
+# Controls whether member server only or domain controller only settings are run
+default['cb_cis_windows_2016']['is_member_server'] = true
+default['cb_cis_windows_2016']['is_domain_controller'] = false
+
+# MSS Templates
+# Whether to copy MSS template files to node
+default['cb_cis_windows_2016']['copy_mss'] = false
+
+# Windows-Security-Policy/SecEdit values
+default['security_policy']['template']['location'] = 'C:\Windows\security\templates'
+default['security_policy']['database']['location'] = 'C:\Windows\security\database'
+default['security_policy']['database']['name'] = 'cis.sdb'
+
 # New names for Administrator and Guest
 default['cb_cis_windows_2016']['new_name_administrator'] = 'TotallyNotAdmin'
 default['cb_cis_windows_2016']['new_name_guest'] = 'TotallyNotGuest'
 
-# CIS Levels
-default['cb_cis_windows_2016']['cis_level_1'] = 'false'
-default['cb_cis_windows_2016']['cis_level_2'] = 'true'
-
-# Server Roles
-default['cb_cis_windows_2016']['is_member_server'] = 'true'
-default['cb_cis_windows_2016']['is_domain_controller'] = 'false'
-
-# SecEdit values
-default['cb_cis_windows_2016']['secedit_template']['location'] = 'C:\Windows\security\templates'
-default['cb_cis_windows_2016']['secedit_database']['location'] = 'C:\Windows\security\database'
-default['cb_cis_windows_2016']['secedit_database']['name'] = 'cis.sdb'
-
 # Password Policy settings
 # 1.1.1 (L1) Ensure 'Enforce password history' is set to '24 or more password(s)'
-default['cb_cis_windows_2016']['password_policy']['PasswordHistorySize'] = 24
+default['security_policy']['access']['PasswordHistorySize'] = 24
 # 1.1.2 (L1) Ensure 'Maximum password age' is set to '60 or fewer days, but not 0'
-default['cb_cis_windows_2016']['password_policy']['MaximumPasswordAge'] = 60
+default['security_policy']['access']['MaximumPasswordAge'] = 60
 # 1.1.3 (L1) Ensure 'Minimum password age' is set to '1 or more day(s)'
-default['cb_cis_windows_2016']['password_policy']['MinimumPasswordAge'] = 1
+default['security_policy']['access']['MinimumPasswordAge'] = 1
 # 1.1.4 (L1) Ensure 'Minimum password length' is set to '14 or more character(s)'
-default['cb_cis_windows_2016']['password_policy']['MinimumPasswordLength'] = 15
+default['security_policy']['access']['MinimumPasswordLength'] = 15
 # 1.1.5 (L1) Ensure 'Password must meet complexity requirements' is set to 'Enabled'
-default['cb_cis_windows_2016']['password_policy']['PasswordComplexity'] = 1
+default['security_policy']['access']['PasswordComplexity'] = 1
 # 1.1.6 (L1) Ensure 'Store passwords using reversible encryption' is set to 'Disabled'
-default['cb_cis_windows_2016']['password_policy']['ClearTextPassword'] = 0
+default['security_policy']['access']['ClearTextPassword'] = 0
 
 # User Rights Assignment
 
