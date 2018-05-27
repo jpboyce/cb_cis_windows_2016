@@ -5,7 +5,11 @@
 
 # 9.3.1 (L1) Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' do
-  values [{ name: 'EnableFirewall', type: :dword, data: 1 }]
+  if ENV['TEST_KITCHEN']
+    values [{ name: 'EnableFirewall', type: :dword, data: 0 }]
+  else
+    values [{ name: 'EnableFirewall', type: :dword, data: 1 }]
+  end
   recursive true
   action :create
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
