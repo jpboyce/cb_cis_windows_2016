@@ -8,5 +8,5 @@ execute 'Sensitive Privilege Use' do
   command 'auditpol /set /subcategory:"Sensitive Privilege Use" /success:enable /failure:enable'
   action :run
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
-  not_if { node['cb_cis_windows_2016']['auditpol_data'] =~  /^\s*Sensitive Privilege Use\s*Success and Failure.*/m }
+  not_if { node['cb_cis_windows_2016']['auditpol_data'] =~ /^\s*Sensitive Privilege Use\s*Success and Failure.*/m }
 end

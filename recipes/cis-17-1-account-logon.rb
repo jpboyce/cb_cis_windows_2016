@@ -8,5 +8,5 @@ execute 'name' do
   command 'auditpol /set /subcategory:"Credential Validation" /success:enable /failure:enable'
   action :run
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
-  not_if { node['cb_cis_windows_2016']['auditpol_data'] =~  /^\s*Credential Validation\s*Success and Failure.*/m }
+  not_if { node['cb_cis_windows_2016']['auditpol_data'] =~ /^\s*Credential Validation\s*Success and Failure.*/m }
 end
