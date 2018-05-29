@@ -6,7 +6,7 @@ license 'MIT'
 description 'Installs/Configures cb_cis_windows_2016'
 long_description 'Installs/Configures cb_cis_windows_2016'
 version '0.1.0'
-chef_version '>= 12.1' if respond_to?(:chef_version)
+chef_version '>= 12.14' if respond_to?(:chef_version)
 
 # The `issues_url` points to the location where issues for this cookbook are
 # tracked.  A `View Issues` link will be displayed on this cookbook's page when
@@ -21,5 +21,7 @@ issues_url 'https://github.com/jpboyce/cb_cis_windows_2016/issues'
 source_url 'https://github.com/jpboyce/cb_cis_windows_2016'
 
 supports 'windows'
-depends 'windows'
-depends 'windows-security-policy'
+
+depends 'windows', '~> 4.0.0'
+depends 'windows-security-policy', '~> 0.3.7'
+depends 'notepadpp'
