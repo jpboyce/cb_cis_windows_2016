@@ -13,17 +13,28 @@ default['cb_cis_windows_2016']['cis_level_2'] = false
 
 # Server Roles
 # Controls whether member server only or domain controller only settings are run
-default['cb_cis_windows_2016']['is_member_server'] = true
+default['cb_cis_windows_2016']['is_member_server'] = false
 default['cb_cis_windows_2016']['is_domain_controller'] = false
 
 # MSS Templates
 # Whether to copy MSS template files to node
-default['cb_cis_windows_2016']['copy_mss'] = false
+default['cb_cis_windows_2016']['copy_mss'] = true
+
+# Auditpol data
+require 'mixlib/shellout'
+auditpol_cmd = Mixlib::ShellOut.new('auditpol /get /category:*')
+auditpol_cmd.run_command
+default['cb_cis_windows_2016']['auditpol_data'] = auditpol_cmd.stdout
 
 # Windows-Security-Policy/SecEdit values
 default['security_policy']['template']['location'] = 'C:\Windows\security\templates'
 default['security_policy']['database']['location'] = 'C:\Windows\security\database'
 default['security_policy']['database']['name'] = 'cis.sdb'
+
+# Windows-Security-Policy/SecEdit values
+default['cb_cis_windows_2016']['secedit_template']['location'] = 'C:\Windows\security\templates'
+default['cb_cis_windows_2016']['secedit_database']['location'] = 'C:\Windows\security\database'
+default['cb_cis_windows_2016']['secedit_database']['name'] = 'cis.sdb'
 
 # New names for Administrator and Guest
 default['cb_cis_windows_2016']['new_name_administrator'] = 'TotallyNotAdmin'
@@ -37,12 +48,11 @@ default['security_policy']['access']['MaximumPasswordAge'] = 60
 # 1.1.3 (L1) Ensure 'Minimum password age' is set to '1 or more day(s)'
 default['security_policy']['access']['MinimumPasswordAge'] = 1
 # 1.1.4 (L1) Ensure 'Minimum password length' is set to '14 or more character(s)'
-default['security_policy']['access']['MinimumPasswordLength'] = 15
+default['security_policy']['access']['MinimumPasswordLength'] = 14
 # 1.1.5 (L1) Ensure 'Password must meet complexity requirements' is set to 'Enabled'
 default['security_policy']['access']['PasswordComplexity'] = 1
 # 1.1.6 (L1) Ensure 'Store passwords using reversible encryption' is set to 'Disabled'
 default['security_policy']['access']['ClearTextPassword'] = 0
-
 # User Rights Assignment
 
 # 2.2.1 (L1) Ensure 'Access Credential Manager as a trusted caller' is set to 'No One'
@@ -50,13 +60,22 @@ default['security_policy']['rights']['SeTrustedCredManAccessPrivilege'] = ''
 
 # 2.2.2 (L1) Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users'
 # for DCs - Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS
-# default['security_policy']['rights']['SeNetworkLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
+if default['cb_cis_windows_2016']['is_domain_controller'] == true
+  Chef::Log.warn('is_domain_controller is set to True.  Setting SeNetworkLogonRight to Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS')
+  default['security_policy']['rights']['SeNetworkLogonRight'] = '*S-1-5-32-544,*S-1-5-11,*S-1-5-9'
+else
+  Chef::Log.warn('is_domain_controller is set to False.  Setting SeNetworkLogonRight to Administrators, Authenticated Users')
+  default['security_policy']['rights']['SeNetworkLogonRight'] = '*S-1-5-32-544,*S-1-5-11'
+end
 
 # 2.2.3 (L1) Ensure 'Act as part of the operating system' is set to 'No One'
 default['security_policy']['rights']['SeTcbPrivilege'] = ''
 
 # 2.2.4 (L1) Ensure 'Add workstations to domain' is set to 'Administrators' (DC only)
-# default['security_policy']['rights']['?'] = '?'
+if default['cb_cis_windows_2016']['is_domain_controller'] == true
+  Chef::Log.warn('is_domain_controller is set to True.  Setting SeMachineAccountPrivilege to Administrators')
+  default['security_policy']['rights']['SeMachineAccountPrivilege'] = '*S-1-5-32-544'
+end
 
 # 2.2.5 (L1) Ensure 'Adjust memory quotas for a process' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE'
 default['security_policy']['rights']['SeIncreaseQuotaPrivilege'] = '*S-1-5-32-544,*S-1-5-19,*S-1-5-20'
@@ -64,10 +83,24 @@ default['security_policy']['rights']['SeIncreaseQuotaPrivilege'] = '*S-1-5-32-54
 # 2.2.6 (L1) Ensure 'Allow log on locally' is set to 'Administrators'
 # default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-545'
 # for DCs Administrators, ENTERPRISE DOMAIN CONTROLLERS
+if default['cb_cis_windows_2016']['is_domain_controller'] == true
+  Chef::Log.warn('is_domain_controller is set to True.  Setting SeInteractiveLogonRight to Administrators, ENTERPRISE DOMAIN CONTROLLERS')
+  default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544,S-1-5-9'
+else
+  Chef::Log.warn('is_domain_controller is set to False.  Setting SeInteractiveLogonRight to Administrators')
+  default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544'
+end
 
 # 2.2.7 (L1) Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators, Remote Desktop Users'
 # default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
 # for DCs, just administrators
+if default['cb_cis_windows_2016']['is_domain_controller'] == true
+  Chef::Log.warn('is_domain_controller is set to True. Setting SeRemoteInteractiveLogonRight to Administrators')
+  default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544'
+else
+  Chef::Log.warn('is_domain_controller is set to False. Setting SeRemoteInteractiveLogonRight to Administrators, Remote Desktop Users')
+  default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
+end
 
 # 2.2.8 (L1) Ensure 'Back up files and directories' is set to 'Administrators'
 default['security_policy']['rights']['SeBackupPrivilege'] = '*S-1-5-32-544'
@@ -91,8 +124,7 @@ default['security_policy']['rights']['SeCreateGlobalPrivilege'] = '*S-1-5-32-544
 default['security_policy']['rights']['SeCreatePermanentPrivilege'] = ''
 
 # 2.2.15 (L1) Configure 'Create symbolic links'
-# default['security_policy']['rights']['SeCreateSymbolicLinkPrivilege'] = '*S-1-5-32-544'
-# For DCs, Administrators
+default['security_policy']['rights']['SeCreateSymbolicLinkPrivilege'] = '*S-1-5-32-544'
 
 # 2.2.16 (L1) Ensure 'Debug programs' is set to 'Administrators'
 default['security_policy']['rights']['SeDebugPrivilege'] = '*S-1-5-32-544'
@@ -117,8 +149,14 @@ default['security_policy']['rights']['SeDenyInteractiveLogonRight'] = '*S-1-5-32
 default['security_policy']['rights']['SeDenyRemoteInteractiveLogonRight'] = '*S-1-5-32-546,*S-1-5-113'
 
 # 2.2.22 (L1) Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'No One'
-# default['security_policy']['rights']['SeEnableDelegationPrivilege'] = ''
 # For DCs, Administrators
+if default['cb_cis_windows_2016']['is_domain_controller'] == true
+  Chef::Log.warn('is_domain_controller is set to True. Setting SeEnableDelegationPrivilege to Administrators')
+  default['security_policy']['rights']['SeEnableDelegationPrivilege'] = '*S-1-5-32-544'
+else
+  Chef::Log.warn('is_domain_controller is set to False. Setting SeEnableDelegationPrivilege to Noone')
+  default['security_policy']['rights']['SeEnableDelegationPrivilege'] = ''
+end
 
 # 2.2.23 (L1) Ensure 'Force shutdown from a remote system' is set to 'Administrators'
 default['security_policy']['rights']['SeRemoteShutdownPrivilege'] = '*S-1-5-32-544'
@@ -127,9 +165,7 @@ default['security_policy']['rights']['SeRemoteShutdownPrivilege'] = '*S-1-5-32-5
 default['security_policy']['rights']['SeAuditPrivilege'] = '*S-1-5-19,*S-1-5-20'
 
 # 2.2.25 (L1) Ensure 'Impersonate a client after authentication' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
-# default['security_policy']['rights']['SeImpersonatePrivilege'] = '*S-1-5-32-544,*S-1-5-19,*S-1-5-20,*S-1-5-6'
-# DC - Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE
-# Member server - Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE
+default['security_policy']['rights']['SeImpersonatePrivilege'] = '*S-1-5-32-544,*S-1-5-19,*S-1-5-20,*S-1-5-6'
 
 # 2.2.26 (L1) Ensure 'Increase scheduling priority' is set to 'Administrators'
 default['security_policy']['rights']['SeIncreaseBasePriorityPrivilege'] = '*S-1-5-32-544'
@@ -143,10 +179,13 @@ default['security_policy']['rights']['SeLockMemoryPrivilege'] = ''
 # 2.2.29 (L2) Ensure 'Log on as a batch job' is set to 'Administrators'
 # default['security_policy']['rights']['SeBatchLogonRight'] = '*S-1-5-32-544'
 # DC only
+if default['cb_cis_windows_2016']['is_domain_controller'] == true
+  Chef::Log.warn('is_domain_controller is set to True. Setting SeBatchLogonRight to Administrators')
+  default['security_policy']['rights']['SeBatchLogonRight'] = '*S-1-5-32-544'
+end
 
 # 2.2.30 (L2) Ensure 'Log on as a service' is set to 'No One'
-# default['security_policy']['rights']['SeServiceLogonRight'] = ''
-# Not listed?
+default['security_policy']['rights']['SeServiceLogonRight'] = ''
 
 # 2.2.30 (L1) Ensure 'Manage auditing and security log' is set to 'Administrators'
 default['security_policy']['rights']['SeSecurityPrivilege'] = '*S-1-5-32-544'
@@ -177,9 +216,13 @@ default['security_policy']['rights']['SeShutdownPrivilege'] = '*S-1-5-32-544,*S-
 
 # 2.2.39 (L1) Ensure 'Synchronize directory service data' is set to 'No One' (DC only)
 # DC only
+if default['cb_cis_windows_2016']['is_domain_controller'] == true
+  Chef::Log.warn('is_domain_controller is set to True. Setting SeSyncAgentPrivilege to Noone')
+  default['security_policy']['rights']['SeSyncAgentPrivilege'] = ''
+end
 
 # 2.2.40 (L1) Ensure 'Take ownership of files or other objects' is set to 'Administrators'
 default['security_policy']['rights']['SeTakeOwnershipPrivilege'] = '*S-1-5-32-544'
 
 # 2.3.10.1 (L1) Ensure 'Network access: Allow anonymous SID/Name translation' is set to 'Disabled'
-default['security_policy']['access']['LSAAnonymousNameLookup'] = 0
+# default['security_policy']['access']['LSAAnonymousNameLookup'] = 0
