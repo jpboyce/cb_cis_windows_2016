@@ -559,7 +559,6 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\
   action :create
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
-
 # 18.9.86.1.1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client' do
   values [{ name: 'AllowBasic', type: :dword, data: 0 }]
@@ -593,11 +592,12 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Servi
 end
 
 # 18.9.86.2.2 (L2) Ensure Allow remote server management through WinRM is set to Disabled
-# registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service' do
-#  values [{ name: 'AllowAutoConfig', type: :dword, data: 0 }]
-#  action :create
-#  only_if { node['cb_cis_windows_2016']['cis_level_2'] }
-# end
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service' do
+  values [{ name: 'AllowAutoConfig', type: :dword, data: 0 }]
+  action :create
+  only_if { node['cb_cis_windows_2016']['cis_level_2'] }
+  not_if { ENV['TEST_KITCHEN'].to_i == 1 }
+end
 
 # 18.9.86.2.3 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service' do
@@ -616,11 +616,12 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Servi
 end
 
 # 18.9.87.1 (L2) Ensure Allow Remote Shell Access is set to Disabled
-# registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS' do
-#  values [{ name: 'AllowRemoteShellAccess', type: :dword, data: 0 }]
-#  action :create
-#  only_if { node['cb_cis_windows_2016']['cis_level_2'] }
-# end
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS' do
+  values [{ name: 'AllowRemoteShellAccess', type: :dword, data: 0 }]
+  action :create
+  only_if { node['cb_cis_windows_2016']['cis_level_2'] }
+  not_if { ENV['TEST_KITCHEN'].to_i == 1 }
+end
 
 # 18.9.90.1.1 (L1)  Ensure 'Select when Feature Updates are received' is set to 'Enabled: Current Branch for Business, 180 days'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate' do
