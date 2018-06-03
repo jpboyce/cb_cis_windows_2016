@@ -19,7 +19,7 @@ control '2.3.4.1' do
     it { should have_property_value('AllocateDASD', :type_string, '0') }
   end
 end
-
+#
 # 2.3.4.2 (L1) Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled'
 control '2.3.4.2' do
   impact 1.0
@@ -30,6 +30,6 @@ control '2.3.4.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers') do
     it { should exist }
-    it { should have_property_value('AddPrinterDrivers', :type_string, '1') }
+    it { should have_property_value('AddPrinterDrivers', :type_dword, 1) }
   end
 end
