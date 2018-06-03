@@ -24,4 +24,3 @@ supports 'windows'
 
 depends 'windows', '~> 4.0.0'
 depends 'windows-security-policy', '~> 0.3.7'
-depends 'notepadpp'
