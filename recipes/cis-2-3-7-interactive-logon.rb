@@ -38,6 +38,14 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Polic
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
 
+# 2.3.7.6 (L2) Ensure 'Interactive logon: Number of previous logons to cache (in case domain controller is not available)' is set to '4 or fewer logon(s)' (MS only)
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' do
+  values [{ name: 'CachedLogonsCount', type: :string, data: '4' }]
+  action :create
+  not_if { node['cb_cis_windows_2016']['is_domain_controller'] }
+  only_if { node['cb_cis_windows_2016']['cis_level_2'] }
+end
+
 # 2.3.7.7 (L1) Ensure 'Interactive logon: Prompt user to change password before expiration' is set to 'between 5 and 14 days'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' do
   values [{ name: 'PasswordExpiryWarning', type: :dword, data: 10 }]
