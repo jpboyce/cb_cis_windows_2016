@@ -48,7 +48,7 @@ end
 
 # 2.3.7.7 (L1) Ensure 'Interactive logon: Prompt user to change password before expiration' is set to 'between 5 and 14 days'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' do
-  values [{ name: 'PasswordExpiryWarning', type: :dword, data: 10 }]
+  values [{ name: 'PasswordExpiryWarning', type: :dword, data: 14 }]
   action :create
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
