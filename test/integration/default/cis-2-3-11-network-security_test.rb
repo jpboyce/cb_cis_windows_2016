@@ -58,7 +58,7 @@ control '2.3.11.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters') do
     it { should exist }
-    it { should have_property_value('SupportedEncryptionTypes', :type_dword, 2147483644) }
+    it { should have_property_value('SupportedEncryptionTypes', :type_dword, 2_147_483_644) }
   end
 end
 
