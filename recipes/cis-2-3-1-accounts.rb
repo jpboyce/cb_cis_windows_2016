@@ -32,7 +32,7 @@ end
 
 # 2.3.1.4 (L1) Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa' do
-  values [{ name: 'LimitBlankPasswordUse', type: :dword, data: 0 }]
+  values [{ name: 'LimitBlankPasswordUse', type: :dword, data: 1 }]
   action :create
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
