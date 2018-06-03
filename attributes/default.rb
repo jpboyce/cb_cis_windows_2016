@@ -53,6 +53,17 @@ default['security_policy']['access']['MinimumPasswordLength'] = 14
 default['security_policy']['access']['PasswordComplexity'] = 1
 # 1.1.6 (L1) Ensure 'Store passwords using reversible encryption' is set to 'Disabled'
 default['security_policy']['access']['ClearTextPassword'] = 0
+
+# Account Lockout Policy Settings
+# 1.2.1 (L1) Ensure 'Account lockout duration' is set to '15 or more minute(s)'
+default['security_policy']['access']['LockoutDuration'] = 15
+
+# 1.2.2 (L1)  Ensure 'Account lockout threshold' is set to '10 or fewer invalid logon attempt(s), but not 0'
+default['security_policy']['access']['LockoutBadCount'] = 10
+
+# 1.2.3 (L1) Ensure 'Reset account lockout counter after' is set to '15 or more minute(s)'
+default['security_policy']['access']['ResetLockoutCount'] = 15
+
 # User Rights Assignment
 
 # 2.2.1 (L1) Ensure 'Access Credential Manager as a trusted caller' is set to 'No One'
@@ -211,8 +222,8 @@ default['security_policy']['rights']['SeAssignPrimaryTokenPrivilege'] = '*S-1-5-
 # 2.2.37 (L1) Ensure 'Restore files and directories' is set to 'Administrators'
 default['security_policy']['rights']['SeRestorePrivilege'] = '*S-1-5-32-544'
 
-# 2.2.38 (L1) Ensure 'Shut down the system' is set to 'Administrators, Users'
-default['security_policy']['rights']['SeShutdownPrivilege'] = '*S-1-5-32-544,*S-1-5-32-545'
+# 2.2.38 (L1) Ensure 'Shut down the system' is set to 'Administrators'
+default['security_policy']['rights']['SeShutdownPrivilege'] = '*S-1-5-32-544'
 
 # 2.2.39 (L1) Ensure 'Synchronize directory service data' is set to 'No One' (DC only)
 # DC only
