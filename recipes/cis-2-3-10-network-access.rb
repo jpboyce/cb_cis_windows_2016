@@ -69,8 +69,9 @@ end
 
 # 2.3.10.10 (L1) Ensure 'Network access: Restrict clients allowed to make remote calls to SAM' is set to 'Administrators: Remote Access: Allow' (MS only)
 registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa' do
-  values [{ name: 'restrictremotesam ', type: :string, data: '(O:SYG:SYD:(A;;RC;;;BA)' }]
+  values [{ name: 'restrictremotesam', type: :string, data: 'O:BAG:BAD:(A;;RC;;;BA)' }]
   action :create
+  not_if { node['cb_cis_windows_2016']['is_domain_controller'] }
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
 
