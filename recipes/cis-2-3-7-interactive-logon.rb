@@ -54,7 +54,7 @@ end
 
 # 2.3.7.9 (L1) Ensure 'Interactive logon: Smart card removal behavior' is set to 'Lock Workstation' or higher
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' do
-  values [{ name: 'ScRemoveOption', type: :string, data: 1 }]
+  values [{ name: 'ScRemoveOption', type: :string, data: '1' }]
   action :create
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
