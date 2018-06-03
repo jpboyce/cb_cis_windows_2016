@@ -261,8 +261,9 @@ control '2.2.17' do
   tag cisitem: 'cis-2.2.17'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
+  not_if { ENV['TEST_KITCHEN'].to_i == 1 }
   describe security_policy do
-    its('SeDenyNetworkLogonRight') { should eq ['S-1-5-32-546'] }
+    its('SeDenyNetworkLogonRight') { is_expected.to match_array ['S-1-5-32-546', 'S-1-5-114']
   end
 end
 
@@ -322,7 +323,7 @@ control '2.2.21' do
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
   describe security_policy do
-    its('SeDenyRemoteInteractiveLogonRight') { should eq ['S-1-5-32-546', 'S-1-5-113'] }
+    its('SeDenyRemoteInteractiveLogonRight') { is_expected.to match_array ['S-1-5-32-546', 'S-1-5-113'] }
   end
 end
 
@@ -442,13 +443,14 @@ end
 # Domain Controller = Administrators
 control '2.2.29' do
   impact 1.0
-  title 'Ensure Log on as a batch job is set to Administrators'
-  desc 'Ensure Log on as a batch job is set to Administrators'
+  title '(L2) Ensure Log on as a batch job is set to Administrators (DC Only)'
+  desc '(L2) Ensure Log on as a batch job is set to Administrators (DC Only)'
   tag cissection: '2-2'
   tag cislevel: '2'
   tag cisitem: 'cis-2.2.29'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
+  only_if { node['cb_cis_windows_2016']['is_domain_controller'] }
   describe security_policy do
     its('SeBatchLogonRight') { should eq [] }
   end
