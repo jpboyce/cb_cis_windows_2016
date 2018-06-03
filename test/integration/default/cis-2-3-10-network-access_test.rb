@@ -51,11 +51,12 @@ end
 # 2.3.10.4 (L2) Ensure Network access: Do not allow storage of passwords and credentials for network authentication is set to Enabled
 control '2.3.10.4' do
   impact 1.0
-  title 'Ensure Network access: Do not allow storage of passwords and credentials for network authentication is set to Enabled '
-  desc 'Ensure Network access: Do not allow storage of passwords and credentials for network authentication is set to Enabled '
+  title '(L2) Ensure Network access: Do not allow storage of passwords and credentials for network authentication is set to Enabled '
+  desc '(L2) Ensure Network access: Do not allow storage of passwords and credentials for network authentication is set to Enabled '
   tag 'cis-level-2', 'cis-2.3.10.4'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
+  only_if { node['cb_cis_windows_2016']['cis_level_2'] }
   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa') do
     it { should exist }
     it { should have_property_value('DisableDomainCreds', :type_dword, 1) }
