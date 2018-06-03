@@ -16,7 +16,7 @@ control '2.3.7.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('DontDisplayLastUserName', :type_dword, '1') }
+    it { should have_property_value('DontDisplayLastUserName', :type_dword, 1) }
   end
 end
 
@@ -30,7 +30,7 @@ control '2.3.7.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('DisableCAD', :type_dword, '0') }
+    it { should have_property_value('DisableCAD', :type_dword, 0) }
   end
 end
 
@@ -58,7 +58,7 @@ control '2.3.7.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('LegalNoticeText', :type_string, 'Legal Notice Text') }
+    it { should have_property_value('LegalNoticeText', :type_string, 'This is a scary legal notice') }
   end
 end
 
@@ -72,7 +72,7 @@ control '2.3.7.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System') do
     it { should exist }
-    it { should have_property_value('LegalNoticeCaption', :type_string, 'Legal Notice Caption') }
+    it { should have_property_value('LegalNoticeCaption', :type_string, 'This is a heading for the scary notice') }
   end
 end
 
@@ -84,6 +84,7 @@ control '2.3.7.6' do
   tag 'cis-level-2', 'cis-2.3.7.6'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
+  not_if { node['cb_cis_windows_2016']['is_domain_controller'] }
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
     it { should exist }
     it { should have_property_value('CachedLogonsCount', :type_string, '4') }
@@ -112,9 +113,10 @@ control '2.3.7.8' do
   tag 'cis-level-1', 'cis-2.3.7.8'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
+  not_if { node['cb_cis_windows_2016']['is_domain_controller'] }
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
     it { should exist }
-    it { should have_property_value('ForceUnlockLogon', :type_dword, 0) }
+    it { should have_property_value('ForceUnlockLogon', :type_dword, 1) }
   end
 end
 
