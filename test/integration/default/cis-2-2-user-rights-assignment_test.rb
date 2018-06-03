@@ -33,6 +33,7 @@ control '2.2.2' do
   tag cisitem: 'cis-2.2.2'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
+  not_if { ENV['TEST_KITCHEN'].to_i == 1 }
   describe security_policy do
     its('SeNetworkLogonRight') { is_expected.to match_array ['S-1-5-32-544', 'S-1-5-32-555'] }
   end
