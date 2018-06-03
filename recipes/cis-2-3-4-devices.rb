@@ -5,7 +5,7 @@
 
 # 2.3.4.1 (L1) Ensure 'Devices: Allowed to format and eject removable media' is set to 'Administrators'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' do
-  values [{ name: 'AllocateDASD', type: :dword, data: 0 }]
+  values [{ name: 'AllocateDASD', type: :string, data: '0' }]
   action :create
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
