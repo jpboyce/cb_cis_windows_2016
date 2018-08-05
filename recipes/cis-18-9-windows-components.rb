@@ -551,7 +551,7 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\
   action :create
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
-
+=begin
 # 18.9.84.2 (L1) Ensure 'Turn on PowerShell Transcription' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription' do
   values [{ name: 'EnableTranscripting', type: :dword, data: 0 }]
@@ -559,6 +559,7 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\
   action :create
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
+=end
 # 18.9.86.1.1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client' do
   values [{ name: 'AllowBasic', type: :dword, data: 0 }]
