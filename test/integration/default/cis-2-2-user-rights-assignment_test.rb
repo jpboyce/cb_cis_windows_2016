@@ -33,7 +33,7 @@ control '2.2.2' do
   tag cisitem: 'cis-2.2.2'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  not_if { ENV['TEST_KITCHEN'].to_i == 1 }
+  only_if { ENV['TEST_KITCHEN'].to_i == 0 }
   describe security_policy do
     its('SeNetworkLogonRight') { is_expected.to match_array ['S-1-5-32-544', 'S-1-5-32-555'] }
   end
@@ -261,9 +261,9 @@ control '2.2.17' do
   tag cisitem: 'cis-2.2.17'
   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  not_if { ENV['TEST_KITCHEN'].to_i == 1 }
+  only_if { ENV['TEST_KITCHEN'].to_i == 0 }
   describe security_policy do
-    its('SeDenyNetworkLogonRight') { is_expected.to match_array ['S-1-5-32-546', 'S-1-5-114']
+    its('SeDenyNetworkLogonRight') { is_expected.to match_array ['S-1-5-32-546', 'S-1-5-114'] }
   end
 end
 
