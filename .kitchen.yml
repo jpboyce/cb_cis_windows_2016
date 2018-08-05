@@ -25,5 +25,79 @@ suites:
       - recipe[cb_cis_windows_2016::default]
     verifier:
       inspec_tests:
-        - test/integration/default
-    attributes:
+
+  - name: account_policies
+    run_list:
+      - recipe[cb_cis_windows_2016::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default/cis-1-1-password-policy_test.rb
+        - test/integration/default/cis-1-2-account-lockout-policy_test.rb
+
+  - name: local_policies
+    run_list:
+      - recipe[cb_cis_windows_2016::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default/cis-2-2-user-rights-assignment_test.rb
+        - test/integration/default/cis-2-3-1-accounts_test.rb
+        - test/integration/default/cis-2-3-2-audit_test.rb
+        - test/integration/default/cis-2-3-4-devices_test.rb
+        - test/integration/default/cis-2-3-5-domain-controllers_test.rb
+        - test/integration/default/cis-2-3-6-domain-member_test.rb
+        - test/integration/default/cis-2-3-7-interactive-logon_test.rb
+        - test/integration/default/cis-2-3-8-microsoft-network-client_test.rb
+        - test/integration/default/cis-2-3-9-microsoft-network-server_test.rb
+        - test/integration/default/cis-2-3-10-network-access_test.rb
+        - test/integration/default/cis-2-3-11-network-security_test.rb
+        - test/integration/default/cis-2-3-13-shutdown_test.rb
+        - test/integration/default/cis-2-3-15-system-objects_test.rb
+        - test/integration/default/cis-2-3-17-user-account-control_test.rb
+
+  - name: firewall
+    run_list:
+      - recipe[cb_cis_windows_2016::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default/cis-9-1-domain-profile_test.rb
+        - test/integration/default/cis-9-2-private-profile_test.rb
+        - test/integration/default/cis-9-3-public-profile_test.rb
+
+  - name: audit_policies
+    run_list:
+      - recipe[cb_cis_windows_2016::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default/cis-17-1-account-logon_test.rb
+        - test/integration/default/cis-17-2-account-management_test.rb
+        - test/integration/default/cis-17-3-detailed-tracking_test.rb
+        - test/integration/default/cis-17-4-ds-access_test.rb
+        - test/integration/default/cis-17-5-logon-logoff_test.rb
+        - test/integration/default/cis-17-6-object-access_test.rb
+        - test/integration/default/cis-17-7-policy-change_test.rb
+        - test/integration/default/cis-17-8-privilege-use_test.rb
+        - test/integration/default/cis-17-9-system_test.rb
+
+  - name: admin_templates_computer
+    run_list:
+      - recipe[cb_cis_windows_2016::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default/cis-18-1-control-panel_test.rb
+        - test/integration/default/cis-18-2-laps_test.rb
+        - test/integration/default/cis-18-3-mss_test.rb
+        - test/integration/default/cis-18-4-network_test.rb
+        - test/integration/default/cis-18-6-scm-pass-the-hash-mitigations_test.rb
+        - test/integration/default/cis-18-7-start-menu-and-taskbar_test.rb
+        - test/integration/default/cis-18-8-system_test.rb
+        - test/integration/default/cis-18-9-windows-components_test.rb
+
+  - name: admin_templates_user
+    run_list:
+      - recipe[cb_cis_windows_2016::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default/cis-19-1-admin-templates-user-control-panel_test.rb
+        - test/integration/default/cis-19-5-admin-templates-start-menu-and-taskbar_test.rb
+        - test/integration/default/cis-19-6-admin-templates-system_test.rb
+        - test/integration/default/cis-19-7-admin-templates-windows-components_test.rb
