@@ -1,7 +1,7 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-1-1-password-policy
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
 
 # 1.1.1 (L1) Ensure 'Enforce password history' is set to '24 or more password(s)'
 security_policy 'Enforce password history' do

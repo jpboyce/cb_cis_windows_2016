@@ -1,7 +1,7 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-17-5-logon-logoff
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
 
 # 17.5.1 (L1) Ensure 'Audit Account Lockout' is set to 'Success and Failure'
 execute 'Account Lockout' do

@@ -1,7 +1,7 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-17-9-system
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
 
 # 17.9.1 (L1) Ensure 'Audit IPsec Driver' is set to 'Success and Failure'
 execute 'IPsec Driver' do

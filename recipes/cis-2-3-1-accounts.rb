@@ -1,7 +1,7 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-2-3-1-accounts
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
 
 # 2.3.1.1 (L1) Ensure 'Accounts: Administrator account status' is set to 'Disabled'
 powershell_script 'Disable Administrator Account' do

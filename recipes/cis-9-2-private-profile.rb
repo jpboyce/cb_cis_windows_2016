@@ -1,7 +1,7 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-9-2-private-profile
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
 
 # 9.2.1 (L1) Ensure 'Windows Firewall: Private: Firewall state' is set to 'On (recommended)'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile' do
@@ -79,6 +79,7 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\Pri
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
 
+=begin
 powershell_script 'Firewall Domain Profile Settings' do
   code <<-EOH
   $params = @{
@@ -99,3 +100,4 @@ powershell_script 'Firewall Domain Profile Settings' do
   Set-NetFirewallProfile @params -Verbose
   EOH
 end
+=end
