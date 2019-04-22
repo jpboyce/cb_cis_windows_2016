@@ -79,6 +79,7 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\Pri
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
 
+=begin
 powershell_script 'Firewall Domain Profile Settings' do
   code <<-EOH
   $params = @{
@@ -99,3 +100,4 @@ powershell_script 'Firewall Domain Profile Settings' do
   Set-NetFirewallProfile @params -Verbose
   EOH
 end
+=end
