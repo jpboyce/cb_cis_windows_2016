@@ -16,7 +16,7 @@ control '9.3.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile') do
     it { should exist }
-    it { should have_property_value('EnableFirewall ', :type_dword, '1') }
+    it { should have_property_value('EnableFirewall', :type_dword, 1) }
   end
 end
 
@@ -30,7 +30,7 @@ control '9.3.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile') do
     it { should exist }
-    it { should have_property_value('DefaultInboundAction ', :type_dword, '1') }
+    it { should have_property_value('DefaultInboundAction', :type_dword, 1) }
   end
 end
 
@@ -44,7 +44,7 @@ control '9.3.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile') do
     it { should exist }
-    it { should have_property_value('DefaultOutboundAction ', :type_dword, '1') }
+    it { should have_property_value('DefaultOutboundAction', :type_dword, 1) }
   end
 end
 
@@ -58,7 +58,7 @@ control '9.3.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile') do
     it { should exist }
-    it { should have_property_value('DisableNotifications ', :type_dword, '1') }
+    it { should have_property_value('DisableNotifications', :type_dword, 1) }
   end
 end
 
@@ -72,7 +72,7 @@ control '9.3.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile') do
     it { should exist }
-    it { should have_property_value('AllowLocalPolicyMerge ', :type_dword, '1') }
+    it { should have_property_value('AllowLocalPolicyMerge', :type_dword, 0) }
   end
 end
 
@@ -86,7 +86,7 @@ control '9.3.6' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile') do
     it { should exist }
-    it { should have_property_value('AllowLocalIPsecPolicyMerge ', :type_dword, '1') }
+    it { should have_property_value('AllowLocalIPsecPolicyMerge', :type_dword, 0) }
   end
 end
 
@@ -100,7 +100,7 @@ control '9.3.7' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging') do
     it { should exist }
-    it { should have_property_value('LogFilePath ', :type_dword, '1') }
+    it { should have_property_value('LogFilePath', :type_string, '%SYSTEMROOT%\System32\logfiles\firewall\publicfw.log') }
   end
 end
 
@@ -114,7 +114,7 @@ control '9.3.8' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging') do
     it { should exist }
-    it { should have_property_value('LogFileSize ', :type_dword, '1') }
+    it { should have_property_value('LogFileSize', :type_dword, 16384) }
   end
 end
 
@@ -128,7 +128,7 @@ control '9.3.9' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging') do
     it { should exist }
-    it { should have_property_value('LogDroppedPackets ', :type_dword, '1') }
+    it { should have_property_value('LogDroppedPackets', :type_dword, 1) }
   end
 end
 
@@ -142,6 +142,6 @@ control '9.3.10' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging') do
     it { should exist }
-    it { should have_property_value('LogSuccessfulConnections ', :type_dword, '1') }
+    it { should have_property_value('LogSuccessfulConnections', :type_dword, 1) }
   end
 end

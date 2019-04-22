@@ -44,7 +44,7 @@ control '9.1.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile') do
     it { should exist }
-    it { should have_property_value('DefaultOutboundAction', :type_dword, 0) }
+    it { should have_property_value('DefaultOutboundAction', :type_dword, 1) }
   end
 end
 
@@ -72,7 +72,7 @@ control '9.1.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile') do
     it { should exist }
-    it { should have_property_value('AllowLocalPolicyMerge', :type_dword, 1) }
+    it { should have_property_value('AllowLocalPolicyMerge', :type_dword, 0) }
   end
 end
 
@@ -86,7 +86,7 @@ control '9.1.6' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile') do
     it { should exist }
-    it { should have_property_value('AllowLocalIPsecPolicyMerge', :type_dword, 1) }
+    it { should have_property_value('AllowLocalIPsecPolicyMerge', :type_dword, 0) }
   end
 end
 
@@ -114,7 +114,7 @@ control '9.1.8' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging') do
     it { should exist }
-    it { should have_property_value('LogFileSize', :type_dword, 32767) }
+    it { should have_property_value('LogFileSize', :type_dword, 16384) }
   end
 end
 

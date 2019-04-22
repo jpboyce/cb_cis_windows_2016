@@ -16,7 +16,7 @@ control '18.2.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions\{D76B9641-3288-4f75-942D-087DE603E3EA}') do
     it { should exist }
-    it { should have_property_value('DllName ', :type_dword, '1') }
+    it { should have_property_value('DllName', :type_dword, 1) }
   end
 end
 # 18.2.2 (L1) Ensure 'Do not allow password expiration time longer than required by policy' is set to 'Enabled' (MS only)
@@ -29,7 +29,7 @@ control '18.2.2' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd') do
     it { should exist }
-    it { should have_property_value('PwdExpirationProtectionEnabled ', :type_dword, '1') }
+    it { should have_property_value('PwdExpirationProtectionEnabled', :type_dword, 1) }
   end
 end
 
@@ -43,7 +43,7 @@ control '18.2.3' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd') do
     it { should exist }
-    it { should have_property_value('AdmPwdEnabled ', :type_dword, '1') }
+    it { should have_property_value('AdmPwdEnabled', :type_dword, 1) }
   end
 end
 
@@ -57,7 +57,7 @@ control '18.2.4' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd') do
     it { should exist }
-    it { should have_property_value('PasswordComplexity ', :type_dword, '1') }
+    it { should have_property_value('PasswordComplexity', :type_dword, 1) }
   end
 end
 
@@ -71,7 +71,7 @@ control '18.2.5' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd') do
     it { should exist }
-    it { should have_property_value('PasswordLength ', :type_dword, '1') }
+    it { should have_property_value('PasswordLength', :type_dword, 15) }
   end
 end
 
@@ -85,6 +85,6 @@ control '18.2.6' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd') do
     it { should exist }
-    it { should have_property_value('PasswordAgeDays ', :type_dword, '1') }
+    it { should have_property_value('PasswordAgeDays', :type_dword, 30) }
   end
 end
