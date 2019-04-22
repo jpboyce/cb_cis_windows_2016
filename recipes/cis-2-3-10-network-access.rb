@@ -1,7 +1,7 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-2-3-10-network-access
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
 
 # 2.3.10.1 (L1) Ensure 'Network access: Allow anonymous SID/Name translation' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa' do

@@ -1,7 +1,7 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-2-3-7-interactive-logon
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
 
 # 2.3.7.1 (L1) Ensure 'Interactive logon: Do not display last user name' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' do

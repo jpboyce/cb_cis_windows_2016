@@ -1,7 +1,7 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-18-1-control-panel
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
 
 # 18.1.1.1 (L1) Ensure 'Prevent enabling lock screen camera' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization' do

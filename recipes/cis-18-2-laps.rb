@@ -1,14 +1,15 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-18-2-laps
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
-# only_if { registry_key_exists?('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions\{D76B9641-3288-4f75-942D087DE603E3EA}', :x86_x64) }
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
+
 # 18.2.1 (L1) Ensure LAPS AdmPwd GPO Extension / CSE is installed (MS only)
-# registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions\{D76B9641-3288-4f75-942D-087DE603E3EA}' do
-#  values [{ name: 'DllName', type: :dword, data: 1 }]
-#  action :create
-#  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
-# end
+registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions\{D76B9641-3288-4f75-942D-087DE603E3EA}' do
+  values [{ name: 'DllName', type: :dword, data: 1 }]
+  action :create
+  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
+  only_if { registry_key_exists?('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions\{D76B9641-3288-4f75-942D087DE603E3EA}', :x86_x64) }
+end
 
 # 18.2.2 (L1) Ensure 'Do not allow password expiration time longer than required by policy' is set to 'Enabled' (MS only)
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd' do

@@ -1,7 +1,7 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-2-3-2-audit
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
 
 # 2.3.2.1 (L1) Ensure 'Audit: Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings' is set to 'Enabled'
 registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa' do

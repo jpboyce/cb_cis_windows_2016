@@ -1,7 +1,7 @@
 # Cookbook:: cb_cis_windows_2016
 # Recipe:: cis-18-4-network
 #
-# Copyright:: 2018, The Authors, All Rights Reserved.
+# Copyright:: 2018, Jesse Boyce, All Rights Reserved.
 
 # 18.4.4.1 (L1) Set 'NetBIOS node.default type' to 'P-node.default' (Ensure NetBT Parameter 'node.defaultType' is set to '0x2 (2)') (MS Only)
 registry_key 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetBT\Parameters' do
