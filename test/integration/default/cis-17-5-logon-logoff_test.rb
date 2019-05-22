@@ -23,20 +23,20 @@ control '17.5.1' do
 end
 
 # 17.5.2 (L1) Ensure 'Audit Group Membership' is set to 'Success'
-control '17.5.2' do
-  impact 1.0
-  title 'Ensure Audit Group Membership is set to Success'
-  desc 'Ensure Audit Group Membership is set to Success'
-  tag 'cis-level-1', 'cis-17.5.2'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '17.5.2' do
+#   impact 1.0
+#   title 'Ensure Audit Group Membership is set to Success'
+#   desc 'Ensure Audit Group Membership is set to Success'
+#   tag 'cis-level-1', 'cis-17.5.2'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  # http://inspec.io/docs/reference/resources/command/
-  describe command('auditpol /get /subcategory:"Group Membership"') do
-    its('stdout') { should match /.*Group Membership.*Success\r\n/m }
-    its('stderr') { should eq '' }
-    its('exit_status') { should eq 0 }
-  end
-end
+#   # http://inspec.io/docs/reference/resources/command/
+#   describe command('auditpol /get /subcategory:"Group Membership"') do
+#     its('stdout') { should match /.*Group Membership.*Success\r\n/m }
+#     its('stderr') { should eq '' }
+#     its('exit_status') { should eq 0 }
+#   end
+# end
 
 # 17.5.3 (L1) Ensure 'Audit Logoff' is set to 'Success'
 control '17.5.3' do
