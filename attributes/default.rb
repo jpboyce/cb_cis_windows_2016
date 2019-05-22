@@ -71,19 +71,19 @@ default['security_policy']['rights']['SeTrustedCredManAccessPrivilege'] = ''
 
 # 2.2.2 (L1) Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users'
 # for DCs - Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS
-default['security_policy']['rights']['SeNetworkLogonRight']  = if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  '*S-1-5-32-544,*S-1-5-11,*S-1-5-9'
-else
-  '*S-1-5-32-544,*S-1-5-11'
-end
+default['security_policy']['rights']['SeNetworkLogonRight'] = if default['cb_cis_windows_2016']['is_domain_controller'] == true
+                                                                '*S-1-5-32-544,*S-1-5-11,*S-1-5-9'
+                                                              else
+                                                                '*S-1-5-32-544,*S-1-5-11'
+                                                              end
 
 # if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  # Chef::Log.warn('is_domain_controller is set to True.  Setting SeNetworkLogonRight to Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS')
+# Chef::Log.warn('is_domain_controller is set to True.  Setting SeNetworkLogonRight to Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS')
 #   default['security_policy']['rights']['SeNetworkLogonRight'] = '*S-1-5-32-544,*S-1-5-11,*S-1-5-9'
 # else
-  # Chef::Log.warn('is_domain_controller is set to False.  Setting SeNetworkLogonRight to Administrators, Authenticated Users')
+# Chef::Log.warn('is_domain_controller is set to False.  Setting SeNetworkLogonRight to Administrators, Authenticated Users')
 #  default['security_policy']['rights']['SeNetworkLogonRight'] = '*S-1-5-32-544,*S-1-5-11'
-#end
+# end
 
 # 2.2.3 (L1) Ensure 'Act as part of the operating system' is set to 'No One'
 default['security_policy']['rights']['SeTcbPrivilege'] = ''
