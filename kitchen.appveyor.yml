@@ -28,4 +28,4 @@ verifier:
 suites:
   - name: default
     run_list:
-      - recipe[cb_cis_windows_2016::cis-18-1-control-panel]
+      - recipe[cb_cis_windows_2016::default]
