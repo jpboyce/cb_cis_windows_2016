@@ -1,4 +1,5 @@
 # cb_cis_windows_2016
+[![Build status](https://ci.appveyor.com/api/projects/status/kwx926ujr18uny84/branch/master?svg=true)](https://ci.appveyor.com/project/jpboyce/cb-cis-windows-2016/branch/master)
 
 Chef Cookbook for applying CIS Benchmark settings to Windows 2016 Systems.
 
