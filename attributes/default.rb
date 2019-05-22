@@ -72,10 +72,10 @@ default['security_policy']['rights']['SeTrustedCredManAccessPrivilege'] = ''
 # 2.2.2 (L1) Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users'
 # for DCs - Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS
 if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  Chef::Log.warn('is_domain_controller is set to True.  Setting SeNetworkLogonRight to Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS')
+  # Chef::Log.warn('is_domain_controller is set to True.  Setting SeNetworkLogonRight to Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS')
   default['security_policy']['rights']['SeNetworkLogonRight'] = '*S-1-5-32-544,*S-1-5-11,*S-1-5-9'
 else
-  Chef::Log.warn('is_domain_controller is set to False.  Setting SeNetworkLogonRight to Administrators, Authenticated Users')
+  # Chef::Log.warn('is_domain_controller is set to False.  Setting SeNetworkLogonRight to Administrators, Authenticated Users')
   default['security_policy']['rights']['SeNetworkLogonRight'] = '*S-1-5-32-544,*S-1-5-11'
 end
 
@@ -84,7 +84,7 @@ default['security_policy']['rights']['SeTcbPrivilege'] = ''
 
 # 2.2.4 (L1) Ensure 'Add workstations to domain' is set to 'Administrators' (DC only)
 if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  Chef::Log.warn('is_domain_controller is set to True.  Setting SeMachineAccountPrivilege to Administrators')
+  # Chef::Log.warn('is_domain_controller is set to True.  Setting SeMachineAccountPrivilege to Administrators')
   default['security_policy']['rights']['SeMachineAccountPrivilege'] = '*S-1-5-32-544'
 end
 
@@ -95,10 +95,10 @@ default['security_policy']['rights']['SeIncreaseQuotaPrivilege'] = '*S-1-5-32-54
 # default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-545'
 # for DCs Administrators, ENTERPRISE DOMAIN CONTROLLERS
 if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  Chef::Log.warn('is_domain_controller is set to True.  Setting SeInteractiveLogonRight to Administrators, ENTERPRISE DOMAIN CONTROLLERS')
+  # Chef::Log.warn('is_domain_controller is set to True.  Setting SeInteractiveLogonRight to Administrators, ENTERPRISE DOMAIN CONTROLLERS')
   default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544,S-1-5-9'
 else
-  Chef::Log.warn('is_domain_controller is set to False.  Setting SeInteractiveLogonRight to Administrators')
+  # Chef::Log.warn('is_domain_controller is set to False.  Setting SeInteractiveLogonRight to Administrators')
   default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544'
 end
 
@@ -106,10 +106,10 @@ end
 # default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
 # for DCs, just administrators
 if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  Chef::Log.warn('is_domain_controller is set to True. Setting SeRemoteInteractiveLogonRight to Administrators')
+  # Chef::Log.warn('is_domain_controller is set to True. Setting SeRemoteInteractiveLogonRight to Administrators')
   default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544'
 else
-  Chef::Log.warn('is_domain_controller is set to False. Setting SeRemoteInteractiveLogonRight to Administrators, Remote Desktop Users')
+  # Chef::Log.warn('is_domain_controller is set to False. Setting SeRemoteInteractiveLogonRight to Administrators, Remote Desktop Users')
   default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
 end
 
@@ -162,10 +162,10 @@ default['security_policy']['rights']['SeDenyRemoteInteractiveLogonRight'] = '*S-
 # 2.2.22 (L1) Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'No One'
 # For DCs, Administrators
 if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  Chef::Log.warn('is_domain_controller is set to True. Setting SeEnableDelegationPrivilege to Administrators')
+  # Chef::Log.warn('is_domain_controller is set to True. Setting SeEnableDelegationPrivilege to Administrators')
   default['security_policy']['rights']['SeEnableDelegationPrivilege'] = '*S-1-5-32-544'
 else
-  Chef::Log.warn('is_domain_controller is set to False. Setting SeEnableDelegationPrivilege to Noone')
+  # Chef::Log.warn('is_domain_controller is set to False. Setting SeEnableDelegationPrivilege to Noone')
   default['security_policy']['rights']['SeEnableDelegationPrivilege'] = ''
 end
 
@@ -191,7 +191,7 @@ default['security_policy']['rights']['SeLockMemoryPrivilege'] = ''
 # default['security_policy']['rights']['SeBatchLogonRight'] = '*S-1-5-32-544'
 # DC only
 if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  Chef::Log.warn('is_domain_controller is set to True. Setting SeBatchLogonRight to Administrators')
+  # Chef::Log.warn('is_domain_controller is set to True. Setting SeBatchLogonRight to Administrators')
   default['security_policy']['rights']['SeBatchLogonRight'] = '*S-1-5-32-544'
 end
 
@@ -228,7 +228,7 @@ default['security_policy']['rights']['SeShutdownPrivilege'] = '*S-1-5-32-544'
 # 2.2.39 (L1) Ensure 'Synchronize directory service data' is set to 'No One' (DC only)
 # DC only
 if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  Chef::Log.warn('is_domain_controller is set to True. Setting SeSyncAgentPrivilege to Noone')
+  # Chef::Log.warn('is_domain_controller is set to True. Setting SeSyncAgentPrivilege to Noone')
   default['security_policy']['rights']['SeSyncAgentPrivilege'] = ''
 end
 
