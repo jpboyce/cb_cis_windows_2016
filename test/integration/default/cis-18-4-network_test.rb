@@ -162,8 +162,8 @@ control '18.4.14.1' do
 
   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths') do
     it { should exist }
-    it { should have_property_value("\\\\*\\NETLOGON", :type_string, 'RequireMutualAuthentication=1, RequireIntegrity=1') }
-    it { should have_property_value("\\\\*\\SYSVOL", :type_string, 'RequireMutualAuthentication=1, RequireIntegrity=1') }
+    it { should have_property_value('\\*\NETLOGON', :type_string, 'RequireMutualAuthentication=1, RequireIntegrity=1') }
+    it { should have_property_value('\\*\SYSVOL', :type_string, 'RequireMutualAuthentication=1, RequireIntegrity=1') }
   end
 end
 

@@ -13,7 +13,6 @@ control 'TKE-18.6.1' do
   end
 end
 
-
 # 18.9.86.2.2 (L2) Ensure Allow remote server management through WinRM is set to Enabled (CIS Value: Disabled)
 control 'TKE-18.9.86.2.2' do
   impact 1.0

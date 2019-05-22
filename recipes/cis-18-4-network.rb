@@ -81,8 +81,8 @@ end
 
 # 18.4.14.1 (L1)  Ensure 'Hardened UNC Paths' is set to 'Enabled, with "Require Mutual Authentication" and "Require Integrity" set for all NETLOGON and SYSVOL shares'
 registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths' do
-  values [{ name: "\\\\*\\NETLOGON", type: :string, data: 'RequireMutualAuthentication=1, RequireIntegrity=1' },
-          { name: "\\\\*\\SYSVOL", type: :string, data: 'RequireMutualAuthentication=1, RequireIntegrity=1' }]
+  values [{ name: '\\*\NETLOGON', type: :string, data: 'RequireMutualAuthentication=1, RequireIntegrity=1' },
+          { name: '\\*\SYSVOL', type: :string, data: 'RequireMutualAuthentication=1, RequireIntegrity=1' }]
   action :create
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end

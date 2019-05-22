@@ -1,0 +1,31 @@
+---
+driver:
+  name: proxy
+  host: localhost
+  reset_command: "exit 0"
+  port: 5985
+  username: <%= ENV["machine_user"] %>
+  password: <%= ENV["machine_pass"] %>
+
+transport:
+  name: winrm
+  elevated: true
+
+provisioner:
+  name: chef_zero
+  deprecations_as_errors: true
+  product_name: chef
+  product_version: 14.12.3
+  channel: current
+  chef_license: accept
+
+platforms:
+  - name: windows-2016
+
+verifier:
+  name: inspec
+
+suites:
+  - name: default
+    run_list:
+      - recipe[cb_cis_windows_2016::cis-18-1-control-panel]

@@ -40,7 +40,7 @@ execute 'Other Logon/Logoff Events' do
   command 'auditpol /set /subcategory:"Other Logon/Logoff Events" /success:enable /failure:enable'
   action :run
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
-  not_if { node['cb_cis_windows_2016']['auditpol_data'] =~ /^\s*Other Logon\/Logoff Events\s*Success and Failure.*/m }
+  not_if { node['cb_cis_windows_2016']['auditpol_data'] =~ %r{/^\s*Other Logon\/Logoff Events\s*Success and Failure.*/m} }
 end
 
 # 17.5.6 (L1) Ensure 'Audit Special Logon' is set to 'Success'

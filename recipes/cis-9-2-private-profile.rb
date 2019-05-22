@@ -79,25 +79,23 @@ registry_key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\Pri
   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
 end
 
-=begin
-powershell_script 'Firewall Domain Profile Settings' do
-  code <<-EOH
-  $params = @{
-    'Name'='Private';
-    'Enabled'='True';
-    'DefaultInboundAction'='Block';
-    'DefaultOutboundAction'='Allow';
-    'AllowLocalFirewallRules'='True';
-    'AllowLocalIPsecRules'='True';
-    'NotifyOnListen'='False';
-    'LogFileName'='%SYSTEMROOT%\System32\logfiles\firewall\privatefw.log';
-    'LogMaxSizeKilobytes'='16384';
-    'LogAllowed'='True';
-    'LogBlocked'='True';
-    'PolicyStore'="$env:COMPUTERNAME"
-  }
+# powershell_script 'Firewall Domain Profile Settings' do
+#   code <<-EOH
+#   $params = @{
+#     'Name'='Private';
+#     'Enabled'='True';
+#     'DefaultInboundAction'='Block';
+#     'DefaultOutboundAction'='Allow';
+#     'AllowLocalFirewallRules'='True';
+#     'AllowLocalIPsecRules'='True';
+#     'NotifyOnListen'='False';
+#     'LogFileName'='%SYSTEMROOT%\System32\logfiles\firewall\privatefw.log';
+#     'LogMaxSizeKilobytes'='16384';
+#     'LogAllowed'='True';
+#     'LogBlocked'='True';
+#     'PolicyStore'="$env:COMPUTERNAME"
+#   }
 
-  Set-NetFirewallProfile @params -Verbose
-  EOH
-end
-=end
+#   Set-NetFirewallProfile @params -Verbose
+#   EOH
+# end

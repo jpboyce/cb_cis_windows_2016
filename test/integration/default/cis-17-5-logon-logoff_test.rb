@@ -80,7 +80,7 @@ control '17.5.5' do
 
   # http://inspec.io/docs/reference/resources/command/
   describe command('auditpol /get /subcategory:"Other Logon/Logoff Events"') do
-    its('stdout') { should match /.*Other Logon\/Logoff Events.*Success and Failure\r\n/m }
+    its('stdout') { should match %r{/.*Other Logon\/Logoff Events.*Success and Failure\r\n/m} }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end

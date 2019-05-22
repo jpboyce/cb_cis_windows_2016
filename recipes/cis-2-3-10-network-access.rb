@@ -31,7 +31,6 @@ registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa' do
   only_if { node['cb_cis_windows_2016']['cis_level_2'] }
 end
 
-
 # 2.3.10.5 (L1) Ensure 'Network access: Let Everyone permissions apply to anonymous users' is set to 'Disabled'
 registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa' do
   values [{ name: 'EveryoneIncludesAnonymous', type: :dword, data: 0 }]
