@@ -100,24 +100,20 @@ default['security_policy']['rights']['SeIncreaseQuotaPrivilege'] = '*S-1-5-32-54
 # 2.2.6 (L1) Ensure 'Allow log on locally' is set to 'Administrators'
 # default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-545'
 # for DCs Administrators, ENTERPRISE DOMAIN CONTROLLERS
-if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  # Chef::Log.warn('is_domain_controller is set to True.  Setting SeInteractiveLogonRight to Administrators, ENTERPRISE DOMAIN CONTROLLERS')
-  default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544,S-1-5-9'
-else
-  # Chef::Log.warn('is_domain_controller is set to False.  Setting SeInteractiveLogonRight to Administrators')
-  default['security_policy']['rights']['SeInteractiveLogonRight'] = '*S-1-5-32-544'
-end
+default['security_policy']['rights']['SeInteractiveLogonRight'] = if default['cb_cis_windows_2016']['is_domain_controller'] == true
+                                                                    '*S-1-5-32-544,S-1-5-9'
+                                                                  else
+                                                                    '*S-1-5-32-544'
+                                                                  end
 
 # 2.2.7 (L1) Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators, Remote Desktop Users'
 # default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
 # for DCs, just administrators
-if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  # Chef::Log.warn('is_domain_controller is set to True. Setting SeRemoteInteractiveLogonRight to Administrators')
-  default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544'
-else
-  # Chef::Log.warn('is_domain_controller is set to False. Setting SeRemoteInteractiveLogonRight to Administrators, Remote Desktop Users')
-  default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = '*S-1-5-32-544,*S-1-5-32-555'
-end
+default['security_policy']['rights']['SeRemoteInteractiveLogonRight'] = if default['cb_cis_windows_2016']['is_domain_controller'] == true
+                                                                          '*S-1-5-32-544'
+                                                                        else
+                                                                          '*S-1-5-32-544,*S-1-5-32-555'
+                                                                        end
 
 # 2.2.8 (L1) Ensure 'Back up files and directories' is set to 'Administrators'
 default['security_policy']['rights']['SeBackupPrivilege'] = '*S-1-5-32-544'
@@ -167,13 +163,11 @@ default['security_policy']['rights']['SeDenyRemoteInteractiveLogonRight'] = '*S-
 
 # 2.2.22 (L1) Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'No One'
 # For DCs, Administrators
-if default['cb_cis_windows_2016']['is_domain_controller'] == true
-  # Chef::Log.warn('is_domain_controller is set to True. Setting SeEnableDelegationPrivilege to Administrators')
-  default['security_policy']['rights']['SeEnableDelegationPrivilege'] = '*S-1-5-32-544'
-else
-  # Chef::Log.warn('is_domain_controller is set to False. Setting SeEnableDelegationPrivilege to Noone')
-  default['security_policy']['rights']['SeEnableDelegationPrivilege'] = ''
-end
+default['security_policy']['rights']['SeEnableDelegationPrivilege'] = if default['cb_cis_windows_2016']['is_domain_controller'] == true
+                                                                        '*S-1-5-32-544'
+                                                                      else
+                                                                        ''
+                                                                      end
 
 # 2.2.23 (L1) Ensure 'Force shutdown from a remote system' is set to 'Administrators'
 default['security_policy']['rights']['SeRemoteShutdownPrivilege'] = '*S-1-5-32-544'
