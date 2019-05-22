@@ -30,8 +30,8 @@ describe 'cb_cis_windows_2016::default' do
     let(:chef_run) do
       # for a complete list of available platforms and versions see:
       # https://github.com/customink/fauxhai/blob/master/PLATFORMS.md
-      runner = ChefSpec::ServerRunner.new(platform: 'windows', version: '2016')
-      runner.converge(described_recipe)
+      # runner = ChefSpec::ServerRunner.new(platform: 'windows', version: '2016')
+      # runner.converge(described_recipe)
     end
 
     it 'converges successfully' do
