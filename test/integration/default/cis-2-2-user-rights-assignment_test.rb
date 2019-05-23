@@ -441,20 +441,20 @@ end
 
 # 2.2.29 (L2) Ensure 'Log on as a batch job' is set to 'Administrators' (DC Only)
 # Domain Controller = Administrators
-control '2.2.29' do
-  impact 1.0
-  title '(L2) Ensure Log on as a batch job is set to Administrators (DC Only)'
-  desc '(L2) Ensure Log on as a batch job is set to Administrators (DC Only)'
-  tag cissection: '2-2'
-  tag cislevel: '2'
-  tag cisitem: 'cis-2.2.29'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '2.2.29' do
+#   impact 1.0
+#   title '(L2) Ensure Log on as a batch job is set to Administrators (DC Only)'
+#   desc '(L2) Ensure Log on as a batch job is set to Administrators (DC Only)'
+#   tag cissection: '2-2'
+#   tag cislevel: '2'
+#   tag cisitem: 'cis-2.2.29'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  only_if { node['cb_cis_windows_2016']['is_domain_controller'] }
-  describe security_policy do
-    its('SeBatchLogonRight') { should eq [] }
-  end
-end
+#   only_if { node['cb_cis_windows_2016']['is_domain_controller'] }
+#   describe security_policy do
+#     its('SeBatchLogonRight') { should eq [] }
+#   end
+# end
 
 # 2.2.30 (L1) Configure 'Manage auditing and security log'
 # Member Servers = Administrators
