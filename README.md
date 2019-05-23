@@ -9,10 +9,10 @@ Chef Cookbook for applying CIS Benchmark settings to Windows 2016 Systems.
 * Windows 2016
 
 ### Chef
-* Chef 12.?
+* Chef 14.x
 
 ### Cookbooks
-* windows community cookbook (~> 4.0.0)
+* windows community cookbook (~> 6.0.0)
 * windows-security-policy community cookbook (~> 0.3.7)
 
 ## License and Author
