@@ -147,18 +147,18 @@ end
 # end
 
 # 18.3.11 (L2) Ensure MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted is set to Enabled: 3
-# control '18.3.11' do
-#   impact 1.0
-#   title 'Ensure MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted is set to Enabled: 3'
-#   desc 'Ensure MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted is set to Enabled: 3'
-#   tag 'cis-level-2', 'cis-18.3.11'
-#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+control '18.3.11' do
+  impact 1.0
+  title 'Ensure MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted is set to Enabled: 3'
+  desc 'Ensure MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted is set to Enabled: 3'
+  tag 'cis-level-2', 'cis-18.3.11'
+  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-#   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters') do
-#     it { should exist }
-#     it { should have_property_value('TcpMaxDataRetransmissions', :type_dword, 3) }
-#   end
-# end
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters') do
+    it { should exist }
+    it { should have_property_value('TcpMaxDataRetransmissions', :type_dword, 3) }
+  end
+end
 
 # 18.3.12 (L1) Ensure 'MSS: (WarningLevel) Percentage threshold for the security event log at which the system will generate a warning' is set to 'Enabled: 90% or less'
 control '18.3.12' do
