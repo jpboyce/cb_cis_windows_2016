@@ -35,18 +35,18 @@ control '18.4.4.2' do
 end
 
 # 18.4.5.1 (L2) Ensure Enable Font Providers is set to Disabled (Scored)
-control '18.4.5.1' do
-  impact 1.0
-  title 'Ensure Enable Font Providers is set to Disabled'
-  desc 'Ensure Enable Font Providers is set to Disabled'
-  tag 'cis-level-2', 'cis-18.4.5.1'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '18.4.5.1' do
+#   impact 1.0
+#   title 'Ensure Enable Font Providers is set to Disabled'
+#   desc 'Ensure Enable Font Providers is set to Disabled'
+#   tag 'cis-level-2', 'cis-18.4.5.1'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System') do
-    it { should exist }
-    it { should have_property_value('EnableFontProviders', :type_dword, 0) }
-  end
-end
+#   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System') do
+#     it { should exist }
+#     it { should have_property_value('EnableFontProviders', :type_dword, 0) }
+#   end
+# end
 
 # 18.4.8.1 (L1) Ensure 'Enable insecure guest logons' is set to 'Disabled'
 control '18.4.8.1' do
@@ -63,52 +63,52 @@ control '18.4.8.1' do
 end
 
 # 18.4.9.1 (L2) Ensure Turn on Mapper I/O (LLTDIO) driver is set to Disabled
-control '18.4.9.1' do
-  impact 1.0
-  title 'Ensure Turn on Mapper I/O (LLTDIO) driver is set to Disabled'
-  desc 'Ensure Turn on Mapper I/O (LLTDIO) driver is set to Disabled'
-  tag 'cis-level-2', 'cis-18.4.9.1'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '18.4.9.1' do
+#   impact 1.0
+#   title 'Ensure Turn on Mapper I/O (LLTDIO) driver is set to Disabled'
+#   desc 'Ensure Turn on Mapper I/O (LLTDIO) driver is set to Disabled'
+#   tag 'cis-level-2', 'cis-18.4.9.1'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD') do
-    it { should exist }
-    it { should have_property_value('AllowLLTDIOOnDomain', :type_dword, 0) }
-    it { should have_property_value('AllowLLTDIOOnPublicNet', :type_dword, 0) }
-    it { should have_property_value('EnableLLTDIO', :type_dword, 0) }
-    it { should have_property_value('ProhibitLLTDIOOnPrivateNet', :type_dword, 0) }
-  end
-end
+#   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD') do
+#     it { should exist }
+#     it { should have_property_value('AllowLLTDIOOnDomain', :type_dword, 0) }
+#     it { should have_property_value('AllowLLTDIOOnPublicNet', :type_dword, 0) }
+#     it { should have_property_value('EnableLLTDIO', :type_dword, 0) }
+#     it { should have_property_value('ProhibitLLTDIOOnPrivateNet', :type_dword, 0) }
+#   end
+# end
 
 # 18.4.9.2 (L2) Ensure Turn on Responder (RSPNDR) driver is set to Disabled
-control '18.4.9.2' do
-  impact 1.0
-  title 'Ensure Turn on Responder (RSPNDR) driver is set to Disabled'
-  desc 'Ensure Turn on Responder (RSPNDR) driver is set to Disabled'
-  tag 'cis-level-2', 'cis-18.4.9.2'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '18.4.9.2' do
+#   impact 1.0
+#   title 'Ensure Turn on Responder (RSPNDR) driver is set to Disabled'
+#   desc 'Ensure Turn on Responder (RSPNDR) driver is set to Disabled'
+#   tag 'cis-level-2', 'cis-18.4.9.2'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD') do
-    it { should exist }
-    it { should have_property_value('AllowRspndrOnDomain', :type_dword, 0) }
-    it { should have_property_value('AllowRspndrOnPublicNet', :type_dword, 0) }
-    it { should have_property_value('EnableRspndr', :type_dword, 0) }
-    it { should have_property_value('ProhibitRspndrOnPrivateNet', :type_dword, 0) }
-  end
-end
+#   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD') do
+#     it { should exist }
+#     it { should have_property_value('AllowRspndrOnDomain', :type_dword, 0) }
+#     it { should have_property_value('AllowRspndrOnPublicNet', :type_dword, 0) }
+#     it { should have_property_value('EnableRspndr', :type_dword, 0) }
+#     it { should have_property_value('ProhibitRspndrOnPrivateNet', :type_dword, 0) }
+#   end
+# end
 
 # 18.4.10.2 (L2) Ensure Turn off Microsoft Peer-to-Peer Networking Services is set to Enabled
-control '18.4.10.2' do
-  impact 1.0
-  title 'Ensure Turn off Microsoft Peer-to-Peer Networking Services is set to Enabled'
-  desc 'Ensure Turn off Microsoft Peer-to-Peer Networking Services is set to Enabled'
-  tag 'cis-level-2', 'cis-18.4.10.2'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '18.4.10.2' do
+#   impact 1.0
+#   title 'Ensure Turn off Microsoft Peer-to-Peer Networking Services is set to Enabled'
+#   desc 'Ensure Turn off Microsoft Peer-to-Peer Networking Services is set to Enabled'
+#   tag 'cis-level-2', 'cis-18.4.10.2'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Peernet') do
-    it { should exist }
-    it { should have_property_value('Disabled', :type_dword, 1) }
-  end
-end
+#   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Peernet') do
+#     it { should exist }
+#     it { should have_property_value('Disabled', :type_dword, 1) }
+#   end
+# end
 
 # 18.4.11.2 (L1) Ensure 'Prohibit installation and configuration of Network Bridge on your DNS domain network' is set to 'Enabled'
 control '18.4.11.2' do
@@ -168,50 +168,50 @@ control '18.4.14.1' do
 end
 
 # 18.4.19.2.1 (L2) Disable IPv6 (Ensure TCPIP6 Parameter 'DisabledComponents' is set to '0xff (255)'
-control '18.4.19.2.1' do
-  impact 1.0
-  title 'Disable IPv6 (Ensure TCPIP6 Parameter DisabledComponents is set to 0xff (255)'
-  desc 'Disable IPv6 (Ensure TCPIP6 Parameter DisabledComponents is set to 0xff (255)'
-  tag 'cis-level-2', 'cis-18.4.19.2.1'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '18.4.19.2.1' do
+#   impact 1.0
+#   title 'Disable IPv6 (Ensure TCPIP6 Parameter DisabledComponents is set to 0xff (255)'
+#   desc 'Disable IPv6 (Ensure TCPIP6 Parameter DisabledComponents is set to 0xff (255)'
+#   tag 'cis-level-2', 'cis-18.4.19.2.1'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIP6\Parameters') do
-    it { should exist }
-    it { should have_property_value('DisabledComponents', :type_dword, 255) }
-  end
-end
+#   describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIP6\Parameters') do
+#     it { should exist }
+#     it { should have_property_value('DisabledComponents', :type_dword, 255) }
+#   end
+# end
 
 # 18.4.20.1 (L2) Ensure Configuration of wireless settings using Windows Connect Now is set to Disabled
-control '18.4.20.1' do
-  impact 1.0
-  title 'Ensure Configuration of wireless settings using Windows Connect Now is set to Disabled'
-  desc 'Ensure Configuration of wireless settings using Windows Connect Now is set to Disabled'
-  tag 'cis-level-2', 'cis-18.4.20.2.1'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '18.4.20.1' do
+#   impact 1.0
+#   title 'Ensure Configuration of wireless settings using Windows Connect Now is set to Disabled'
+#   desc 'Ensure Configuration of wireless settings using Windows Connect Now is set to Disabled'
+#   tag 'cis-level-2', 'cis-18.4.20.2.1'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars') do
-    it { should exist }
-    it { should have_property_value('EnableRegistrars', :type_dword, 0) }
-    it { should have_property_value('DisableWPDRegistrar', :type_dword, 0) }
-    it { should have_property_value('DisableUPnPRegistrar', :type_dword, 0) }
-    it { should have_property_value('DisableInBand802DOT11Registrar', :type_dword, 0) }
-    it { should have_property_value('DisableFlashConfigRegistrar', :type_dword, 0) }
-  end
-end
+#   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars') do
+#     it { should exist }
+#     it { should have_property_value('EnableRegistrars', :type_dword, 0) }
+#     it { should have_property_value('DisableWPDRegistrar', :type_dword, 0) }
+#     it { should have_property_value('DisableUPnPRegistrar', :type_dword, 0) }
+#     it { should have_property_value('DisableInBand802DOT11Registrar', :type_dword, 0) }
+#     it { should have_property_value('DisableFlashConfigRegistrar', :type_dword, 0) }
+#   end
+# end
 
 # 18.4.20.2 (L2) Ensure Prohibit access of the Windows Connect Now wizards is set to Enabled
-control '18.4.20.2' do
-  impact 1.0
-  title 'Ensure Prohibit access of the Windows Connect Now wizards is set to Enabled'
-  desc 'Ensure Prohibit access of the Windows Connect Now wizards is set to Enabled'
-  tag 'cis-level-2', 'cis-18.4.20.2.2'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '18.4.20.2' do
+#   impact 1.0
+#   title 'Ensure Prohibit access of the Windows Connect Now wizards is set to Enabled'
+#   desc 'Ensure Prohibit access of the Windows Connect Now wizards is set to Enabled'
+#   tag 'cis-level-2', 'cis-18.4.20.2.2'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\UI') do
-    it { should exist }
-    it { should have_property_value('DisableWcnUi', :type_dword, 1) }
-  end
-end
+#   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\UI') do
+#     it { should exist }
+#     it { should have_property_value('DisableWcnUi', :type_dword, 1) }
+#   end
+# end
 
 # 18.4.21.1 (L1) Ensure 'Minimize the number of simultaneous connections to the Internet or a Windows Domain' is set to 'Enabled'
 control '18.4.21.1' do
@@ -228,15 +228,15 @@ control '18.4.21.1' do
 end
 
 # 18.4.21.2 (L2) Ensure Prohibit connection to non-domain networks when connected to domain authenticated network is set to Enabled
-control '18.4.21.2' do
-  impact 1.0
-  title '(L2) Ensure Prohibit connection to non-domain networks when connected to domain authenticated network is set to Enabled'
-  desc '(L2) Ensure Prohibit connection to non-domain networks when connected to domain authenticated network is set to Enabled'
-  tag 'cis-level-1', 'cis-18.4.21.2'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '18.4.21.2' do
+#   impact 1.0
+#   title '(L2) Ensure Prohibit connection to non-domain networks when connected to domain authenticated network is set to Enabled'
+#   desc '(L2) Ensure Prohibit connection to non-domain networks when connected to domain authenticated network is set to Enabled'
+#   tag 'cis-level-1', 'cis-18.4.21.2'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WcmSvc\GroupPolicy') do
-    it { should exist }
-    it { should have_property_value('fBlockNonDomain', :type_dword, 1) }
-  end
-end
+#   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WcmSvc\GroupPolicy') do
+#     it { should exist }
+#     it { should have_property_value('fBlockNonDomain', :type_dword, 1) }
+#   end
+# end
