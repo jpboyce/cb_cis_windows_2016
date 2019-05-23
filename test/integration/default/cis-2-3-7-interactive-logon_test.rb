@@ -77,19 +77,19 @@ control '2.3.7.5' do
 end
 
 # 2.3.7.6 (L2) Ensure Interactive logon: Number of previous logons to cache (in case domain controller is not available) is set to 4 or fewer logon(s) (MS only)
-control '2.3.7.6' do
-  impact 1.0
-  title 'Ensure Interactive logon: Number of previous logons to cache (in case domain controller is not available) is set to 4 or fewer logon(s)'
-  desc 'Ensure Interactive logon: Number of previous logons to cache (in case domain controller is not available) is set to 4 or fewer logon(s)'
-  tag 'cis-level-2', 'cis-2.3.7.6'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# control '2.3.7.6' do
+#   impact 1.0
+#   title 'Ensure Interactive logon: Number of previous logons to cache (in case domain controller is not available) is set to 4 or fewer logon(s)'
+#   desc 'Ensure Interactive logon: Number of previous logons to cache (in case domain controller is not available) is set to 4 or fewer logon(s)'
+#   tag 'cis-level-2', 'cis-2.3.7.6'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  not_if { node['cb_cis_windows_2016']['is_domain_controller'] }
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
-    it { should exist }
-    it { should have_property_value('CachedLogonsCount', :type_string, '4') }
-  end
-end
+#   not_if { node['cb_cis_windows_2016']['is_domain_controller'] }
+#   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
+#     it { should exist }
+#     it { should have_property_value('CachedLogonsCount', :type_string, '4') }
+#   end
+# end
 
 # 2.3.7.7 (L1) Ensure 'Interactive logon: Prompt user to change password before expiration' is set to 'between 5 and 14 days'
 control '2.3.7.7' do
@@ -106,19 +106,20 @@ control '2.3.7.7' do
 end
 
 # 2.3.7.8 (L1) Ensure 'Interactive logon: Require Domain Controller Authentication to unlock workstation' is set to 'Enabled' (MS only)
-control '2.3.7.8' do
-  impact 1.0
-  title 'Ensure Interactive logon: Require Domain Controller Authentication to unlock workstation is set to Enabled (MS only)'
-  desc 'Ensure Interactive logon: Require Domain Controller Authentication to unlock workstation is set to Enabled (MS only)'
-  tag 'cis-level-1', 'cis-2.3.7.8'
-  ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
+# https://github.com/jpboyce/cb_cis_windows_2016/issues/88
+# control '2.3.7.8' do
+#   impact 1.0
+#   title 'Ensure Interactive logon: Require Domain Controller Authentication to unlock workstation is set to Enabled (MS only)'
+#   desc 'Ensure Interactive logon: Require Domain Controller Authentication to unlock workstation is set to Enabled (MS only)'
+#   tag 'cis-level-1', 'cis-2.3.7.8'
+#   ref 'CIS Windows 2016 RTM (Release 1607) v1.0.0', url: 'https://www.cisecurity.org/cis-benchmarks/'
 
-  not_if { node['cb_cis_windows_2016']['is_domain_controller'] }
-  describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
-    it { should exist }
-    it { should have_property_value('ForceUnlockLogon', :type_dword, 1) }
-  end
-end
+#   not_if { node['cb_cis_windows_2016']['is_domain_controller'] }
+#   describe registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon') do
+#     it { should exist }
+#     it { should have_property_value('ForceUnlockLogon', :type_dword, 1) }
+#   end
+# end
 
 # 2.3.7.9 (L1) Ensure 'Interactive logon: Smart card removal behavior' is set to 'Lock Workstation' or higher
 control '2.3.7.9' do

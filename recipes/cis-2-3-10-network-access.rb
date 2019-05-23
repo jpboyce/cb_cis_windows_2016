@@ -39,11 +39,12 @@ registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa' do
 end
 
 # 2.3.10.6 (L1) Configure 'Network access: Named Pipes that can be accessed anonymously'
-registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters' do
-  values [{ name: 'NullSessionPipes', type: :multi_string, data: [] }]
-  action :create
-  only_if { node['cb_cis_windows_2016']['cis_level_1'] }
-end
+# BUG REF: https://github.com/jpboyce/cb_cis_windows_2016/issues/83
+# registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters' do
+#   values [{ name: 'NullSessionPipes', type: :multi_string, data: [] }]
+#   action :create
+#   only_if { node['cb_cis_windows_2016']['cis_level_1'] }
+# end
 
 # 2.3.10.7 (L1) Configure 'Network access: Remotely accessible registry paths'
 registry_key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedExactPaths' do
